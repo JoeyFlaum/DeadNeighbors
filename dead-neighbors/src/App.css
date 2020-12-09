@@ -8,25 +8,29 @@
 }*/
 path,circle{
   fill: black;
-  stroke:#0c0b0b;
+  stroke:#242323;
   stroke-width: 1;
   transition: ease-in-out  8s all;
 }
 body{
   background-color: black;
 }
-h1{
+h1,h2{
   color:white;
 }
+h2{position: absolute;}
+.App{position: relative;}
 .AK{
 }
 path:hover,circle:hover{
-  stroke:#0c0b0b;
+  stroke:#810707;
   fill:rgb(238, 2, 2);
   
 }
 g:hover>path{
-  stroke:#0c0b0b;
+  stroke-width: 2;
+  stroke:rgb(238, 2, 2);
   fill:rgb(238, 2, 2);
 }
+
 
