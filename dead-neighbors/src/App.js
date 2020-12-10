@@ -44,9 +44,9 @@ class App extends Component {
   
   render() {
       const {CovUSdata,CovStateData,searchField} = this.state;
-      
+      let filteredStates = [];
         if(CovStateData !== 0){
-        const filteredStates = CovStateData.filter((stateData)=>{
+        filteredStates = CovStateData.filter((stateData)=>{
         return (stateData.state.toLowerCase().includes(searchField.toLowerCase()))
         })
         console.log(filteredStates)
@@ -60,7 +60,7 @@ class App extends Component {
           <USAMap customize={this.statesCustomConfig()} onClick={this.mapHandler} />
         </div>
         <h1>hello</h1>
-        <CovidStateData data = {CovStateData}/> 
+        <CovidStateData data = {filteredStates}/> 
         <CovidUsData data = {CovUSdata}/>
       </div> 
     );
