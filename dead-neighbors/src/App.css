@@ -18,10 +18,9 @@ body{
 h1,h2{
   color:white;
 }
-h2{position: absolute;}
+h2{position: absolute; justify-content: center;}
 .App{position: relative;}
-.AK{
-}
+
 path:hover,circle:hover{
   stroke:#810707;
   fill:rgb(238, 2, 2);

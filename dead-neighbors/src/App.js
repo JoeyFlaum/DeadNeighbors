@@ -3,7 +3,7 @@ import './App.css'; /* optional for styling like the :hover pseudo-class */
 import USAMap from "react-usa-map";
 import CovidStateData from './CovidStateData';
 import CovidUsData from './CovidUsData';
-import Search from './Search'
+import SearchFeature from './Search';
  
 class App extends Component {
   /* mandatory */
@@ -14,18 +14,18 @@ class App extends Component {
             CovUSdata: [],
             searchField: ""
         }
-}
-onSearchChange = (event) => {
-  this.setState({searchField: event.target.value});
-}
-componentDidMount(){
-    fetch('https://api.covidtracking.com/v1/states/daily.json')
-        .then(response => response.json())
-        .then(data => this.setState({CovStateData: data}));
-    fetch('https://api.covidtracking.com/v1/us/daily.json')
-    .then(response => response.json())
-    .then(data => this.setState({CovUSdata:data}))         
-}
+  }
+  onSearchChange = (event) => {
+    this.setState({searchField: event.target.value});
+  }
+  componentDidMount(){
+      fetch('https://api.covidtracking.com/v1/states/daily.json')
+          .then(response => response.json())
+          .then(data => this.setState({CovStateData: data}));
+      fetch('https://api.covidtracking.com/v1/us/daily.json')
+      .then(response => response.json())
+      .then(data => this.setState({CovUSdata: data}));         
+  }
   mapHandler = (event) => {
     /*click event result*/
     alert(event.target.dataset.name);
@@ -34,23 +34,28 @@ componentDidMount(){
   /* optional customization of filling per state and calling custom callbacks per state */
   statesCustomConfig = () => {
   return {
-      "NJ": {
-        fill: "navy",
-        clickHandler: (event) => 
-          console.log('Custom handler for NJ', event.target.dataset)
-      },
-      "NY": {
-        fill: "#CC0000"
-      }
-
-    };
+      "NJ": {fill: "navy", 
+            clickHandler: (event) =>
+            console.log('Custom handler for NJ', event.target.dataset)
+            },
+      "NY": {fill: "#CC0000"}
+          };
   };
+  
   render() {
-      const {CovUSdata,CovStateData} = this.state;
+      const {CovUSdata,CovStateData,searchField} = this.state;
+      
+        if(CovStateData !== 0){
+        const filteredStates = CovStateData.filter((stateData)=>{
+        return (stateData.state.toLowerCase().includes(searchField.toLowerCase()))
+        })
+        console.log(filteredStates)
+        }
+
       return (
       <div>
         <div className="App">
-          <Search onSearch={this.onSearchChange}/>
+          <SearchFeature className= "searchBox" onSearch={this.onSearchChange}/>
           <h2>{this.state.searchField}</h2>
           <USAMap customize={this.statesCustomConfig()} onClick={this.mapHandler} />
         </div>
