@@ -60,8 +60,8 @@ class App extends Component {
           <USAMap customize={this.statesCustomConfig()} onClick={this.mapHandler} />
         </div>
         <h1>hello</h1>
-        <CovidStateData data = {filteredStates}/> 
         <CovidUsData data = {CovUSdata}/>
+        <CovidStateData data = {filteredStates}/> 
       </div> 
     );
   }

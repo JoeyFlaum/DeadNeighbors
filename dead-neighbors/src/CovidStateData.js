@@ -1,18 +1,25 @@
 import React from 'react';
+import CovidStateDataCard from './CovidStateDataCard';
 
 
-const CovidStateData = ({data}) => {;
+const CovidStateData = ({data}) => {
     if(data.length !== 0){
-    return( 
-        <h1> 
-            {console.log('stateData',data)}
-            {`${data[0].state}`} 
-            <br/>  
-            {`${data[0].death} Deaths`}
-        </h1>
+    return(
+        <div>
+            {data.map((stateObj,i)=>{ 
+            return(
+            <CovidStateDataCard
+                key = {`${data[i].state}${[i]}`} 
+                stateid = {data[i].state} 
+                deaths = {data[i].death}
+                date =  {data[i].date}
+            />
+            )})}
+        </div>
     )
     }
     return null
+
 }
 export default CovidStateData;
 
