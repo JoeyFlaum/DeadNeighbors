@@ -12,12 +12,23 @@ class App extends Component {
         this.state = {
             CovStateData: [],
             CovUSdata: [],
-            searchField: ""
+            searchField: ''
         }
   }
-  onSearchChange = (event) => {
-    this.setState({searchField: event.target.value});
+  keyHandler= (event)=>{
+    if(event.key === 'Enter'){
+      console.log('true')
+      console.log('event',event.target.value)
+      this.setState({searchField: event.target.value})
+    }
+    else{
+      console.log(event.key)
+    }
   }
+  /*onSearchChange = (event) => {
+      this.setState({searchField: event.target.value})
+      console.log('state',event.target.value)
+  }*/
   componentDidMount(){
       fetch('https://api.covidtracking.com/v1/states/daily.json')
           .then(response => response.json())
@@ -49,19 +60,19 @@ class App extends Component {
         filteredStates = CovStateData.filter((stateData)=>{
         return (stateData.state.toLowerCase().includes(searchField.toLowerCase()))
         })
-        console.log(filteredStates)
+        /* console.log(this.state.searchField)*/
         }
 
       return (
       <div>
         <div className="App">
-          <SearchFeature className= "searchBox" onSearch={this.onSearchChange}/>
+          <SearchFeature className= "searchBox" onSearch={this.onSearchChange} onEnter = {this.keyHandler} />
           <h2>{this.state.searchField}</h2>
           <USAMap customize={this.statesCustomConfig()} onClick={this.mapHandler} />
         </div>
         <h1>hello</h1>
         <CovidUsData data = {CovUSdata}/>
-        <CovidStateData data = {filteredStates}/> 
+        <CovidStateData data = {(searchField === "")?[]:filteredStates }/> 
       </div> 
     );
   }

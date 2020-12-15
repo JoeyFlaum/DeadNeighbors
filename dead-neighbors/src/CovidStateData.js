@@ -1,7 +1,7 @@
 import React from 'react';
 import CovidStateDataCard from './CovidStateDataCard';
 
-
+/* map API data to show different object keys for each state */
 const CovidStateData = ({data}) => {
     if(data.length !== 0){
     return(
