@@ -12,14 +12,17 @@ class App extends Component {
         this.state = {
             CovStateData: [],
             CovUSdata: [],
-            searchField: ''
+            searchField: '',
         }
   }
-  
-  /*onSearchChange = (event) => {
+
+  /*handle enter key and button click for state search*/
+  keyHandler= (event)=>{
+    if(event.key === 'Enter'){
       this.setState({searchField: event.target.value})
-      console.log('state',event.target.value)
-  }*/
+      event.target.value = '';
+    }
+  } 
   componentDidMount(){
       fetch('https://api.covidtracking.com/v1/us/daily.json')
           .then(response => response.json())
@@ -71,7 +74,7 @@ class App extends Component {
             case ('SC'):objectData[i].stateFullName = "South Carolina";break;
             case ('SD'):objectData[i].stateFullName = "South Dakota";break;
             case ('TN'):objectData[i].stateFullName = "Tennessee";break;
-            case ('TX'):objectData[i].stateFullName = " Texas";break;
+            case ('TX'):objectData[i].stateFullName = "Texas";break;
             case ('UT'):objectData[i].stateFullName = "Utah";break;
             case ('VT'):objectData[i].stateFullName = "Vermont";break;
             case ('VA'):objectData[i].stateFullName = "Virginia";break; 
@@ -89,18 +92,8 @@ class App extends Component {
       }return objectData[i]}))   
         .then(data => this.setState({CovStateData: data}));
   }   
-  /*handle enter key and button click for state search*/
-  keyHandler= (event)=>{
-    if(event.key === 'Enter'){
-      console.log('true')
-      console.log('event',event.target.value)
-      this.setState({searchField: event.target.value})
-      event.target.value = '';
-    }
-    else{
-      console.log(event.key)
-    }
-  } 
+
+
   mapHandler = (event) => {
     /*click event result*/
     alert(event.target.dataset.name);
@@ -131,7 +124,7 @@ class App extends Component {
       UT : "Utah",VT : "Vermont",VA : "Virginia",WA : "Washington",WV : "West Virginia",
       WI : "Wisconsin",WY : "Wyoming"
     }
-      const {CovUSdata,CovStateData,searchField} = this.state;
+      const {CovUSdata,CovStateData,searchField, inputField} = this.state;
       let filteredStates = [];
         if(CovStateData !== 0){
         filteredStates = CovStateData.filter((stateData)=>{
@@ -141,7 +134,10 @@ class App extends Component {
       return (
       <div>
         <div className="App">
-          <SearchFeature className= "searchBox" onSearch={this.onSearchChange} onEnter = {this.keyHandler} />
+          <SearchFeature 
+                className= "searchBox"  
+                onEnter = {this.keyHandler} 
+                inputValue = {inputField} />
           <h2>{this.state.searchField}</h2>
           <USAMap customize={this.statesCustomConfig()} onClick={this.mapHandler} />
         </div>

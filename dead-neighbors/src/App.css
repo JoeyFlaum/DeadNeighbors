@@ -32,4 +32,12 @@ g:hover>path{
   fill:rgb(238, 2, 2);
 }
 
+.suggestion,input{
+  width:200px;
+  height:20px;
+  margin:0;
+  padding:0;
+  border:0;
+  background-color: white ;
+}
 
