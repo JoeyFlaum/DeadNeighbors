@@ -13,21 +13,5 @@ const Search = ({onSearch,onEnter})=>{
    )
  }
 
- /*class Search extends React.Component {
-  constructor() {
-    super();
-    this.state = {value: ""};
-  }
-
-  update = (e) => {
-    this.setState({value: e.target.value});
-  }
-
-  render() {
-    return (
-      <input onChange={this.update} value={this.state.value} />
-    );
-  }
-}*/
 export default Search;
 

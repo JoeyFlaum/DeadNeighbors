@@ -4,7 +4,7 @@ const CovidUsData = ({data}) => {
     if(data.length !== 0){
     return( 
          <h1> 
-            {/* {console.log('Data',data)} */}
+            {console.log('UsData',data)} 
             {`Date Checked ${data[0].dateChecked}`} 
             <br/>  
             {`${data[0].death} Total US Deaths`}
