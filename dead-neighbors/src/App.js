@@ -110,40 +110,29 @@ class App extends Component {
   };
   
   render() { 
-    let stateList={
-      AL : "Alabama",AK : "Alaska",AZ : "Arizona",AR : "Arkansas",
-      CA : "California",CO : "Colorado",CT : "Connecticut",DE : "Delaware",
-      FL : "Florida",GA : "Georgia",HI : "Hawaii",ID : "Idaho",IL : "Illinois",
-      IN : "Indiana",IA : "Iowa",KS : "Kansas",KY : "Kentucky",LA : "Louisiana",
-      ME : "Maine",MD : "Maryland",MA : "Massachusetts",MI : "Michigan",
-      MN : "Minnesota",MS : "Mississippi",MO : "Missouri",MT : "Montana",
-      NE : "Nebraska",NV : "Nevada",NH : "New Hampshire",NJ : "New Jersey",
-      NM : "New Mexico",NY : "New York", NC : "North Carolina",ND : "North Dakota",
-      OH : "Ohio",OK : "Oklahoma",OR : "Oregon",PA : "Pennsylvania",RI : "Rhode Island",
-      SC : "South Carolina",SD : "South Dakota",TN : "Tennessee",TX : "Texas",
-      UT : "Utah",VT : "Vermont",VA : "Virginia",WA : "Washington",WV : "West Virginia",
-      WI : "Wisconsin",WY : "Wyoming"
-    }
       const {CovUSdata,CovStateData,searchField, inputField} = this.state;
       let filteredStates = [];
         if(CovStateData !== 0){
         filteredStates = CovStateData.filter((stateData)=>{
         return (stateData.stateFullName.toLowerCase().includes(searchField.toLowerCase()))
         })}
-
       return (
       <div>
-        <div className="App">
+        <div> 
           <SearchFeature 
-                className= "searchBox"  
-                onEnter = {this.keyHandler} 
-                inputValue = {inputField} />
+            className= "searchfeature"  
+            onEnter = {this.keyHandler} 
+            inputValue = {inputField}
+          />
+        </div>
+        <div className="App">
+         
           <h2>{this.state.searchField}</h2>
           <USAMap customize={this.statesCustomConfig()} onClick={this.mapHandler} />
         </div>
         <h1>hello</h1>
         <CovidUsData data = {CovUSdata}/>
-        <CovidStateData data = {(searchField === "")?[]:filteredStates } listOfStates = {stateList}/> 
+        <CovidStateData data = {(searchField === "")?[]:filteredStates }/> 
       </div> 
     );
   }

@@ -1,11 +1,11 @@
 import React from 'react';
+import stateList from './StateList'
 
 class SearchFeature extends React.Component{
   constructor(){
     super()
     this.state ={
     suggestedState:'',
-    filteredStates:['texas'],
     inputField:""
     }
   }
@@ -20,6 +20,10 @@ class SearchFeature extends React.Component{
   }
 
    render(){
+    const {inputField} =this.state;
+    const filteredStates = stateList.filter((stateData)=>{
+      return (stateData.stateFullName.toLowerCase().includes(inputField.toLowerCase()))
+      })
      return (
      <div>  
      <form onSubmit = {(e)=>e.preventDefault()}>
@@ -31,11 +35,16 @@ class SearchFeature extends React.Component{
           
           />
      </form>
-     <button 
+     <div className = "searchfield">
+     {filteredStates.map((state,i)=>{
+       return( 
+        <button 
             className = "suggestion"
             onClick = {this.buttonHandler}
-            value = {this.state.filteredStates[0]}
-      />
+            value = {(filteredStates[i].stateFullName)}
+        >{filteredStates[i].stateFullName}</button>) 
+     })}
+     </div>
     </div>
    )
  }

@@ -32,7 +32,7 @@ g:hover>path{
   fill:rgb(238, 2, 2);
 }
 
-.suggestion,input{
+button,input{
   width:200px;
   height:20px;
   margin:0;
@@ -41,3 +41,21 @@ g:hover>path{
   background-color: white ;
 }
 
+.searchfield{
+  overflow-y: scroll;
+  border: 5px solid black;
+  height: 100px;
+  width: 200px;
+  margin:0;
+  padding:0;
+  background-color: white;
+}
+.searchfield::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.searchfield {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
