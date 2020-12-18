@@ -4,6 +4,7 @@ import USAMap from "react-usa-map";
 import CovidStateData from './CovidStateData';
 import CovidUsData from './CovidUsData';
 import SearchFeature from './Search';
+import CountDown from './Timer';
  
 class App extends Component {
   /* mandatory */
@@ -114,10 +115,11 @@ class App extends Component {
       let filteredStates = [];
         if(CovStateData !== 0){
         filteredStates = CovStateData.filter((stateData)=>{
-        return (stateData.stateFullName.toLowerCase().includes(searchField.toLowerCase()))
+        return (stateData.stateFullName.toLowerCase().includes(searchField.toLowerCase()));
         })}
       return (
       <div>
+        <CountDown className = "timer"/>
         <div> 
           <SearchFeature 
             className= "searchfeature"  

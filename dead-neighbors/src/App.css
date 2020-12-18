@@ -31,20 +31,26 @@ g:hover>path{
   stroke:rgb(238, 2, 2);
   fill:rgb(238, 2, 2);
 }
-
-button,input{
+form,.formwrapper{
+  width:200px;
+}
+input{
   width:200px;
   height:20px;
-  margin:0;
-  padding:0;
-  border:0;
+  margin:0px;
+  border:0px;
   background-color: white ;
 }
-
+button{
+  text-align: left;
+  width:200px;
+  height:20px;
+}
 .searchfield{
   overflow-y: scroll;
-  border: 5px solid black;
-  height: 100px;
+  border: 0px;
+  min-height: auto;
+  max-height: 100px;
   width: 200px;
   margin:0;
   padding:0;
@@ -58,4 +64,8 @@ button,input{
 .searchfield {
 -ms-overflow-style: none;  /* IE and Edge */
 scrollbar-width: none;  /* Firefox */
+}
+.timer{
+  margin:5px 100px;
+  padding:5px 5px;
 }

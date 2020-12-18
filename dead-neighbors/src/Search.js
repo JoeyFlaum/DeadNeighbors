@@ -25,7 +25,7 @@ class SearchFeature extends React.Component{
       return (stateData.stateFullName.toLowerCase().includes(inputField.toLowerCase()))
       })
      return (
-     <div>  
+     <div className = "formwrapper">  
      <form onSubmit = {(e)=>e.preventDefault()}>
        <input
           placeholder='Enter State'
@@ -34,8 +34,7 @@ class SearchFeature extends React.Component{
           value={this.state.inputField}
           
           />
-     </form>
-     <div className = "searchfield">
+               <div className = "searchfield">
      {filteredStates.map((state,i)=>{
        return( 
         <button 
@@ -45,6 +44,8 @@ class SearchFeature extends React.Component{
         >{filteredStates[i].stateFullName}</button>) 
      })}
      </div>
+     </form>
+
     </div>
    )
  }
