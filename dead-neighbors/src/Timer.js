@@ -5,7 +5,7 @@ class CountDown extends React.Component{
         super(props)
         this.state={
             usData:this.props.usData,
-            deathCounter24Hour: 2,
+            deathCounter24Hour: 1,
             counterAt0: true
     }
     } 
@@ -37,15 +37,23 @@ class CountDown extends React.Component{
             const endDate = new Date("2020-12-17T24:00:00Z").getTime();
             const beginDate = (new Date(endDate).getTime())-(1000 * 60 * 60 * 24);
             const day24Hour = (endDate-beginDate)
-            this.setState({deathCounter24Hour : (day24Hour/usDeathsToday)})
+            this.setState({deathCounter24Hour : Math.floor(day24Hour/usDeathsToday)})
             console.log('deaths',this.state.deathCounter24Hour);
             console.log('deaths',this.state.counterAt0);
         }
+        else if(this.state.deathCounter24Hour <= 0 && this.state.counterAt0 === false){
+            console.log('if2')
+            this.setState({deathCounter24Hour: 0,counterAt0:true})
+        }
         else{
-            console.log(this.state.deathCounter24Hour)
+            console.log('else')
+            console.log('death counter',this.state.deathCounter24Hour)
+            console.log('counterAt0',this.state.counterAt0)
             this.setState(prevState =>({
                     deathCounter24Hour : (prevState.deathCounter24Hour -110)
-                }))}},100)}
+                }))}},100)
+            
+        }
             
       
     

@@ -125,7 +125,7 @@ class App extends Component {
         })}
       return (
       <div>
-        {(this.state.CovidDeathsToday === 0)? <div>Loading...</div>:<CountDown className = "timer" usData ={CovidDeathsToday}/>}
+        {(this.state.CovidDeathsToday === 0)? <div>Loading...</div>:<CountDown className = "timer" usData ={CovidDeathsToday} usFullData = {CovUSdata}/>}
         <div> 
           <SearchFeature 
             className= "searchfeature"  
