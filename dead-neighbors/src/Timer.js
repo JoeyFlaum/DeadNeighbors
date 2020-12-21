@@ -4,41 +4,53 @@ class CountDown extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            days:'',
-            hours:'',
-            mins:'',
-            secs:'',
-            milli:''
-        }
-    } 
-
-    setTimeLeft =(t)=>{
-        this.setState({days: Math.floor(t / (1000 * 60 * 60 * 24))});
-        this.setState({hours: Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))});
-        this.setState({mins: Math.floor((t % (1000 * 60 *60)) / (1000*60))});
-        this.setState({secs: Math.floor(t % (1000 * 60)/1000)});
-        this.setState({milli: Math.floor((t % 100))});
+            usData:this.props.usData,
+            deathCounter24Hour: 2,
+            counterAt0: true
     }
-
+    } 
     render(){
-    const endDate = new Date("january 1, 2021 00:00:00").getTime(); 
-    setInterval(()=>{
-            let now = new Date().getTime();
-            let timeLeft = endDate - now;
-            this.setTimeLeft(timeLeft);
-        },100);
+        console.log('render')
+        const {deathCounter24Hour} = this.state;
+        const days = Math.floor(deathCounter24Hour / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((deathCounter24Hour % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((deathCounter24Hour % (1000 * 60 *60)) / (1000*60));
+        const secs = Math.floor(deathCounter24Hour % (1000 * 60)/1000);
+        const centi = Math.floor(((deathCounter24Hour/10) % 100));
+        return (
+            <div>
+                <h1>
+                    {`${("0"+days).slice(-2)} day(s)
+                    ${("0"+hours).slice(-2)} :
+                    ${("0"+mins).slice(-2)} :
+                    ${("0"+secs).slice(-2)}.${("0"+centi).slice(-1)}`}
+                </h1>
+            </div>
+        );
+    }
+    componentDidMount(){
+        this.myInterval = setInterval(()=>{
+        if(this.state.deathCounter24Hour === 0 || this.state.counterAt0 === true){
+            console.log('if')
+            this.setState({counterAt0 : false})
+            const usDeathsToday = this.state.usData;
+            const endDate = new Date("2020-12-17T24:00:00Z").getTime();
+            const beginDate = (new Date(endDate).getTime())-(1000 * 60 * 60 * 24);
+            const day24Hour = (endDate-beginDate)
+            this.setState({deathCounter24Hour : (day24Hour/usDeathsToday)})
+            console.log('deaths',this.state.deathCounter24Hour);
+            console.log('deaths',this.state.counterAt0);
+        }
+        else{
+            console.log(this.state.deathCounter24Hour)
+            this.setState(prevState =>({
+                    deathCounter24Hour : (prevState.deathCounter24Hour -110)
+                }))}},100)}
+            
+      
     
-    const {days, hours, mins, secs, milli} = this.state
-    return (
-        <div>
-            <h1>
-                {`${("0"+days).slice(-2)} day(s)
-                 ${("0"+hours).slice(-2)} :
-                 ${("0"+mins).slice(-2)} :
-                 ${("0"+secs).slice(-2)}.${("0"+milli).slice(-2)}`}
-            </h1>
-        </div>
-    );
-}
+    componentWillUnmount(){
+        clearInterval(this.myInterval);
+    }
 }
 export default CountDown;

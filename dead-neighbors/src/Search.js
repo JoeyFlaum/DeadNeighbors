@@ -37,7 +37,8 @@ class SearchFeature extends React.Component{
                <div className = "searchfield">
      {filteredStates.map((state,i)=>{
        return( 
-        <button 
+        <button
+            key = {i} 
             className = "suggestion"
             onClick = {this.buttonHandler}
             value = {(filteredStates[i].stateFullName)}

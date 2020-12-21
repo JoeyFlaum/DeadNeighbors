@@ -14,6 +14,7 @@ class App extends Component {
             CovStateData: [],
             CovUSdata: [],
             searchField: '',
+            CovidDeathsToday:0
         }
   }
 
@@ -27,7 +28,10 @@ class App extends Component {
   componentDidMount(){
       fetch('https://api.covidtracking.com/v1/us/daily.json')
           .then(response => response.json())
-          .then(data => this.setState({CovUSdata: data}))
+          .then(data =>{
+            this.setState({CovUSdata: data})
+            this.setState({CovidDeathsToday: data[0].deathIncrease})
+          })
           .catch(err=>console.log(err));
       fetch('https://api.covidtracking.com/v1/states/daily.json')
         .then(response => response.json())
@@ -91,7 +95,8 @@ class App extends Component {
             case ('VI'):objectData[i].stateFullName = "Virgin Islands";break;
             default: console.log('StateCaseNotCaught',objectData[i]);
       }return objectData[i]}))   
-        .then(data => this.setState({CovStateData: data}));
+        .then(data =>
+           this.setState({CovStateData: data}));
   }   
 
 
@@ -111,7 +116,8 @@ class App extends Component {
   };
   
   render() { 
-      const {CovUSdata,CovStateData,searchField, inputField} = this.state;
+      const {CovUSdata,CovStateData,CovidDeathsToday,searchField, inputField} = this.state;
+      console.log(CovidDeathsToday);
       let filteredStates = [];
         if(CovStateData !== 0){
         filteredStates = CovStateData.filter((stateData)=>{
@@ -119,7 +125,7 @@ class App extends Component {
         })}
       return (
       <div>
-        <CountDown className = "timer"/>
+        {(this.state.CovidDeathsToday === 0)? <div>Loading...</div>:<CountDown className = "timer" usData ={CovidDeathsToday}/>}
         <div> 
           <SearchFeature 
             className= "searchfeature"  
