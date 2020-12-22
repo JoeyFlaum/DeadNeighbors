@@ -3,15 +3,10 @@
   display: grid;
 }
 
-/*.us-state-map{
-  width: 100rem;
-}*/
-path,circle{
-  fill: black;
-  stroke:#242323;
-  stroke-width: 1;
-  transition: ease-in-out  8s all;
+.us-state-map{
+  
 }
+
 body{
   background-color: black;
 }
@@ -21,16 +16,29 @@ h1,h2{
 h2{position: absolute; justify-content: center;}
 .App{position: relative;}
 
-path:hover,circle:hover{
-  stroke:#810707;
-  fill:rgb(238, 2, 2);
-  
-}
-g:hover>path{
+
+g:hover>path,g:hover>circle {
   stroke-width: 2;
   stroke:rgb(238, 2, 2);
   fill:rgb(238, 2, 2);
+  -webkit-animation: fadeinout 5s linear forwards;
+  animation: fadeinout 5s linear forwards;
+  opacity: 0;
 }
+
+@-webkit-keyframes fadeinout {
+100% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+0% { opacity: 1; }
+}
+path,circle{
+  fill: black;
+  stroke:#242323;
+  stroke-width: 1;
+}
+
 form,.formwrapper{
   width:200px;
 }
@@ -41,10 +49,18 @@ input{
   border:0px;
   background-color: white ;
 }
+ul,li,button{
+  list-style: none;
+  justify-content: left;
+  padding:0px;
+  margin:0px;
+}
+
 button{
   text-align: left;
   width:200px;
   height:20px;
+  margin-left:10px;
 }
 .searchfield{
   overflow-y: scroll;

@@ -14,7 +14,7 @@ class App extends Component {
             CovStateData: [],
             CovUSdata: [],
             searchField: '',
-            CovidDeathsToday:0
+            CovidDeathsToday:0,
         }
   }
 
@@ -125,7 +125,9 @@ class App extends Component {
         })}
       return (
       <div>
-        {(this.state.CovidDeathsToday === 0)? <div>Loading...</div>:<CountDown className = "timer" usData ={CovidDeathsToday} usFullData = {CovUSdata}/>}
+        {(this.state.CovidDeathsToday === 0)? 
+          <div>Loading...</div>:
+          <CountDown className = "timer" usData ={CovidDeathsToday} usDataAll = {CovUSdata}/>}
         <div> 
           <SearchFeature 
             className= "searchfeature"  
