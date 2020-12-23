@@ -6,69 +6,98 @@ class SearchFeature extends React.Component{
     super()
     this.state ={
     inputField:"",
-    suggestions:false
+    suggestions:false,
+    mouseOverSuggestions:false
     }
   }
     /*handle button click to populate input field of search*/
-    buttonHandler = (event)=>{
-    console.log('button',event.target.value)
-    this.setState({inputField : event.target.value,suggestions:false})
+  buttonHandler = (event)=>{
+    console.log('button',event)
+    this.setState({
+      inputField : event.target.value,
+      suggestions:false,
+      mouseOverSuggestions : false})
   }
-    suggestionFocusHandler=(event)=>{
-      console.log(event)
-       if(event.type==='focus'||'change'||'click')
-        {console.log(event)
-        this.setState({suggestions:true});}
-      else if(event.type==='blur')
-      {this.setState({suggestions:false});}
+  /*Mouse over if statement and suggestionFocusHandler show or hid suggestions for search*/
+  mouseOverSuggestions=(event)=>{
+    let eType =event.type; 
+    if(eType === 'mouseover')
+      {this.setState({mouseOverSuggestions:true})}
+    else if(eType === 'mouseleave')
+      {this.setState({mouseOverSuggestions:false})}
+    console.log('mouse event',event)
+  }
+  suggestionFocusHandler=(event)=>{
+    const {mouseOverSuggestions}=this.state;
+    switch(event.type){
+      case('focus'):this.setState({suggestions:true});console.log('focus',event);break;
+      case('change'):this.setState({suggestions:true});console.log('change',event);break;
+      case('click'):this.setState({suggestions:true});console.log('click',event);break;
+      case('blur'):
+        if(mouseOverSuggestions)
+          {this.setState({suggestions:true});console.log('Show, MousoverTrue');break;}
+        else
+          {this.setState({suggestions:false});console.log('blur, MouseoverFalse');break;}
+      default: console.log('Switch default');break;
     }
-    onSearchChange = (event) => {
+  }
+  onSearchChange = (event) => {
     this.setState({suggestedState: event.target.value})
     console.log(this.suggestedState)
   }
 
-   render(){
-    const {inputField} =this.state;
-    const filteredStates = stateList.filter((stateData)=>{
-      return (stateData.stateFullName.toLowerCase().includes(inputField.toLowerCase())||
-      stateData.stateAbbreviation.toLowerCase().includes(inputField.toLowerCase()))
-      })
-     return (
-     <div className = "formwrapper">  
-     <form onSubmit = {(e)=>e.preventDefault()}>
-     
-       <input
-          placeholder='Enter State or Abbreviation'
-          onKeyPress ={this.props.onEnter}
-          onChange = {e=>{this.buttonHandler(e);this.suggestionFocusHandler(e)}}
-          value={this.state.inputField}
-          onClick={this.suggestionFocusHandler}
-          /> 
-       <div className = "searchfield">
-       <ul>
-        {this.state.suggestions === true?
-          filteredStates.map((state,i)=>{
-          return(
-            <li key = {i}>     
-              <button
-                  key = {i} 
+  render(){
+  console.log(this.state.suggestions)
+  console.log(this.state.mouseOverSuggestions)
+
+  const {inputField} =this.state;
+  const filteredStates = stateList.filter((stateData)=>{
+    return (stateData.stateFullName.toLowerCase().includes(inputField.toLowerCase())||
+    stateData.stateAbbreviation.toLowerCase().includes(inputField.toLowerCase()))
+    })
+    return (
+    <div className = "formwrapper">  
+    <form onSubmit = {(e)=>e.preventDefault()}>
+    
+      <input
+        placeholder='Enter State or Abbreviation'
+        onKeyPress ={this.props.onEnter}
+        onChange = {e=>{this.buttonHandler(e);this.suggestionFocusHandler(e)}}
+        value={this.state.inputField}
+        onClick={this.suggestionFocusHandler}
+        onBlur={this.suggestionFocusHandler}
+        />
+      <div className = "searchfield">
+      <ul>
+      {this.state.suggestions === true?
+        filteredStates.map((state,i)=>{
+        return(
+          <li key = {i}
+              onMouseOver={this.mouseOverSuggestions}
+              onMouseLeave={this.mouseOverSuggestions}
+              onBlur = {this.suggestionFocusHandler}
+          >     
+            <button
+                  key = {i}
+                  ref = {r=>this.myButton = r} 
                   className = "suggestion"
                   onClick = {this.buttonHandler}
                   onBlur = {this.suggestionFocusHandler}
                   value = {(filteredStates[i].stateFullName)}
-              >{filteredStates[i].stateFullName}</button>
-            </li>) 
-          })
-        :
-          null 
-        }
-        </ul>
-     </div>
-     </form>
-
+              >{filteredStates[i].stateFullName}
+            </button>
+          </li>) 
+        })
+      :
+        null 
+      }
+      </ul>
     </div>
+    </form>
+
+  </div>
    )
- }
+}
 }
 
 export default SearchFeature;

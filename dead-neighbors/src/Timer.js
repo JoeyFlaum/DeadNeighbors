@@ -36,7 +36,7 @@ class CountDown extends React.Component{
             console.log('counterAt0',this.state.counterAt0)
             this.setState(prevState =>({
                     deathCounter24Hour : (prevState.deathCounter24Hour -110)
-                }))}},10000)  
+                }))}},100)  
         }
     componentWillUnmount(){
         clearInterval(this.myInterval);
