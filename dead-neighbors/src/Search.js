@@ -2,8 +2,8 @@ import React from 'react';
 import stateList from './StateList'
 
 class SearchFeature extends React.Component{
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state ={
     inputField:"",
     suggestions:false,
@@ -14,19 +14,20 @@ class SearchFeature extends React.Component{
   buttonHandler = (event)=>{
     console.log('button',event)
     this.setState({
-      inputField : event.target.value,
+      inputField : "",
       suggestions:false,
       mouseOverSuggestions : false})
   }
-  /*Mouse over if statement and suggestionFocusHandler show or hid suggestions for search*/
+  /*Mouse over if statement and suggestionFocusHandler show or hide suggestions for search*/
   mouseOverSuggestions=(event)=>{
-    let eType =event.type; 
+    let eType = event.type; 
     if(eType === 'mouseover')
       {this.setState({mouseOverSuggestions:true})}
     else if(eType === 'mouseleave')
       {this.setState({mouseOverSuggestions:false})}
     console.log('mouse event',event)
   }
+  /*handles events from input/button/li to show or hide suggestions*/
   suggestionFocusHandler=(event)=>{
     const {mouseOverSuggestions}=this.state;
     switch(event.type){
@@ -42,8 +43,7 @@ class SearchFeature extends React.Component{
     }
   }
   onSearchChange = (event) => {
-    this.setState({suggestedState: event.target.value})
-    console.log(this.suggestedState)
+    this.setState({inputField: event.target.value})
   }
 
   render(){
@@ -58,11 +58,11 @@ class SearchFeature extends React.Component{
     return (
     <div className = "formwrapper">  
     <form onSubmit = {(e)=>e.preventDefault()}>
-    
+      <div className = 'inputwrapper'><h1>Search here for state specific information</h1></div>
       <input
         placeholder='Enter State or Abbreviation'
         onKeyPress ={this.props.onEnter}
-        onChange = {e=>{this.buttonHandler(e);this.suggestionFocusHandler(e)}}
+        onChange = {e=>{this.onSearchChange(e);this.suggestionFocusHandler(e)}}
         value={this.state.inputField}
         onClick={this.suggestionFocusHandler}
         onBlur={this.suggestionFocusHandler}
@@ -81,7 +81,7 @@ class SearchFeature extends React.Component{
                   key = {i}
                   ref = {r=>this.myButton = r} 
                   className = "suggestion"
-                  onClick = {this.buttonHandler}
+                  onClick = {(e)=>{this.buttonHandler(e);this.props.onEnter(e)}}
                   onBlur = {this.suggestionFocusHandler}
                   value = {(filteredStates[i].stateFullName)}
               >{filteredStates[i].stateFullName}

@@ -19,10 +19,10 @@ class App extends Component {
   }
 
   /*handle enter key and button click for state search*/
-  keyHandler= (event)=>{
-    if(event.key === 'Enter'){
+  searchHandler= (event)=>{
+    console.log('app event',event.target)
+    if(event.key === 'Enter'|| event.type==='click'){
       this.setState({searchField: event.target.value})
-      event.target.value = '';
     }
   } 
   componentDidMount(){
@@ -125,24 +125,32 @@ class App extends Component {
         })}
       return (
       <div>
-        {(this.state.CovidDeathsToday === 0)? 
-          <div>Loading...</div>:
-          <CountDown className = "timer" usData ={CovidDeathsToday} usDataAll = {CovUSdata}/>}
-        <div> 
-          <SearchFeature 
-            className= "searchfeature"  
-            onEnter = {this.keyHandler} 
-            inputValue = {inputField}
-          />
-        </div>
         <div className="App">
-         
-          <h2>{this.state.searchField}</h2>
-          <USAMap customize={this.statesCustomConfig()} onClick={this.mapHandler} />
-        </div>
-        <h1>hello</h1>
-        <CovidUsData data = {CovUSdata}/>
-        <CovidStateData data = {(searchField === "")?[]:filteredStates }/> 
+          <USAMap 
+            customize={this.statesCustomConfig()} 
+            onClick={this.mapHandler} 
+          />
+          <div className = 'overlaywrapper'>
+            {
+            (this.state.CovidDeathsToday === 0)? 
+              <div>Loading...</div>:
+              <CountDown 
+                className = "timer" 
+                usData ={CovidDeathsToday} 
+                usDataAll = {CovUSdata}/>
+            }
+            <SearchFeature 
+              className= "searchfeature"  
+              onEnter = {this.searchHandler} 
+              inputValue = {inputField}
+            />
+            <h2>{this.state.searchField}</h2>
+            </div>
+            <CovidUsData 
+              data = {CovUSdata}/>
+            <CovidStateData 
+              data = {(searchField === "")?[]:filteredStates }/>
+          </div> 
       </div> 
     );
   }
