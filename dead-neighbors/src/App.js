@@ -123,8 +123,28 @@ class App extends Component {
         filteredStates = CovStateData.filter((stateData)=>{
         return (stateData.stateFullName.toLowerCase().includes(searchField.toLowerCase()));
         })}
-      return (
+     
+   return (
       <div>
+        <div className = 'headerTitle'>
+          <h1>Dead Neighbors</h1>
+          <p><em>Bringing humanity to numbers</em></p>
+        </div>
+      <div className = 'allcontent'>
+        <header>
+          <ul className = 'headerNav'>
+            <li>About</li>
+            <li>Sources</li>
+            <li>Placeholder</li>
+          </ul>
+          <SearchFeature 
+                className= "searchfeature"  
+                onEnter = {this.searchHandler} 
+                inputValue = {inputField}
+              />
+       </header>
+       <CovidStateData
+              data = {(searchField === "")?[]:filteredStates }/>
         <div className="App">
           <USAMap 
             customize={this.statesCustomConfig()} 
@@ -139,19 +159,17 @@ class App extends Component {
                 usData ={CovidDeathsToday} 
                 usDataAll = {CovUSdata}/>
             }
-            <SearchFeature 
-              className= "searchfeature"  
-              onEnter = {this.searchHandler} 
-              inputValue = {inputField}
-            />
+            
             <h2>{this.state.searchField}</h2>
             </div>
             <CovidUsData 
               data = {CovUSdata}/>
-            <CovidStateData 
-              data = {(searchField === "")?[]:filteredStates }/>
           </div> 
-      </div> 
+        <footer>
+        
+        </footer>
+      </div>
+    </div> 
     );
   }
 }

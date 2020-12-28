@@ -56,10 +56,9 @@ class SearchFeature extends React.Component{
     stateData.stateAbbreviation.toLowerCase().includes(inputField.toLowerCase()))
     })
     return (
-    <div className = "formwrapper">  
-    <form onSubmit = {(e)=>e.preventDefault()}>
-      <div className = 'inputwrapper'><h1>Search here for state specific information</h1></div>
-      <input
+    <>
+    <h2 className = 'stateSearch'>State Search</h2>
+    <form className = 'searchWrapper' onSubmit = {(e)=>e.preventDefault()}>      <input
         placeholder='Enter State or Abbreviation'
         onKeyPress ={this.props.onEnter}
         onChange = {e=>{this.onSearchChange(e);this.suggestionFocusHandler(e)}}
@@ -68,7 +67,7 @@ class SearchFeature extends React.Component{
         onBlur={this.suggestionFocusHandler}
         />
       <div className = "searchfield">
-      <ul>
+      <ul className = 'navigation'>
       {this.state.suggestions === true?
         filteredStates.map((state,i)=>{
         return(
@@ -92,10 +91,9 @@ class SearchFeature extends React.Component{
         null 
       }
       </ul>
-    </div>
+      </div>
     </form>
-
-  </div>
+    </>
    )
 }
 }

@@ -1,23 +1,144 @@
-.App {
-  text-align: center;
-  display: grid;
+html{
+  /*used coolors.co palette*/
+  --darkBlue:#1D3557;
+  --lightBlue:#457B9D;
+  --green: #A8DADC;
+  --cream:#f4faf2;
+  --red:#E63946;
 }
-.us-state-map{position: absolute; width:100%; height: 100%;}
-g{width: 100%;height:100%;}
-.overlaywrapper{
-  position:relative;
+#root{
+background-color: var(--cream);
 }
 
-body{
-  background-color: black;
-}
-h1,h2{
-  color:white;
-}
-h2{position: absolute; justify-content: center;}
-.App{position: relative;}
+  /*Dead Neighbors @ top of page*/
+  .headerTitle{
+    color:var(--cream);
+    display:flex;
+    width:100vw;
+    height:3rem;
+    margin:0px;
+    align-content: center;
+    justify-content: center;
+    background:linear-gradient(to right,var(--lightBlue),var(--green));
+    padding:0 .5em;
+  }
+  .headerTitle p{
+    color: var(--lightBlue);
+    margin:0px;
+    height:max-content;
+    margin: 1.75em 0em 0em 2em;
+  }
+  .headerTitle h1{
+    margin: 0px;
+    height:max-content;
+  }
+/*Grid for entire site*/
+  .allcontent{
+    display:grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4,minmax(200px,1fr));
+    grid-template-areas: 
+    'header header header header'
+    'map map map stateDeaths'
+    'footer footer footer footer';
+  }
+/*Header Styles*/
+  header{
+    height:auto;
+    width:100vw;
+    grid-area:header;/*.allcontent grid*/
+    display:grid;/*sub grid*/
+    background-color: var(--lightBlue);
+    color:var(--green);
+    grid-template-columns:repeat(3,minmax(400px,1fr));
+    grid-template-rows: 2rem;
+    grid-template-areas: 
+    'nav search input';
+  }
+  stateSearch{
+    width:max-content;
+    height:auto;
+    grid-area:search;
+  }
+  .searchWrapper{
+    grid-area: input;
+    z-index: 0;
+  }
 
+  .searchWrapper input{
+    width:200px;
+    height:20px;
+    border:3px;
+    border-color:rgb(41, 37, 37);
+    border-radius: 3px 3px ;
+    background-color: var(--green);
+    outline:none;
+  }
+  button{
+    text-align: left;
+    width:204px;
+    height:23px;
+    margin: 0;
+    padding:0 0 0 10px;
+    border:0;
+    background-color: white;
+  }
+  button:hover{
+    background-color: lightgray;
+  }
+  
+  .headerNav li{
+    display:inline;
+    font-size:1.2em;
+    padding:5px;    
+  }
+  ul,li{
+    list-style: none;
+    justify-content: left;
+    padding:0px;
+    margin:0px;
+    border:0px rgb(165, 165, 165);
+    border-radius: 3px 3px;
+    width:204px;
+    border-radius: 20px;
+  }
+  .searchfield{
+    box-shadow:0px 0px 5px lightblue ;
+    overflow-y: scroll;
+    border: 3px;
+    min-height: auto;
+    max-height: 112px;
+    width: 204px;
+    margin:0;
+    margin-top: -2px;
+    padding:0;
+    background-color: white;
+    border-radius: 0px 0px 3px 3px;
+    border-color: rgba(228, 29, 29, 0.493);
+  }
+  .searchfield::-webkit-scrollbar,.stateDeaths::-webkit-scrollbar{
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .searchfield,.stateDeaths {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  }
+  
+  .navigation{
+    grid-area:info;
+  }
+.App{
+  grid-area:map;
+}
+svg{
+  width:100%;
+  height:auto;
+}
+footer{
+  grid-area:footer;
 
+}
 g:hover>path,g:hover>circle {
   stroke-width: 2;
   stroke:rgb(238, 2, 2);
@@ -35,74 +156,27 @@ g:hover>path,g:hover>circle {
 0% { opacity: 1; }
 }
 path,circle{
-  fill: black;
-  stroke:#242323;
+  fill: var(--darkBlue);
+  stroke:var(--lightBlue);
   stroke-width: 1;
 }
 
-form,.formwrapper{
-  width:200px;
-  margin-left:100px;
-}
-input{
-  display:flex;
-  width:200px;
-  height:20px;
-  border:3px;
-  border-color:rgb(253, 2, 2);
-  border-radius: 3px 3px ;
-  background-color: white ;
-  outline:none;
-}
-ul,li{
-  list-style: none;
-  justify-content: left;
-  padding:0px;
-  margin:0px;
-  border:0px rgb(165, 165, 165);
-  border-radius: 3px 3px;
-  width:204px;
-  border-radius: 20px;
-}
 
 
-button{
-  text-align: left;
-  width:204px;
-  height:23px;
-  margin: 0;
-  padding:0 0 0 10px;
-  border:0;
-  background-color: white;
+/*results from search*/
+.stateDeaths{
+  padding-top:10px;
+  justify-content: auto;
+  height:650px;
+  overflow-y:scroll;
+  grid-area:stateDeaths;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px var(--red);
 }
-button:hover{
-  background-color: lightgray;
+.stateDeaths h2{
+  position:fixed;  
 }
-.searchfield{
-  box-shadow:0px 0px 5px lightblue ;
-  overflow-y: scroll;
-  border: 3px;
-  min-height: auto;
-  max-height: 112px;
-  width: 204px;
-  margin:0;
-  margin-top: -2px;
-  padding:0;
-  background-color: white;
-  border-radius: 0px 0px 3px 3px;
-  border-color: rgba(228, 29, 29, 0.493);
-  
-}
-.searchfield::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.searchfield {
--ms-overflow-style: none;  /* IE and Edge */
-scrollbar-width: none;  /* Firefox */
-}
-.timer{
-  margin:5px 100px;
-  padding:5px 5px;
+.stateDataCard{
+  background-color: var(--lightBlue);
+  color: var(--green);
 }
