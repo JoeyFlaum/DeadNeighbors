@@ -33,8 +33,7 @@ background-color: var(--cream);
     height:max-content;
   }
 /*Grid for entire site*/
-  .allcontent{
-    display:grid;
+  .pageContent{
     grid-gap: 10px;
     grid-template-columns: repeat(4,minmax(200px,1fr));
     grid-template-areas: 
@@ -46,11 +45,11 @@ background-color: var(--cream);
   header{
     height:auto;
     width:100vw;
-    grid-area:header;/*.allcontent grid*/
+    grid-area:header;/*.pageContent grid*/
     display:grid;/*sub grid*/
     background-color: var(--lightBlue);
     color:var(--green);
-    grid-template-columns:repeat(3,minmax(400px,1fr));
+    grid-template-columns:repeat(3,minmax(250px,1fr));
     grid-template-rows: 2rem;
     grid-template-areas: 
     'nav search input';
@@ -71,7 +70,7 @@ background-color: var(--cream);
     border:3px;
     border-color:rgb(41, 37, 37);
     border-radius: 3px 3px ;
-    background-color: var(--green);
+    background-color: var(--cream);
     outline:none;
   }
   button{

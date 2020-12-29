@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import './App.css'; /* optional for styling like the :hover pseudo-class */
-import USAMap from "react-usa-map";
+import './App.css';
 import CovidStateData from './CovidStateData';
 import CovidUsData from './CovidUsData';
 import SearchFeature from './Search';
 import CountDown from './Timer';
+import DeadPeople from './DeadPeople';
+import Hero from './Images/Hero.jpg';
  
 class App extends Component {
   /* mandatory */
@@ -98,23 +99,6 @@ class App extends Component {
         .then(data =>
            this.setState({CovStateData: data}));
   }   
-
-
-  mapHandler = (event) => {
-    /*click event result*/
-    alert(event.target.dataset.name);
-  };
-  /* optional customization of filling per state and calling custom callbacks per state */
-  statesCustomConfig = () => {
-  return {
-      "NJ": {fill: "navy", 
-            clickHandler: (event) =>
-            console.log('Custom handler for NJ', event.target.dataset)
-            },
-      "NY": {fill: "#CC0000"}
-          };
-  };
-  
   render() { 
       const {CovUSdata,CovStateData,CovidDeathsToday,searchField, inputField} = this.state;
       console.log(CovidDeathsToday);
@@ -126,15 +110,17 @@ class App extends Component {
      
    return (
       <div>
-        <div className = 'headerTitle'>
-          <h1>Dead Neighbors</h1>
-          <p><em>Bringing humanity to numbers</em></p>
-        </div>
-      <div className = 'allcontent'>
+      <div className = 'pageContent'>
         <header>
+          <div className = 'headerTitle'>
+            <h1>Dead Neighbors</h1>
+            <p><em>Bringing humanity to numbers</em></p>
+          </div>
           <ul className = 'headerNav'>
             <li>About</li>
             <li>Sources</li>
+            <li>Placeholder</li>
+            <li>Placeholder</li>
             <li>Placeholder</li>
           </ul>
           <SearchFeature 
@@ -142,31 +128,36 @@ class App extends Component {
                 onEnter = {this.searchHandler} 
                 inputValue = {inputField}
               />
-       </header>
-       <CovidStateData
-              data = {(searchField === "")?[]:filteredStates }/>
-        <div className="App">
-          <USAMap 
-            customize={this.statesCustomConfig()} 
-            onClick={this.mapHandler} 
-          />
-          <div className = 'overlaywrapper'>
+                          {(this.state.CovidDeathsToday === 0)?
+            <div></div>
+            :
+            <DeadPeople covid/>
+            }
             {
             (this.state.CovidDeathsToday === 0)? 
-              <div>Loading...</div>:
+              <div>Loading...</div>
+              :
               <CountDown 
-                className = "timer" 
                 usData ={CovidDeathsToday} 
                 usDataAll = {CovUSdata}/>
-            }
-            
+            }            
+       </header>
+       <div className = 'heroContainer'>
+
+            <img src={Hero} style ={{width:'600px',height:'auto'}} alt = 'Hero Doctor, PHOTOGRAPH BY EMIN BAYCAN on Unsplash'/>
+
+        </div>    
+          <CovidStateData
+              data = {(searchField === "")?[]:filteredStates }/>
+            <div className="App">
             <h2>{this.state.searchField}</h2>
-            </div>
-            <CovidUsData 
+          <CovidUsData 
               data = {CovUSdata}/>
-          </div> 
-        <footer>
-        
+        </div> 
+        <footer width>
+        <DeadPeople covid/>
+        <h1>Footer stuff goes here...</h1>
+        <span>Hero Photo by <a href="https://unsplash.com/@aimlesscode?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Emin BAYCAN</a> on <a href="https://unsplash.com/s/photos/face-mask?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
         </footer>
       </div>
     </div> 
