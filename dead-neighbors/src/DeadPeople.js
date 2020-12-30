@@ -8,10 +8,11 @@ class DeadPeople extends React.Component{
             deadPersons:[],
             aliveSVGFillStroke:['#e3d6b1','#9f6255'],
             deadSVGFillStroke:['#FF0000','#9f6255'],
-            deadSinceVisit:20
+            deadSinceVisit:props.deadPersonCount
         }
     }
     componentDidMount = ()=>{
+        console.log('mount',this.state.deadSinceVisit)
         let people = [];
         for(let i = 1; i<=100; i++){
             people.push(
@@ -27,10 +28,10 @@ class DeadPeople extends React.Component{
         this.setState({deadPersons: people})
     }
     render(){
+        console.log(this.props)
     return(
         <div style ={{display:'flex',flexDirection:'row', flexWrap:'wrap'}}>
             {this.state.deadPersons.map((people)=>{
-                console.log(people)
                 return(people);
             })}
         </div>

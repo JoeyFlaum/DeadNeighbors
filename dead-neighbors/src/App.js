@@ -16,9 +16,13 @@ class App extends Component {
             CovUSdata: [],
             searchField: '',
             CovidDeathsToday:0,
+            deadPerson: 0
         }
   }
 
+  deadTrue(boolean){
+    if(boolean){this.setState({deadPerson:this.state.deadPerson+1})}
+  }
   /*handle enter key and button click for state search*/
   searchHandler= (event)=>{
     console.log('app event',event.target)
@@ -100,8 +104,8 @@ class App extends Component {
            this.setState({CovStateData: data}));
   }   
   render() { 
-      const {CovUSdata,CovStateData,CovidDeathsToday,searchField, inputField} = this.state;
-      console.log(CovidDeathsToday);
+      const {CovUSdata,CovStateData,CovidDeathsToday,searchField, inputField, deadPerson} = this.state;
+      console.log('deadPPPPP',deadPerson);
       let filteredStates = [];
         if(CovStateData !== 0){
         filteredStates = CovStateData.filter((stateData)=>{
@@ -131,7 +135,7 @@ class App extends Component {
                           {(this.state.CovidDeathsToday === 0)?
             <div></div>
             :
-            <DeadPeople covid/>
+            <DeadPeople deadPersonCount ={deadPerson} key={deadPerson}/*key change forces render(updated props are sent)*//>
             }
             {
             (this.state.CovidDeathsToday === 0)? 
@@ -139,7 +143,9 @@ class App extends Component {
               :
               <CountDown 
                 usData ={CovidDeathsToday} 
-                usDataAll = {CovUSdata}/>
+                usDataAll = {CovUSdata}
+                dead = {this.deadTrue.bind(this)}
+                />
             }            
        </header>
        <div className = 'heroContainer'>
@@ -154,8 +160,7 @@ class App extends Component {
           <CovidUsData 
               data = {CovUSdata}/>
         </div> 
-        <footer width>
-        <DeadPeople covid/>
+        <footer>
         <h1>Footer stuff goes here...</h1>
         <span>Hero Photo by <a href="https://unsplash.com/@aimlesscode?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Emin BAYCAN</a> on <a href="https://unsplash.com/s/photos/face-mask?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
         </footer>

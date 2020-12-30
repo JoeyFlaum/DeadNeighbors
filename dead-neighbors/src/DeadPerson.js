@@ -1,7 +1,6 @@
 import React from 'react';
 
 const DeadPerson=({fillStroke})=>{
-    console.log(fillStroke)
     return(
     <div style={{width:'60px', height:'70px'}}>
         <svg viewBox = '0 10 100 100'>

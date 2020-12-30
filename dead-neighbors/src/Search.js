@@ -47,9 +47,6 @@ class SearchFeature extends React.Component{
   }
 
   render(){
-  console.log(this.state.suggestions)
-  console.log(this.state.mouseOverSuggestions)
-
   const {inputField} =this.state;
   const filteredStates = stateList.filter((stateData)=>{
     return (stateData.stateFullName.toLowerCase().includes(inputField.toLowerCase())||
