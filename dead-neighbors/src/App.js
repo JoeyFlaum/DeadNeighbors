@@ -112,61 +112,64 @@ class App extends Component {
         return (stateData.stateFullName.toLowerCase().includes(searchField.toLowerCase()));
         })}
      
-   return (
-      <div>
-      <div className = 'pageContent'>
-        <header>
+  return (
+    <div className = 'pageContent'>
+      <header>
+        <div className = 'deadTitle'> 
           <div className = 'headerTitle'>
             <h1>Dead Neighbors</h1>
             <p><em>Bringing humanity to numbers</em></p>
           </div>
-          <ul className = 'headerNav'>
-            <li>About</li>
-            <li>Sources</li>
-            <li>Placeholder</li>
-            <li>Placeholder</li>
-            <li>Placeholder</li>
-          </ul>
-          <SearchFeature 
-                className= "searchfeature"  
-                onEnter = {this.searchHandler} 
-                inputValue = {inputField}
-              />
-                          {(this.state.CovidDeathsToday === 0)?
-            <div></div>
-            :
-            <DeadPeople deadPersonCount ={deadPerson} key={deadPerson}/*key change forces render(updated props are sent)*//>
-            }
-            {
-            (this.state.CovidDeathsToday === 0)? 
-              <div>Loading...</div>
-              :
-              <CountDown 
-                usData ={CovidDeathsToday} 
-                usDataAll = {CovUSdata}
-                dead = {this.deadTrue.bind(this)}
-                />
-            }            
-       </header>
-       <div className = 'heroContainer'>
-
-            <img src={Hero} style ={{width:'600px',height:'auto'}} alt = 'Hero Doctor, PHOTOGRAPH BY EMIN BAYCAN on Unsplash'/>
-
-        </div>    
+        </div>
+          <nav className = 'headerNav'>
+            <ul>
+              <li>About</li>
+              <li>Sources</li>
+              <li>Placeholder</li>
+              <li>Placeholder</li>
+              <li>Placeholder</li>
+            </ul>
+          </nav>        
+      </header>
+      <main className = 'maintContent'>
+      <h2 className ='sinceVisit'>{this.state.deadPerson} Dead Since Your Visit</h2>
+          {(this.state.CovidDeathsToday === 0)
+          ?
+          <div></div>
+          :
+          <DeadPeople deadPersonCount ={deadPerson} key={deadPerson}/*key change forces render(updated props are sent)*//>
+          }
+         
+          <img className = 'hero' src={Hero} alt = 'Hero Doctor, PHOTOGRAPH BY EMIN BAYCAN on Unsplash'/>
           <CovidStateData
               data = {(searchField === "")?[]:filteredStates }/>
             <div className="App">
             <h2>{this.state.searchField}</h2>
           <CovidUsData 
               data = {CovUSdata}/>
-        </div> 
-        <footer>
-        <h1>Footer stuff goes here...</h1>
+          </div> 
+      </main>
+      <footer>
+        <h3>Footer stuff goes here...</h3>
         <span>Hero Photo by <a href="https://unsplash.com/@aimlesscode?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Emin BAYCAN</a> on <a href="https://unsplash.com/s/photos/face-mask?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
-        </footer>
-      </div>
-    </div> 
-    );
+        {
+          (this.state.CovidDeathsToday === 0)? 
+            <div>Loading...</div>
+            :
+            <CountDown 
+              usData ={CovidDeathsToday} 
+              usDataAll = {CovUSdata}
+              dead = {this.deadTrue.bind(this)}
+              />
+          }  
+        <SearchFeature 
+          className= "searchfeature"  
+          onEnter = {this.searchHandler} 
+          inputValue = {inputField}
+        />
+      </footer>
+    </div>
+  );
   }
 }
  

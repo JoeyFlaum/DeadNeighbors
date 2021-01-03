@@ -12,7 +12,7 @@ this.myInterval = setTimeout(()=>{this.props.deadNeighbor(false)},8000)}/*send s
 render(){
     return(
         
-        <h1>Your Neighbor Has Died</h1>
+        <h2>Your Neighbor Has Died</h2>
     )
 }
 }

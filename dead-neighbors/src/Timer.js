@@ -54,13 +54,13 @@ class CountDown extends React.Component{
         const secs = Math.floor(deathCounter24Hour % (1000 * 60)/1000);
         const centi = Math.floor(((deathCounter24Hour/10) % 100));
         return (
-            <div>
-                {this.state.deadNeighb===true?<DeadNeighbor  deadNeighbor ={this.deadNeighbor}/>:<h1>Your Neighbor Will Die In</h1>}
-                <h1>
+            <div className = 'timer'>
+                {this.state.deadNeighb===true?<DeadNeighbor  deadNeighbor ={this.deadNeighbor}/>:<h2>Your Neighbor Will Die In</h2>}
+                <h2>
                     {`${("0"+hours).slice(-2)} :
                     ${("0"+mins).slice(-2)} :
                     ${("0"+secs).slice(-2)}.${("0"+centi).slice(-1)}`}
-                </h1>
+                </h2>
             </div>
         );
     }

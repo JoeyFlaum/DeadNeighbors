@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\..\\..\\Robofriends"
+		},
+		{
+			"path": "..\\..\\..\\..\\PlayCode\\timer"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "timer"
+	}
+}

@@ -14,7 +14,7 @@ class DeadPeople extends React.Component{
     componentDidMount = ()=>{
         console.log('mount',this.state.deadSinceVisit)
         let people = [];
-        for(let i = 1; i<=100; i++){
+        for(let i = 1; i<=80; i++){
             people.push(
                 <div key = {i} className= {`person${i}`}>
                 <DeadPerson 
@@ -30,7 +30,7 @@ class DeadPeople extends React.Component{
     render(){
         console.log(this.props)
     return(
-        <div style ={{display:'flex',flexDirection:'row', flexWrap:'wrap'}}>
+        <div className = 'people' style ={{display:'flex',flexDirection:'row', flexWrap:'wrap'}}>
             {this.state.deadPersons.map((people)=>{
                 return(people);
             })}

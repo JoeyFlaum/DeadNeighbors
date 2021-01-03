@@ -5,9 +5,167 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.4;
+  font-size: 1.4rem;
+  margin: 30px 50px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+html{
+  /*used coolors.co palette*/
+  --darkBlue:#1D3557;
+  --lightBlue:#457B9D;
+  --green: #A8DADC;
+  --cream:#f4faf2;
+  --red:#E63946;
+   box-sizing: border-box;
+  font-family: Arial, Helvetica, san-serif;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: "Montserrat","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+}
+header{
+  display:flex;
+  position: fixed;
+  flex-wrap: wrap;
+  top:0;
+  right:0;
+  left:0;
+  width:100%;
+  z-index: 99999;
+  background-color: #fff;
+  justify-content:center;
+  align-items: baseline;
+  border-width: 100px;
+  border-color: black;
+}
+  .deadTitle{
+    padding-left:7rem;
+  }
+  .headerTitle {
+    flex:none;
+    align-self:flex-start;
+    margin-right:4em;
+  }
+  .headerTitle h1{
+    margin-left:-2em;
+    margin-bottom:0px;
+  }
+  .headerTitle p{
+    margin-top: .125em;
+    margin-right:-2em;
+    text-align: right;
+  }
+  .headerNav{
+    align-self:center;
+    width:auto;
+  }
+  .headerNav ul{
+    margin:0;
+    padding:0;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .headerNav li{
+    margin:0 2em;
+    list-style: none;
+    display: inline-flex;
+  }
+
+main{
+  padding-top:150px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit(250px,1fr));
+  grid-template-areas:
+  "hero hero hero"
+  "dead dead dead";
+}
+  main img{
+    width:100%;
+  }
+footer{
+  grid-area: footer;
+}
+
+  .searchWrapper{
+    z-index: 0;
+  }
+  .searchWrapper input{
+    width:200px;
+    height:20px;
+    border:3px;
+    border-color:rgb(41, 37, 37);
+    border-radius: 3px 3px ;
+    outline:none;
+  }
+  button{
+    text-align: left;
+    width:204px;
+    height:23px;
+    margin: 0;
+    padding:0 0 0 10px;
+    border:0;
+    background-color: white;
+  }
+  button:hover{
+    background-color: lightgray;
+  }
+  
+
+  .searchfield ul, .searchfield li{
+    list-style: none;
+    justify-content: left;
+    padding:0px;
+    margin:0px;
+    border:0px rgb(165, 165, 165);
+    border-radius: 3px 3px;
+    width:204px;
+    border-radius: 20px;
+  }
+  .searchfield{
+    overflow-y: scroll;
+    border: 3px;
+    min-height: auto;
+    max-height: 112px;
+    width: 204px;
+    margin:0;
+    margin-top: -2px;
+    padding:0;
+    background-color: white;
+    border-radius: 0px 0px 3px 3px;
+    border-color: rgba(228, 29, 29, 0.493);
+  }
+  .searchfield::-webkit-scrollbar,.stateDeaths::-webkit-scrollbar{
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .searchfield,.stateDeaths {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  }
+
+/*results from search*/
+.stateDeaths{
+  padding-top:10px;
+  justify-content: auto;
+  height:650px;
+  overflow-y:scroll;
+  grid-area:stateDeaths;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px var(--red);
+}
+.stateDeaths h2{
+  position:fixed;  
+}
+.stateDataCard{
+  background-color: var(--lightBlue);
+  color: var(--green);
 }
