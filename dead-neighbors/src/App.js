@@ -114,6 +114,7 @@ class App extends Component {
      
   return (
     <div className = 'pageContent'>
+     
       <header>
         <div className = 'deadTitle'> 
           <div className = 'headerTitle'>
@@ -132,15 +133,18 @@ class App extends Component {
           </nav>        
       </header>
       <main className = 'maintContent'>
-      <h2 className ='sinceVisit'>{this.state.deadPerson} Dead Since Your Visit</h2>
+        <div className = 'heroContainer'>
+          <div className = 'peopleCard'>
           {(this.state.CovidDeathsToday === 0)
           ?
           <div></div>
           :
           <DeadPeople deadPersonCount ={deadPerson} key={deadPerson}/*key change forces render(updated props are sent)*//>
           }
-         
+          </div>
           <img className = 'hero' src={Hero} alt = 'Hero Doctor, PHOTOGRAPH BY EMIN BAYCAN on Unsplash'/>
+        </div>
+        <div className = 'stats'>
           <CovidStateData
               data = {(searchField === "")?[]:filteredStates }/>
             <div className="App">
@@ -148,8 +152,10 @@ class App extends Component {
           <CovidUsData 
               data = {CovUSdata}/>
           </div> 
+          </div>
       </main>
       <footer>
+      <h2 className ='sinceVisit'>{this.state.deadPerson} Dead Since Your Visit</h2>  
         <h3>Footer stuff goes here...</h3>
         <span>Hero Photo by <a href="https://unsplash.com/@aimlesscode?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Emin BAYCAN</a> on <a href="https://unsplash.com/s/photos/face-mask?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
         {

@@ -4,13 +4,10 @@
 			"path": ".."
 		},
 		{
-			"path": "..\\..\\..\\Robofriends"
-		},
-		{
-			"path": "..\\..\\..\\..\\PlayCode\\timer"
+			"path": "..\\..\\..\\..\\Kosta Site"
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "timer"
+		"liveServer.settings.multiRootWorkspaceName": "Kosta Site"
 	}
 }

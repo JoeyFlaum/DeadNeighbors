@@ -21,6 +21,8 @@ html{
   --green: #A8DADC;
   --cream:#f4faf2;
   --red:#E63946;
+  --shadow:0 2px 30px #292626;
+  --grey:#c3c3c3;
    box-sizing: border-box;
   font-family: Arial, Helvetica, san-serif;
   --breakpoint-xs: 0;
@@ -43,8 +45,8 @@ header{
   background-color: #fff;
   justify-content:center;
   align-items: baseline;
-  border-width: 100px;
-  border-color: black;
+  border-bottom:1px solid var(--grey);
+
 }
   .deadTitle{
     padding-left:7rem;
@@ -54,7 +56,7 @@ header{
     align-self:flex-start;
     margin-right:4em;
   }
-  .headerTitle h1{
+   .headerTitle h1{
     margin-left:-2em;
     margin-bottom:0px;
   }
@@ -83,14 +85,45 @@ header{
 main{
   padding-top:150px;
   display:grid;
-  grid-template-columns:repeat(auto-fit(250px,1fr));
+  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
   grid-template-areas:
   "hero hero hero"
-  "dead dead dead";
+  "stats stats stats";
 }
-  main img{
-    width:100%;
+  .heroContainer{
+    grid-area:hero;
+    padding-left: 20rem;
+    margin-top:-6rem;
+    width:fit-content;
+    justify-self: center;
+
   }
+  main img{
+    margin-left: minmax(auto,20em);
+    box-shadow: var(--shadow);
+    max-width: 900px;
+    width:100%;
+    z-index: 1;
+  }
+  main .peopleCard{
+    top:50%;
+    left:-20%;
+    position: relative;
+    z-index: 2;
+    max-width:600px;
+    height: auto;
+    background-color: white;
+  }
+  main .people{
+    display:flex;
+    flex-wrap: wrap;
+  }
+  .stats{
+    grid-area:stats;
+    width:max-content;
+  }
+
 footer{
   grid-area: footer;
 }

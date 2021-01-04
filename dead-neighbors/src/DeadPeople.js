@@ -30,7 +30,7 @@ class DeadPeople extends React.Component{
     render(){
         console.log(this.props)
     return(
-        <div className = 'people' style ={{display:'flex',flexDirection:'row', flexWrap:'wrap'}}>
+        <div className = 'people'>
             {this.state.deadPersons.map((people)=>{
                 return(people);
             })}
