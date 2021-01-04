@@ -16,7 +16,7 @@ class App extends Component {
             CovUSdata: [],
             searchField: '',
             CovidDeathsToday:0,
-            deadPerson: 0
+            deadPerson: 0,
         }
   }
 
@@ -104,6 +104,7 @@ class App extends Component {
            this.setState({CovStateData: data}));
   }   
   render() { 
+    console.log('click',this.state.deaddead)
       const {CovUSdata,CovStateData,CovidDeathsToday,searchField, inputField, deadPerson} = this.state;
       console.log('deadPPPPP',deadPerson);
       let filteredStates = [];
@@ -135,12 +136,16 @@ class App extends Component {
       <main className = 'maintContent'>
         <div className = 'heroContainer'>
           <div className = 'peopleCard'>
-          {(this.state.CovidDeathsToday === 0)
-          ?
-          <div></div>
-          :
-          <DeadPeople deadPersonCount ={deadPerson} key={deadPerson}/*key change forces render(updated props are sent)*//>
-          }
+          <p><CovidUsData data = {CovUSdata}/></p>
+            <div className ='sinceVisit'>
+              <p >{this.state.deadPerson} Dead Since Your Visit</p> 
+              {(this.state.CovidDeathsToday === 0)
+              ?
+              <div></div>
+              :
+              <DeadPeople deadPersonCount ={deadPerson} key={deadPerson}/*key change forces render(updated props are sent)*//>
+              }
+            </div>
           </div>
           <img className = 'hero' src={Hero} alt = 'Hero Doctor, PHOTOGRAPH BY EMIN BAYCAN on Unsplash'/>
         </div>
@@ -149,13 +154,10 @@ class App extends Component {
               data = {(searchField === "")?[]:filteredStates }/>
             <div className="App">
             <h2>{this.state.searchField}</h2>
-          <CovidUsData 
-              data = {CovUSdata}/>
           </div> 
           </div>
       </main>
-      <footer>
-      <h2 className ='sinceVisit'>{this.state.deadPerson} Dead Since Your Visit</h2>  
+      <footer> 
         <h3>Footer stuff goes here...</h3>
         <span>Hero Photo by <a href="https://unsplash.com/@aimlesscode?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Emin BAYCAN</a> on <a href="https://unsplash.com/s/photos/face-mask?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
         {

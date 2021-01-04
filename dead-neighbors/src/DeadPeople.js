@@ -14,7 +14,7 @@ class DeadPeople extends React.Component{
     componentDidMount = ()=>{
         console.log('mount',this.state.deadSinceVisit)
         let people = [];
-        for(let i = 1; i<=80; i++){
+        for(let i = 1; i<=32; i++){
             people.push(
                 <div key = {i} className= {`person${i}`}>
                 <DeadPerson 

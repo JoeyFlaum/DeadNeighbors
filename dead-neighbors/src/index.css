@@ -81,12 +81,15 @@ header{
     list-style: none;
     display: inline-flex;
   }
+  .headerNav li:hover{
+    cursor: pointer;
+  }
 
 main{
-  padding-top:150px;
+  padding-top:0px;
   display:grid;
   gap:20px;
-  grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(600px,1fr));
   grid-template-areas:
   "hero hero hero"
   "stats stats stats";
@@ -102,22 +105,30 @@ main{
   main img{
     margin-left: minmax(auto,20em);
     box-shadow: var(--shadow);
-    max-width: 900px;
+    max-width: 800px;
     width:100%;
     z-index: 1;
   }
   main .peopleCard{
-    top:50%;
-    left:-20%;
+    top:40%;
+    right:40%;
+    margin:0px 150px 0px 0px;
+    padding:1em;
     position: relative;
     z-index: 2;
-    max-width:600px;
-    height: auto;
+    max-width:400px;
+    min-width:300px;
+    height: fit-content;
     background-color: white;
+    box-shadow: var(--shadow);
   }
   main .people{
     display:flex;
     flex-wrap: wrap;
+    width:fit-content;
+  }
+  main .sinceVisit{
+    border-top:1px solid var(--grey);
   }
   .stats{
     grid-area:stats;
