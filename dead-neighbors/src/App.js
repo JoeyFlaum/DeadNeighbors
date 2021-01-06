@@ -17,9 +17,10 @@ class App extends Component {
             searchField: '',
             CovidDeathsToday:0,
             deadPerson: 0,
+            isHomePage:true,
+            isDataPage:false
         }
   }
-
   deadTrue(boolean){
     if(boolean){this.setState({deadPerson:this.state.deadPerson+1})}
   }
@@ -30,6 +31,15 @@ class App extends Component {
       this.setState({searchField: event.target.value})
     }
   } 
+  viewHandler=(event)=>{
+    switch(event){
+      case('Home'):this.setState({isHomePage:true,isDataPage:false});break;
+      case('dataSearchPage'):this.setState({isHomePage:false, isDataPage:true});break;
+      default:console.log('break');break;
+    }
+
+    console.log('viewEvent',event)
+  }
   componentDidMount(){
       fetch('https://api.covidtracking.com/v1/us/daily.json')
           .then(response => response.json())
@@ -104,9 +114,9 @@ class App extends Component {
            this.setState({CovStateData: data}));
   }   
   render() { 
-    console.log('click',this.state.deaddead)
       const {CovUSdata,CovStateData,CovidDeathsToday,searchField, inputField, deadPerson} = this.state;
       console.log('deadPPPPP',deadPerson);
+      console.log('home',this.state.isHomePage,'data',this.state.isDataPage)
       let filteredStates = [];
         if(CovStateData !== 0){
         filteredStates = CovStateData.filter((stateData)=>{
@@ -125,7 +135,7 @@ class App extends Component {
         </div>
           <nav className = 'headerNav'>
             <ul>
-              <li>About</li>
+              <li onClick = {(e)=>this.viewHandler(e.target.innerText)}>Home</li>
               <li>Sources</li>
               <li>Placeholder</li>
               <li>Placeholder</li>
@@ -137,8 +147,8 @@ class App extends Component {
         <div className = 'heroContainer'>
           <div className = 'peopleCard'>
             <div className = 'peopleCardInfo'>
-              <p><CovidUsData data = {CovUSdata}/></p>
-              <button>More Details</button>
+              <CovidUsData data = {CovUSdata}/>
+              <button onClick  = {(e)=>this.viewHandler(e.target.value)} value = "dataSearchPage">More Details</button>
             </div>
             <div className ='sinceVisit'>
               <p >{this.state.deadPerson} Dead Since Your Visit</p> 
@@ -155,7 +165,7 @@ class App extends Component {
         <div className = 'infoCardContainer'>
           <div className = 'infoCard'>
             <p>Sunt reprehenderit laboris proident eiusmod ut elit aliqua est aliqua esse.</p>
-            <button>More Details</button>
+            <button >More Details</button>
           </div>
           <div className = 'infoCard'>
             <p>Sunt reprehenderit laboris proident eiusmod ut elit aliqua est aliqua esse.</p>
