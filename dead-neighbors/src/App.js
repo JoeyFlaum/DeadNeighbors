@@ -136,7 +136,10 @@ class App extends Component {
       <main className = 'maintContent'>
         <div className = 'heroContainer'>
           <div className = 'peopleCard'>
-          <p><CovidUsData data = {CovUSdata}/></p>
+            <div className = 'peopleCardInfo'>
+              <p><CovidUsData data = {CovUSdata}/></p>
+              <button>More Details</button>
+            </div>
             <div className ='sinceVisit'>
               <p >{this.state.deadPerson} Dead Since Your Visit</p> 
               {(this.state.CovidDeathsToday === 0)
@@ -149,16 +152,30 @@ class App extends Component {
           </div>
           <img className = 'hero' src={Hero} alt = 'Hero Doctor, PHOTOGRAPH BY EMIN BAYCAN on Unsplash'/>
         </div>
-        <div className = 'stats'>
-          <CovidStateData
-              data = {(searchField === "")?[]:filteredStates }/>
-            <div className="App">
-            <h2>{this.state.searchField}</h2>
-          </div> 
+        <div className = 'infoCardContainer'>
+          <div className = 'infoCard'>
+            <p>Sunt reprehenderit laboris proident eiusmod ut elit aliqua est aliqua esse.</p>
+            <button>More Details</button>
           </div>
+          <div className = 'infoCard'>
+            <p>Sunt reprehenderit laboris proident eiusmod ut elit aliqua est aliqua esse.</p>
+            <button>More Details</button>
+          </div>
+          <div className = 'infoCard'>
+            <p>Sunt reprehenderit laboris proident eiusmod ut elit aliqua est aliqua esse.</p>
+            <button>More Details</button>
+          </div>
+        </div>
       </main>
       <footer> 
+      <div className = 'stats'>
+          <CovidStateData
+              data = {(searchField === "")?[]:filteredStates }/>
+        </div>
         <h3>Footer stuff goes here...</h3>
+        <div className="App">
+            <h2>{this.state.searchField}</h2>
+          </div> 
         <span>Hero Photo by <a href="https://unsplash.com/@aimlesscode?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Emin BAYCAN</a> on <a href="https://unsplash.com/s/photos/face-mask?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
         {
           (this.state.CovidDeathsToday === 0)? 
