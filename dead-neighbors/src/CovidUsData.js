@@ -1,7 +1,6 @@
 import React from 'react';
 
 const CovidUsData = ({data}) => {
-    if(data.length !== 0){
         let date = new Date(data[0].dateChecked);
         const usPopulation2020 = 331002651;
         const fractionUsDead = Math.round(usPopulation2020/(data[0].death));
@@ -22,6 +21,5 @@ const CovidUsData = ({data}) => {
             {`That's 1 in ${fractionUsDead} dead from Covid-19.`}
         </div>
      )
-    }return null
 }
 export default CovidUsData;

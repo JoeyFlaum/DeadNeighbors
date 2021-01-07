@@ -86,7 +86,8 @@ header{
     cursor: pointer;
   }
 
-main{
+  /*main*/
+  .homePage{
   padding-top:0px;
   display:grid;
   gap:20px;
@@ -183,7 +184,7 @@ footer{
     border-radius: 3px 3px ;
     outline:none;
   }
-  button{
+  button .suggestion{
     text-align: left;
     width:204px;
     height:23px;

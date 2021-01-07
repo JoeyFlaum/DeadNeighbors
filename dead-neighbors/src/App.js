@@ -1,45 +1,26 @@
 import React, { Component } from 'react';
-import './App.css';
-import CovidStateData from './CovidStateData';
-import CovidUsData from './CovidUsData';
-import SearchFeature from './Search';
-import CountDown from './Timer';
-import DeadPeople from './DeadPeople';
-import Hero from './Images/Hero.jpg';
+import Blog from './Blog';
+import HomePage from './HomePage'
+import Header from './Header';
+import DataPage from './DataPage';
+import DeadNeigborsPage from './DeadNeighborsPage';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
  
 class App extends Component {
-  /* mandatory */
   constructor() {
     super() 
         this.state = {
             CovStateData: [],
             CovUSdata: [],
-            searchField: '',
             CovidDeathsToday:0,
             deadPerson: 0,
-            isHomePage:true,
-            isDataPage:false
         }
   }
   deadTrue(boolean){
     if(boolean){this.setState({deadPerson:this.state.deadPerson+1})}
   }
   /*handle enter key and button click for state search*/
-  searchHandler= (event)=>{
-    console.log('app event',event.target)
-    if(event.key === 'Enter'|| event.type==='click'){
-      this.setState({searchField: event.target.value})
-    }
-  } 
-  viewHandler=(event)=>{
-    switch(event){
-      case('Home'):this.setState({isHomePage:true,isDataPage:false});break;
-      case('dataSearchPage'):this.setState({isHomePage:false, isDataPage:true});break;
-      default:console.log('break');break;
-    }
-
-    console.log('viewEvent',event)
-  }
+/*pull data from API, add state full names with switch statement*/
   componentDidMount(){
       fetch('https://api.covidtracking.com/v1/us/daily.json')
           .then(response => response.json())
@@ -114,94 +95,33 @@ class App extends Component {
            this.setState({CovStateData: data}));
   }   
   render() { 
-      const {CovUSdata,CovStateData,CovidDeathsToday,searchField, inputField, deadPerson} = this.state;
-      console.log('deadPPPPP',deadPerson);
-      console.log('home',this.state.isHomePage,'data',this.state.isDataPage)
-      let filteredStates = [];
-        if(CovStateData !== 0){
-        filteredStates = CovStateData.filter((stateData)=>{
-        return (stateData.stateFullName.toLowerCase().includes(searchField.toLowerCase()));
-        })}
-     
+      const {CovUSdata,CovStateData,CovidDeathsToday,deadPerson} = this.state;
+      console.log('deadPPPPP',deadPerson)
   return (
     <div className = 'pageContent'>
-     
-      <header>
-        <div className = 'deadTitle'> 
-          <div className = 'headerTitle'>
-            <h1>Dead Neighbors</h1>
-            <p><em>Bringing humanity to numbers</em></p>
-          </div>
-        </div>
-          <nav className = 'headerNav'>
-            <ul>
-              <li onClick = {(e)=>this.viewHandler(e.target.innerText)}>Home</li>
-              <li>Sources</li>
-              <li>Placeholder</li>
-              <li>Placeholder</li>
-              <li>Placeholder</li>
-            </ul>
-          </nav>        
-      </header>
-      <main className = 'maintContent'>
-        <div className = 'heroContainer'>
-          <div className = 'peopleCard'>
-            <div className = 'peopleCardInfo'>
-              <CovidUsData data = {CovUSdata}/>
-              <button onClick  = {(e)=>this.viewHandler(e.target.value)} value = "dataSearchPage">More Details</button>
-            </div>
-            <div className ='sinceVisit'>
-              <p >{this.state.deadPerson} Dead Since Your Visit</p> 
-              {(this.state.CovidDeathsToday === 0)
-              ?
-              <div></div>
-              :
-              <DeadPeople deadPersonCount ={deadPerson} key={deadPerson}/*key change forces render(updated props are sent)*//>
-              }
-            </div>
-          </div>
-          <img className = 'hero' src={Hero} alt = 'Hero Doctor, PHOTOGRAPH BY EMIN BAYCAN on Unsplash'/>
-        </div>
-        <div className = 'infoCardContainer'>
-          <div className = 'infoCard'>
-            <p>Sunt reprehenderit laboris proident eiusmod ut elit aliqua est aliqua esse.</p>
-            <button >More Details</button>
-          </div>
-          <div className = 'infoCard'>
-            <p>Sunt reprehenderit laboris proident eiusmod ut elit aliqua est aliqua esse.</p>
-            <button>More Details</button>
-          </div>
-          <div className = 'infoCard'>
-            <p>Sunt reprehenderit laboris proident eiusmod ut elit aliqua est aliqua esse.</p>
-            <button>More Details</button>
-          </div>
-        </div>
-      </main>
+      <Header/>
+      {CovUSdata.length !== 0?
+      <HomePage data = {CovUSdata} deadPersonCount ={deadPerson} key={deadPerson}/*key change forces render(updated props are sent)*//>
+      :<div className = 'blank'></div>}
+      <Blog/>
       <footer> 
-      <div className = 'stats'>
-          <CovidStateData
-              data = {(searchField === "")?[]:filteredStates }/>
-        </div>
         <h3>Footer stuff goes here...</h3>
         <div className="App">
             <h2>{this.state.searchField}</h2>
           </div> 
         <span>Hero Photo by <a href="https://unsplash.com/@aimlesscode?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Emin BAYCAN</a> on <a href="https://unsplash.com/s/photos/face-mask?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
         {
-          (this.state.CovidDeathsToday === 0)? 
-            <div>Loading...</div>
-            :
-            <CountDown 
+          (CovidDeathsToday !== 0)? 
+            <DeadNeigborsPage
               usData ={CovidDeathsToday} 
               usDataAll = {CovUSdata}
               dead = {this.deadTrue.bind(this)}
               />
-          }  
-        <SearchFeature 
-          className= "searchfeature"  
-          onEnter = {this.searchHandler} 
-          inputValue = {inputField}
-        />
+            :<div>Loading...</div>
+        }
+        {CovStateData.length !==0?  
+        <DataPage covStateData = {CovStateData}/>:
+        <div className = 'blank'></div> }
       </footer>
     </div>
   );

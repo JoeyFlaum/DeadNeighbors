@@ -25,7 +25,7 @@ class CountDown extends React.Component{
         /*reset timer when it hits 0*/
         else if(this.state.deathCounter24Hour <= 0 && this.state.counterAt0 === false){
             this.setState({deathCounter24Hour: 0,counterAt0:true})/* if statement becomes true */
-            this.deadNeighbor(true);/*Sends true to DeadNeighbor component*/
+            this.deadNeighbor(true);/*Sends true to DeadNeighborPage component*/
              
         }
         /*timer countdown interval*/
@@ -34,7 +34,7 @@ class CountDown extends React.Component{
                     deathCounter24Hour : (prevState.deathCounter24Hour -110)
                 }))}},100)  
         }
-        /*clears each invteral to prevent memory leaks*/
+        /*clears each interval to prevent memory leaks*/
     componentWillUnmount(){
         clearInterval(this.myInterval);
     }
