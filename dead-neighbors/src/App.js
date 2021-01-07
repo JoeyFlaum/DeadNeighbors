@@ -3,7 +3,7 @@ import Blog from './Blog';
 import HomePage from './HomePage'
 import Header from './Header';
 import DataPage from './DataPage';
-import DeadNeigborsPage from './DeadNeighborsPage';
+import DeadNeighborsPage from './DeadNeighborsPage';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
  
 class App extends Component {
@@ -19,7 +19,6 @@ class App extends Component {
   deadTrue(boolean){
     if(boolean){this.setState({deadPerson:this.state.deadPerson+1})}
   }
-  /*handle enter key and button click for state search*/
 /*pull data from API, add state full names with switch statement*/
   componentDidMount(){
       fetch('https://api.covidtracking.com/v1/us/daily.json')
@@ -112,7 +111,7 @@ class App extends Component {
         <span>Hero Photo by <a href="https://unsplash.com/@aimlesscode?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Emin BAYCAN</a> on <a href="https://unsplash.com/s/photos/face-mask?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
         {
           (CovidDeathsToday !== 0)? 
-            <DeadNeigborsPage
+            <DeadNeighborsPage
               usData ={CovidDeathsToday} 
               usDataAll = {CovUSdata}
               dead = {this.deadTrue.bind(this)}
