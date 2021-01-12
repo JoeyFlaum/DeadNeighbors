@@ -77,8 +77,9 @@ class SearchFeature extends React.Component {
       );
     });
     return (
-      <>
-        <h2 className="stateSearch">State Search</h2>
+      <div className ='stateSearch'>
+       
+        <h2 >State Search</h2>
         <form className="searchWrapper" onSubmit={(e) => e.preventDefault()}>
           {" "}
           <input
@@ -123,7 +124,7 @@ class SearchFeature extends React.Component {
             </ul>
           </div>
         </form>
-      </>
+        </div>
     );
   }
 }

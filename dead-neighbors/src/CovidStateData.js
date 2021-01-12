@@ -5,7 +5,7 @@ import CovidStateDataCard from './CovidStateDataCard';
 const CovidStateData = ({data, listOfStates}) => {
     if(data.length !== 0){
     return(
-        <>
+        <div className ='stateData'>
         <h2 className = 'stateDataHeader'>STATE DATA</h2>
         <div className='stateDeaths'>
             {data.map((stateObj,i)=>{ 
@@ -19,7 +19,7 @@ const CovidStateData = ({data, listOfStates}) => {
                 />
             )})}
         </div>
-        </>
+        </div>
     )
     }
     return null

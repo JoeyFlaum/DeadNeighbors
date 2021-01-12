@@ -234,6 +234,7 @@ class App extends Component {
               fontSize: "1px",
             }}
           >
+          </div>
             {CovidDeathsToday !== 0 ? (
               <DeadNeighborsPage
                 usData={CovidDeathsToday}
@@ -243,7 +244,6 @@ class App extends Component {
             ) : (
               <div>Loading...</div>
             )}
-          </div>
 
           <Header screenWidth={this.state.screenWidth} />
           <Switch>
@@ -278,7 +278,7 @@ class App extends Component {
               }
             />
             <Route path="/resources" component={Resources} />
-            <Route path="/About" component={About} />
+            <Route path="/about" component={About} />
           </Switch>
           <footer>
             <h3>Footer stuff goes here...</h3>

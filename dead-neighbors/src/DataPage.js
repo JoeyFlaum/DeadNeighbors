@@ -1,6 +1,7 @@
 import React from 'react';
 import CovidStateData from './CovidStateData';
 import SearchFeature from './Search';
+import Countdown from './Timer';
 
 class DataPage extends React.Component{
     constructor(props) {
@@ -35,6 +36,7 @@ class DataPage extends React.Component{
                   data = {(searchField === "")?[]:filteredStates }/>
             </div>
             </main>
+            
         )
     }
 }

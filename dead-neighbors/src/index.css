@@ -194,7 +194,7 @@ header{
     flex-wrap: wrap;
     justify-content: center;
   }
-  main .infoCard{
+    .infoCard{
     flex:none;
     margin:2em;
     padding:1em;
@@ -202,15 +202,14 @@ header{
     max-width:400px;
     box-shadow: var(--shadow);
   }
-  .blog{
+  .blog, .about, .dataPage{
     margin:1rem;
     display: grid;
     grid-template-columns: minmax(400px,1fr);
     grid-template-rows: repeat(1fr);
     gap: 50px;
-
   }
-  .content{
+  .content, .dataPage *{
     margin:0 5%;
     padding:1em;
     justify-self: center;
@@ -220,10 +219,6 @@ header{
     box-shadow: var(--shadow);
   }
   
-footer{
-  grid-area: footer;
-}
-
   .searchWrapper{
     z-index: 0;
   }
@@ -287,7 +282,6 @@ footer{
   justify-content: auto;
   height:650px;
   overflow-y:scroll;
-  grid-area:stateDeaths;
   border-radius: 10px;
   box-shadow: 0px 0px 5px var(--red);
 }
@@ -298,3 +292,7 @@ footer{
   background-color: var(--lightBlue);
   color: var(--green);
 }
+footer{
+  grid-area: footer;
+}
+
