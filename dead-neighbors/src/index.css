@@ -82,7 +82,7 @@ header{
     list-style: none;
     display: inline-flex;
   }
-  .headerNav li:hover{
+  .headerNav li:hover, button:hover{
     cursor: pointer;
   }
   .hamburger{
@@ -98,24 +98,26 @@ header{
     background-color: transparent;
     /* show the menu image */
     background-size: 100%;
+
   }
-  .showNav {
-  /* show the menu */
-  transform: translateY(0);
-}
   .navbar {
     position: absolute;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding-right: 50px;
     top: 0;
-    left: 0;
-    background: black;
-    width: 100vw;
+    right:0;
+    background:linear-gradient(to right, black,rgba(0, 0, 0, 0.815),black);
+    width: 30vw;
     height: 100vh;
+    margin-top: 0;
     overflow: hidden;
-    color: white;
     /* hide the menu above the screen by default */
-    transform: translateY(-100%);
+    transform: translateX(200%);
     /* transition adds a little animation when sliding in and out the menu */
-    transition: transform 0.2s ease;
+    transition: cubic-bezier(1, 0, 0, 1) .4s;
   }
   /*main*/
   .homePage{
@@ -163,7 +165,7 @@ header{
     justify-content:flex-end;
     margin:0;
   }
-  main button{
+  .homePage button{
     cursor: pointer;
     font-size: 1.2rem;
     margin: 1rem 0;
@@ -200,6 +202,24 @@ header{
     max-width:400px;
     box-shadow: var(--shadow);
   }
+  .blog{
+    margin:1rem;
+    display: grid;
+    grid-template-columns: minmax(400px,1fr);
+    grid-template-rows: repeat(1fr);
+    gap: 50px;
+
+  }
+  .content{
+    margin:0 5%;
+    padding:1em;
+    justify-self: center;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    box-shadow: var(--shadow);
+  }
+  
 footer{
   grid-area: footer;
 }
@@ -215,7 +235,7 @@ footer{
     border-radius: 3px 3px ;
     outline:none;
   }
-  button .suggestion{
+  .suggestion{
     text-align: left;
     width:204px;
     height:23px;
@@ -224,7 +244,7 @@ footer{
     border:0;
     background-color: white;
   }
-  button:hover{
+  .suggestion:hover{
     background-color: lightgray;
   }
   

@@ -16,7 +16,7 @@ class Header extends React.Component {
   resize() {
     let currentmobileNav = window.innerWidth <= 1310;
     if (currentmobileNav !== this.state.mobileNav) {
-      this.setState({ mobileNav: currentmobileNav, showMobileList:false });
+      this.setState({ mobileNav: currentmobileNav, showMobileList: false });
     }
   }
   componentWillUnmount() {
@@ -24,16 +24,28 @@ class Header extends React.Component {
   }
   hamburgerHandler() {
     this.state.showMobileList
-      ? this.setState({ showMobileList: false, })
+      ? this.setState({ showMobileList: false })
       : this.setState({ showMobileList: true });
   }
 
   render() {
     console.log("show", this.state.showMobileList);
-    const { mobileNav,showMobileList} = this.state;
+    const { mobileNav, showMobileList } = this.state;
     const linkStyle = { textDecoration: "none", color: "black" };
-    const hamButtonStyleX = {backgroundImage: 'url("https://ljc-dev.github.io/testing0/ham-close.svg")'}
-    const hamButtonStyle = {backgroundImage: 'url("https://ljc-dev.github.io/testing0/ham.svg")'}
+    const linkStyleMobile = {
+      listStyle: "none",
+      textDecoration: "none",
+      color: "white",
+    };
+    const hamButtonStyleX = {
+      backgroundImage:
+        'url("https://ljc-dev.github.io/testing0/ham-close.svg")',
+    };
+    const hamButtonStyle = {
+      backgroundImage: 'url("https://ljc-dev.github.io/testing0/ham.svg")',
+    };
+    const showMenu = { transform: "translateX(0)", color: "white"};
+    const hamburgerClick = this.hamburgerHandler.bind(this);
     return (
       <header>
         <div className="deadTitle">
@@ -48,24 +60,32 @@ class Header extends React.Component {
           <nav className="hamburgerNav">
             <button
               className="hamburger"
-              style = {showMobileList?hamButtonStyleX:hamButtonStyle}
-              onClick={this.hamburgerHandler.bind(this)}
+              style={showMobileList ? hamButtonStyleX : hamButtonStyle}
+              onClick={hamburgerClick}
             ></button>
-            <ul>
-              <Link to="/" style={linkStyle}>
+            <ul className={"navbar"} style={showMobileList ? showMenu : null}>
+              <Link to="/" style={linkStyleMobile} onClick={hamburgerClick}>
                 <li>Home</li>
               </Link>
-              <Link to="/blog" style={linkStyle}>
+              <Link to="/blog" style={linkStyleMobile} onClick={hamburgerClick}>
                 <li>Blog</li>
               </Link>
-              <Link to="/resources" style={linkStyle}>
+              <Link
+                to="/resources"
+                style={linkStyleMobile}
+                onClick={hamburgerClick}
+              >
                 <li>Resources</li>
               </Link>
-              <Link to="/about" style={linkStyle}>
+              <Link
+                to="/about"
+                style={linkStyleMobile}
+                onClick={hamburgerClick}
+              >
                 <li>About</li>
               </Link>
-              <Link to="/info" style={linkStyle}>
-                <li>More Details</li>
+              <Link to="/info" style={linkStyleMobile} onClick={hamburgerClick}>
+                <li>US Covid Info</li>
               </Link>
             </ul>
           </nav>
@@ -85,7 +105,7 @@ class Header extends React.Component {
                 <li>About</li>
               </Link>
               <Link to="/info" style={linkStyle}>
-                <li>More Details</li>
+                <li>US Covid Info</li>
               </Link>
             </ul>
           </nav>

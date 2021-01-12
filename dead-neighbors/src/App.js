@@ -4,8 +4,8 @@ import HomePage from "./HomePage";
 import Header from "./Header";
 import DataPage from "./DataPage";
 import DeadNeighborsPage from "./DeadNeighborsPage";
-import Resources from './Resources';
-import About from './About';
+import Resources from "./Resources";
+import About from "./About";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 class App extends Component {
   constructor() {
@@ -15,7 +15,6 @@ class App extends Component {
       CovUSdata: [],
       CovidDeathsToday: 0,
       deadPerson: 0,
-      screenWidth:window.innerWidth
     };
   }
   deadTrue(boolean) {
@@ -212,17 +211,9 @@ class App extends Component {
         })
       )
       .then((data) => this.setState({ CovStateData: data }));
+
   }
   render() {
-    const screensize = ()=>{
-    if(this.state.screenWidth<900){
-      return `less than 900`
-    }
-    else{
-       return `more than 900`
-    }
-  }
-  let screen = screensize();
     const {
       CovUSdata,
       CovStateData,
@@ -230,7 +221,6 @@ class App extends Component {
       deadPerson,
     } = this.state;
     console.log("deadPPPPP", deadPerson);
-    console.log("screenWidth", screen);
     return (
       <Router>
         <div className="pageContent">
@@ -255,8 +245,8 @@ class App extends Component {
             )}
           </div>
 
-          <Header screenWidth ={this.state.screenWidth}/>
-          <Switch> 
+          <Header screenWidth={this.state.screenWidth} />
+          <Switch>
             <Route
               path="/"
               exact
@@ -279,7 +269,7 @@ class App extends Component {
             <Route
               path="/info"
               exact
-              render={(routeProps)=>
+              render={(routeProps) =>
                 CovStateData.length !== 0 ? (
                   <DataPage covStateData={CovStateData} {...routeProps} />
                 ) : (
@@ -287,14 +277,8 @@ class App extends Component {
                 )
               }
             />
-            <Route 
-            path ="/resources"
-            component = {Resources}
-            />
-            <Route 
-            path ="/About"
-            component = {About}
-            />
+            <Route path="/resources" component={Resources} />
+            <Route path="/About" component={About} />
           </Switch>
           <footer>
             <h3>Footer stuff goes here...</h3>

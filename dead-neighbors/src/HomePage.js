@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CovidUsData from "./CovidUsData";
 import DeadPeople from "./DeadPeople";
 import Hero from "./Images/Hero.jpg";
+import {Link} from 'react-router-dom';
 
 class HomePage extends Component {
   /* mandatory */
@@ -28,7 +29,9 @@ class HomePage extends Component {
           <div className="peopleCard">
             <div className="peopleCardInfo">
               <CovidUsData data={CovUSdata} />
-              <button>More Details</button>
+              <Link to = "/info">
+            <button>More Info</button>
+            </Link>
             </div>
             <div className="sinceVisit">
               <p>{this.state.deadPerson} Dead Since Your Visit</p>
@@ -52,21 +55,27 @@ class HomePage extends Component {
               Sunt reprehenderit laboris proident eiusmod ut elit aliqua est
               aliqua esse.
             </p>
-            <button>More Details</button>
+            <Link to = "/about">
+            <button>About Dead Neighbors</button>
+            </Link>
           </div>
           <div className="infoCard">
             <p>
               Sunt reprehenderit laboris proident eiusmod ut elit aliqua est
               aliqua esse.
             </p>
-            <button>More Details</button>
+            <Link to = "/blog">
+            <button>Visit Blog</button>
+            </Link>
           </div>
           <div className="infoCard">
             <p>
               Sunt reprehenderit laboris proident eiusmod ut elit aliqua est
               aliqua esse.
             </p>
-            <button>More Details</button>
+            <Link to = "/resources">
+            <button>Resources</button>
+            </Link>
           </div>
         </div>
       </main>
