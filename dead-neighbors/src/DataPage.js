@@ -33,7 +33,7 @@ class DataPage extends React.Component{
             />
             <div className = 'stats'>
               <CovidStateData
-                  data = {(searchField === "")?[]:filteredStates }/>
+                  data = {(searchField === "")?[]:filteredStates}/>
             </div>
             </main>
             

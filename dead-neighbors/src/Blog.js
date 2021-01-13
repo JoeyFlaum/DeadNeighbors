@@ -2,7 +2,7 @@ import React from "react";
 
 const blog = () => {
   return (
-    <div className = 'blog' style={{ marginTop: "150px" }}>
+    <div className = 'blog' style={{ marginTop: "200px" }}>
       <div className="content" >
       <h2>Blog 1 MM-DD-YYYY</h2>
         <p>

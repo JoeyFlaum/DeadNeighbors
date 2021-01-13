@@ -14,7 +14,7 @@ class Header extends React.Component {
     this.resize();
   }
   resize() {
-    let currentmobileNav = window.innerWidth <= 1310;
+    let currentmobileNav = window.innerWidth <= 1315;
     if (currentmobileNav !== this.state.mobileNav) {
       this.setState({ mobileNav: currentmobileNav, showMobileList: false });
     }

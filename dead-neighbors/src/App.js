@@ -220,7 +220,6 @@ class App extends Component {
       CovidDeathsToday,
       deadPerson,
     } = this.state;
-    console.log("deadPPPPP", deadPerson);
     return (
       <Router>
         <div className="pageContent">

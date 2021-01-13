@@ -202,14 +202,14 @@ header{
     max-width:400px;
     box-shadow: var(--shadow);
   }
-  .blog, .about, .dataPage{
+  .blog, .about{
     margin:1rem;
     display: grid;
     grid-template-columns: minmax(400px,1fr);
     grid-template-rows: repeat(1fr);
     gap: 50px;
   }
-  .content, .dataPage *{
+  .content{
     margin:0 5%;
     padding:1em;
     justify-self: center;
@@ -220,24 +220,30 @@ header{
   }
   
   .searchWrapper{
-    z-index: 0;
+    z-index: 9999;
+    max-width: max-content;
+    display:flex;
+    flex-direction: column;
   }
+
   .searchWrapper input{
-    width:200px;
-    height:20px;
-    border:3px;
-    border-color:rgb(41, 37, 37);
-    border-radius: 3px 3px ;
+    width:500px;
+    height:40px;
+    font-size: .75em;
+    border:1px solid var(--grey);
+    border-radius: 30px;
     outline:none;
+    padding-left: 20px;
   }
   .suggestion{
     text-align: left;
-    width:204px;
-    height:23px;
+    height:50px;
     margin: 0;
     padding:0 0 0 10px;
     border:0;
     background-color: white;
+    font-size: .75em;
+    width:100%;
   }
   .suggestion:hover{
     background-color: lightgray;
@@ -249,24 +255,23 @@ header{
     justify-content: left;
     padding:0px;
     margin:0px;
-    border:0px rgb(165, 165, 165);
-    border-radius: 3px 3px;
-    width:204px;
+    width:485px;
     border-radius: 20px;
   }
   .searchfield{
     overflow-y: scroll;
-    border: 3px;
     min-height: auto;
-    max-height: 112px;
-    width: 204px;
+    max-height: 200px;
+    width: 485px;
     margin:0;
-    margin-top: -2px;
     padding:0;
     background-color: white;
-    border-radius: 0px 0px 3px 3px;
-    border-color: rgba(228, 29, 29, 0.493);
+    border: 1px solid var(--grey);
+    border-top: 0px; 
+    border-radius: 0px 0px 10px 10px;
+    margin-left: 18px;
   }
+  /* hide scroll on search */
   .searchfield::-webkit-scrollbar,.stateDeaths::-webkit-scrollbar{
     display: none;
   }
@@ -275,13 +280,16 @@ header{
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
   }
-
+  .stateSearch{
+    width:max-content;
+  }
 /*results from search*/
 .stateDeaths{
   padding-top:10px;
   justify-content: auto;
   height:650px;
   overflow-y:scroll;
+  grid-area:stateDeaths;
   border-radius: 10px;
   box-shadow: 0px 0px 5px var(--red);
 }
@@ -296,3 +304,11 @@ footer{
   grid-area: footer;
 }
 
+.timer{
+  margin:0px;
+  padding: 0px;
+  position: absolute;
+  top:0;
+  left:0;
+  font-size: .1px;
+}
