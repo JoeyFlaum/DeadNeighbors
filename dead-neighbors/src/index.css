@@ -220,7 +220,7 @@ header{
   }
   
   .searchWrapper{
-    z-index: 9999;
+    z-index: 3;
     max-width: max-content;
     display:flex;
     flex-direction: column;
@@ -238,7 +238,7 @@ header{
   .suggestion{
     text-align: left;
     height:50px;
-    margin: 0;
+    margin:0;
     padding:0 0 0 10px;
     border:0;
     background-color: white;
@@ -259,11 +259,12 @@ header{
     border-radius: 20px;
   }
   .searchfield{
+    z-index: 2;
     overflow-y: scroll;
     min-height: auto;
     max-height: 200px;
     width: 485px;
-    margin:0;
+    margin:-1px;
     padding:0;
     background-color: white;
     border: 1px solid var(--grey);
@@ -284,21 +285,25 @@ header{
     width:max-content;
   }
 /*results from search*/
+.stateData{
+  z-index: 0;
+}
 .stateDeaths{
-  padding-top:10px;
+  padding-top:5px;
   justify-content: auto;
   height:650px;
+  margin:0 5%;
   overflow-y:scroll;
-  grid-area:stateDeaths;
-  border-radius: 10px;
-  box-shadow: 0px 0px 5px var(--red);
-}
-.stateDeaths h2{
-  position:fixed;  
+  display:flex;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow);
+  justify-content: center;
 }
 .stateDataCard{
-  background-color: var(--lightBlue);
-  color: var(--green);
+  color: var(--black);
+  padding:1em;
+  box-shadow: var(--shadow);
+  margin:1em;
 }
 footer{
   grid-area: footer;
