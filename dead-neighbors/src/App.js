@@ -7,6 +7,7 @@ import DeadNeighborsPage from "./DeadNeighborsPage";
 import Resources from "./Resources";
 import About from "./About";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 class App extends Component {
   constructor() {
     super();
@@ -270,7 +271,7 @@ class App extends Component {
               exact
               render={(routeProps) =>
                 CovStateData.length !== 0 ? (
-                  <DataPage covStateData={CovStateData} {...routeProps} />
+                  <DataPage covStateData={CovStateData} covUsData ={CovUSdata} {...routeProps} />
                 ) : (
                   <div className="blank"></div>
                 )

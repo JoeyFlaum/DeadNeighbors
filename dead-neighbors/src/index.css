@@ -274,11 +274,11 @@ header{
     margin-left: 18px;
   }
   /* hide scroll on search */
-  .searchfield::-webkit-scrollbar,.stateDeaths::-webkit-scrollbar{
+  .searchfield::-webkit-scrollbar,.stateDeaths::-webkit-scrollbar, .usDataComplete::-webkit-scrollbar{
     display: none;
   }
   /* Hide scrollbar for IE, Edge and Firefox */
-  .searchfield,.stateDeaths {
+  .searchfield,.stateDeaths, .usDataComplete {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
   }
@@ -294,7 +294,7 @@ header{
   flex-wrap: none;
 
 }
-.stateDeaths{
+.stateDeaths, .usDataComplete{
   padding-top:5px;
   justify-content: auto;
   height:650px;
@@ -305,7 +305,7 @@ header{
   border: 1px solid var(--grey);
   justify-content: center;
 }
-.stateDataCard{
+.stateDataCard, .usDataCard{
   color: var(--black);
   padding:1em;
   box-shadow:var(--shadow);

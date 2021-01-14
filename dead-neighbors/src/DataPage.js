@@ -1,13 +1,14 @@
 import React from 'react';
 import CovidStateData from './CovidStateData';
 import SearchFeature from './Search';
-import Countdown from './Timer';
+import CovidUsDataComplete from "./CovidUsDataComplete";
 
 class DataPage extends React.Component{
     constructor(props) {
         super(props) 
             this.state = {
                 CovStateData: props.covStateData,
+                CovUsData:props.covUsData,
                 searchField: '',
             }
       }
@@ -19,7 +20,7 @@ class DataPage extends React.Component{
     }
   }       
     render(){
-        const {CovStateData,searchField} = this.state;
+        const {CovStateData,searchField,CovUsData} = this.state;
         let filteredStates = [];
         filteredStates = CovStateData.filter((stateData)=>{
         return (stateData.stateFullName.toLowerCase().includes(searchField.toLowerCase()));
@@ -35,6 +36,7 @@ class DataPage extends React.Component{
               <CovidStateData
                   data = {(searchField === "")?[]:filteredStates}/>
             </div>
+            <CovidUsDataComplete data ={CovUsData}/>
             </main>
             
         )
