@@ -63,7 +63,7 @@ class Header extends React.Component {
               style={showMobileList ? hamButtonStyleX : hamButtonStyle}
               onClick={hamburgerClick}
             ></button>
-            <ul className={"navbar"} style={showMobileList ? showMenu : null}>
+            <ul className="navbar" style={showMobileList ? showMenu : null}>
               <Link to="/" style={linkStyleMobile} onClick={hamburgerClick}>
                 <li>Home</li>
               </Link>

@@ -2,6 +2,7 @@ import React from 'react';
 import CovidStateData from './CovidStateData';
 import SearchFeature from './Search';
 import CovidUsDataComplete from "./CovidUsDataComplete";
+import Slider from './Slider';
 
 class DataPage extends React.Component{
     constructor(props) {
@@ -10,6 +11,7 @@ class DataPage extends React.Component{
                 CovStateData: props.covStateData,
                 CovUsData:props.covUsData,
                 searchField: '',
+                slider:true
             }
       }
   /*handle enter key and button click for state search*/
@@ -19,8 +21,12 @@ class DataPage extends React.Component{
       this.setState({searchField: event.target.value})
     }
   }       
+  slideHandler=(prevState)=>{
+    this.setState({slider:!this.state.slider})
+  }
     render(){
-        const {CovStateData,searchField,CovUsData} = this.state;
+      console.log(this.state.slider)
+        const {CovStateData,searchField,CovUsData,slider} = this.state;
         let filteredStates = [];
         filteredStates = CovStateData.filter((stateData)=>{
         return (stateData.stateFullName.toLowerCase().includes(searchField.toLowerCase()));
@@ -28,12 +34,8 @@ class DataPage extends React.Component{
      
         return(
             <main className = 'dataPage' style={{marginTop:'200px'}}>
-
-            <label class="switch">
-  <input type="checkbox"></input>
-  <span class="slider"></span>
-            </label>
-
+            <Slider
+              boolean = {this.slideHandler.bind(this)} usStateBoolean = {slider}/>
             <SearchFeature 
               className= "searchfeature"  
               onEnter = {this.searchHandler} 

@@ -115,7 +115,7 @@ header{
     margin-top: 0;
     overflow: hidden;
     /* hide the menu above the screen by default */
-    transform: translateX(200%);
+    transform: translateX(100%);
     /* transition adds a little animation when sliding in and out the menu */
     transition: cubic-bezier(1, 0, 0, 1) .4s;
   }
