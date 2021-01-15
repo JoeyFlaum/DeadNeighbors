@@ -1,18 +1,23 @@
-import React from 'react';
+import React from "react";
 
-const CovidUsDataCard = ({date, deathIncrease,hospitalized,hospitalizedCurrently, hospitalizedIncrease, inIcuCurrently})=>{
-
-    return(
-        <div className = 'usDataCard' >
-            <p>{date.toDateString().slice(3)}</p>
-            <p>{ deathIncrease}</p>
-            <p>{hospitalized}</p>
-            <p>{hospitalizedCurrently}</p>
-            <p>{hospitalizedIncrease}</p>
-            <p>{inIcuCurrently}</p>
-        </div>
-)
-}
+const CovidUsDataCard = ({
+  date,
+  death,
+  deathIncrease,
+  positive,
+  positiveIncrease,
+  negative,
+  negativeIncrease,
+}) => {
+  return (
+    <div className="usDataCard">
+      <p>{date.toDateString()}</p>
+      <p>Total US deaths: {death?death.toLocaleString():0}<br/> Thats {deathIncrease?deathIncrease.toLocaleString():0} more deaths than the previous day.</p>
+      <p>Positve: {positive?positive.toLocaleString():0}<br/>Positive Increase: {positiveIncrease?positiveIncrease.toLocaleString():0}</p>
+      <p>Negative: {negative?negative.toLocaleString():0}<br/> Negative Increase: {negativeIncrease?negativeIncrease.toLocaleString():0}</p>
+      <p></p>
+    </div>
+  );
+};
 
 export default CovidUsDataCard;
-

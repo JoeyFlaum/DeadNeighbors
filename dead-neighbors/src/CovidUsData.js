@@ -17,8 +17,8 @@ const CovidUsData = ({data}) => {
             }
     return( 
          <div>  
-            {`On ${weekday}, ${date.toDateString().slice(3)}, the US death toll reached ${data[0].death} deaths. `}
-            {`That's 1 in ${fractionUsDead} dead from Covid-19.`}
+            {`On ${weekday}, ${date.toDateString().slice(3)}, the US death toll reached ${data[0].death.toLocaleString()} deaths. `}
+            {`That's 1 in ${fractionUsDead.toLocaleString()} dead from Covid-19.`}
         </div>
      )
 }

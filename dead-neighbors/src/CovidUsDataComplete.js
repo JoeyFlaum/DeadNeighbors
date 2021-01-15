@@ -11,11 +11,19 @@ const CovidUsDataComplete=({data})=>{
         <CovidUsDataCard
             key = {data[i].date}
             date = {date}
+            death = {data[i].death}
             deathIncrease = {data[i].deathIncrease}
             hospitalized = {data[i].hospitalized}
             hospitalizedCurrently = {data[i].hospitalizedCurrently}
-            hospitalizedIncrease = {data[i].hospitalizedIncreas}
+            hospitalizedIncrease = {data[i].hospitalizedIncrease}
             inIcuCurrently = {data[i].inIcuCurrently}
+            onVentilatorCurrently = {data[i].onVentilatorCurrently}
+            positive = {data[i].positive}
+            positiveIncrease = {data[i].positiveIncrease}
+            negative = {data[i].negative}
+            negativeIncrease = {data[i].negativeIncrease}
+            
+            
         />
     )
     })}

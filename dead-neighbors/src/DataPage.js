@@ -28,15 +28,24 @@ class DataPage extends React.Component{
      
         return(
             <main className = 'dataPage' style={{marginTop:'200px'}}>
+
+            <label class="switch">
+  <input type="checkbox"></input>
+  <span class="slider"></span>
+            </label>
+
             <SearchFeature 
               className= "searchfeature"  
               onEnter = {this.searchHandler} 
             />
-            <div className = 'stats'>
+            <div className = 'stateStats'>
               <CovidStateData
                   data = {(searchField === "")?[]:filteredStates}/>
             </div>
+            <div className = 'usStats'>
+
             <CovidUsDataComplete data ={CovUsData}/>
+            </div>
             </main>
             
         )
