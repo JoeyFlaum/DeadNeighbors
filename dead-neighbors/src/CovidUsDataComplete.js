@@ -6,6 +6,7 @@ const CovidUsDataComplete=({data})=>{
     {data.map((info,i)=>{
         let date = new Date(data[i].dateChecked);
     return(
+
         <CovidUsDataCard
             key = {data[i].date}
             date = {date}

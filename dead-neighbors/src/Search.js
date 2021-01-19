@@ -79,7 +79,7 @@ class SearchFeature extends React.Component {
     return (
       <div className ='stateSearch'>
        
-        <h2 >State Search</h2>
+        <h2>Filter State Info Below</h2>
         <form className="searchWrapper" onSubmit={(e) => e.preventDefault()}>
           {" "}
           <input

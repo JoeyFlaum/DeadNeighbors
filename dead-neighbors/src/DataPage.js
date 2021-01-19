@@ -36,6 +36,8 @@ class DataPage extends React.Component{
             <main className = 'dataPage' style={{marginTop:'200px'}}>
             <Slider
               boolean = {this.slideHandler.bind(this)} usStateBoolean = {slider}/>
+          {!slider?
+          (<>
             <SearchFeature 
               className= "searchfeature"  
               onEnter = {this.searchHandler} 
@@ -44,10 +46,12 @@ class DataPage extends React.Component{
               <CovidStateData
                   data = {(searchField === "")?[]:filteredStates}/>
             </div>
+            </>
+            ):(
             <div className = 'usStats'>
-
             <CovidUsDataComplete data ={CovUsData}/>
             </div>
+            )}
             </main>
             
         )

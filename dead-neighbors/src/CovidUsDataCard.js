@@ -11,6 +11,7 @@ const CovidUsDataCard = ({
 }) => {
   return (
     <div className="usDataCard">
+      <h5>US Daily Info</h5>
       <p>{date.toDateString()}</p>
       <p>Total US deaths: {death?death.toLocaleString():0}<br/> Thats {deathIncrease?deathIncrease.toLocaleString():0} more deaths than the previous day.</p>
       <p>Positve: {positive?positive.toLocaleString():0}<br/>Positive Increase: {positiveIncrease?positiveIncrease.toLocaleString():0}</p>
