@@ -44,6 +44,7 @@ class DataPage extends React.Component{
             />
             <div className = 'stateStats'>
               <CovidStateData
+                  key = {searchField}
                   data = {(searchField === "")?[]:filteredStates}/>
             </div>
             </>

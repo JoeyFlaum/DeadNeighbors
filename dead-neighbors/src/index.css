@@ -331,7 +331,9 @@ header{
   color: var(--black);
   padding:1em;
   box-shadow:var(--shadow);
+  background-color: var(--lightgrey);
   margin:1em;
+  border:1px groove;
 }
 footer{
   grid-area: footer;
