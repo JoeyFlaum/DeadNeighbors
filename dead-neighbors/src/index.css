@@ -23,6 +23,7 @@ html{
   --red:#E63946;
   --shadow:0 2px 15px #c5b9b9;
   --grey:#c3c3c3;
+  --darkGrey:#5a5959;
   --lightgrey:#e9e9e9;
    box-sizing: border-box;
   font-family: Arial, Helvetica, san-serif;
@@ -220,7 +221,7 @@ header{
   }
 
   .slider{
-    transition:.5s;
+    transition:1s;
     background-color: var(--darkBlue);
   }
   .slider h4{
@@ -231,12 +232,19 @@ header{
     cursor: pointer;
   }
   .slide{
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1) .75s;
     position: absolute;
     top:4px;
-    left:4px;
+    left:3px;
     border:2px solid var(--grey);
     border-radius: 28px;
     /* box-shadow: inset 0 2px 15px var(--darkBlue); */
+  }
+  .slideState{
+    left:117px;
+  }
+  .infoSection{
+    font-family: 'Courier New', Courier, monospace;
   }
   .searchWrapper{
     z-index: 3;
@@ -333,7 +341,7 @@ header{
   box-shadow:var(--shadow);
   background-color: var(--lightgrey);
   margin:1em;
-  border:1px groove;
+  border:5px double rgb(41, 41, 41);
 }
 footer{
   grid-area: footer;
