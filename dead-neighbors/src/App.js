@@ -6,6 +6,7 @@ import DataPage from "./DataPage";
 import DeadNeighborsPage from "./DeadNeighborsPage";
 import Resources from "./Resources";
 import About from "./About";
+import Footer from "./Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -280,22 +281,7 @@ class App extends Component {
             <Route path="/resources" component={Resources} />
             <Route path="/about" component={About} />
           </Switch>
-          <footer>
-            <h3>Footer stuff goes here...</h3>
-            <div className="App">
-              <h2>{this.state.searchField}</h2>
-            </div>
-            <span>
-              Hero Photo by{" "}
-              <a href="https://unsplash.com/@aimlesscode?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
-                Emin BAYCAN
-              </a>{" "}
-              on{" "}
-              <a href="https://unsplash.com/s/photos/face-mask?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
-                Unsplash
-              </a>
-            </span>
-          </footer>
+          <Footer/>
         </div>
       </Router>
     );

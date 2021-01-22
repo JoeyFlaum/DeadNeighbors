@@ -344,7 +344,25 @@ header{
   border:5px double rgb(41, 41, 41);
 }
 footer{
-  grid-area: footer;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  margin-top:5em;
+  padding:1em;
+  font-size: small;
+  justify-content: center;
+}
+footer ul{
+  display:flex;
+  flex-direction: row;
+  margin:1em;
+  list-style:none;
+}
+footer li{
+  margin:1em;
+}
+footer h3{
+  margin: 1em;
 }
 
 .timer{
