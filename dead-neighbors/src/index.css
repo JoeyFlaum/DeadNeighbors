@@ -348,21 +348,23 @@ footer{
   flex-wrap:wrap;
   align-items:baseline;
   margin-top:5em;
-  padding:1em;
+  padding:0px 1em;
   font-size: small;
   justify-content: center;
 }
 footer ul{
   display:flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  margin:1em;
+  margin:0px 1em;
+  height: max-content;
   list-style:none;
 }
 footer li{
-  margin:1em;
+  margin:0px 1em;
 }
 footer h3{
-  margin: 1em;
+  margin:0px 1em;
 }
 
 .timer{
