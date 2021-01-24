@@ -35,6 +35,12 @@ html{
   --font-family-sans-serif: "Montserrat","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
+@media only screen and (max-width: 600px) {
+.deadTitle{
+  font-size: 60%;
+  padding:0px;
+}
+}
 header{
   display:flex;
   position: fixed;
@@ -50,9 +56,7 @@ header{
   border-bottom:1px solid var(--grey);
 
 }
-  .deadTitle{
-    padding-left:7rem;
-  }
+
   .headerTitle {
     flex:none;
     align-self:flex-start;
@@ -344,27 +348,43 @@ header{
   border:5px double rgb(41, 41, 41);
 }
 footer{
+  font-size: small;
+}
+.footer-main{
   display:flex;
   flex-wrap:wrap;
   align-items:baseline;
   margin-top:5em;
   padding:0px 1em;
-  font-size: small;
   justify-content: center;
 }
-footer ul{
+footer>span:first-of-type{
+  display:flex;
+  justify-content: center;
+  margin:1em;
+}
+.footer-main ul{
   display:flex;
   flex-wrap: wrap;
   flex-direction: row;
   margin:0px 1em;
   height: max-content;
   list-style:none;
+  padding:0;
 }
-footer li{
+.footer-main li{
   margin:0px 1em;
 }
-footer h3{
-  margin:0px 1em;
+.footer-credit{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  margin:1em;
+  font-size: small;
+  justify-content: center;
+}
+.footer-credit .title{
+  font-weight: 700;
 }
 
 .timer{
