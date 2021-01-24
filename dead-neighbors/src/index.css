@@ -35,12 +35,7 @@ html{
   --font-family-sans-serif: "Montserrat","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   --font-family-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
-@media only screen and (max-width: 600px) {
-.deadTitle{
-  font-size: 60%;
-  padding:0px;
-}
-}
+
 header{
   display:flex;
   position: fixed;
@@ -56,7 +51,9 @@ header{
   border-bottom:1px solid var(--grey);
 
 }
-
+  .deadTitle{
+    padding-left:4rem;
+  }
   .headerTitle {
     flex:none;
     align-self:flex-start;
@@ -126,7 +123,7 @@ header{
   }
   /*main*/
   .homePage{
-  padding-top:0px;
+    padding-top:0px;
   display:grid;
   gap:20px;
   grid-template-columns:repeat(auto-fit,minmax(600x,1fr));
@@ -135,17 +132,16 @@ header{
   "info info info";
 }
 
-  .heroContainer{
+.heroContainer{
     grid-area:hero;
     padding-left: 20rem;
     margin-top:-12rem;
     width:fit-content;
     justify-self: center;
-
+    
   }
   main img{
     position: relative;
-    margin-left: minmax(auto,20em);
     box-shadow: var(--shadow);
     max-width: 800px;
     width:100%;
@@ -170,6 +166,7 @@ header{
     justify-content:flex-end;
     margin:0;
   }
+  
   .homePage button{
     cursor: pointer;
     font-size: 1.2rem;
@@ -205,6 +202,8 @@ header{
     padding:1em;
     height:400px;
     max-width:400px;
+    width:100%;
+    
     box-shadow: var(--shadow);
   }
   .blog, .about{
@@ -256,7 +255,7 @@ header{
     display:flex;
     flex-direction: column;
   }
-
+  
   .searchWrapper input{
     width:500px;
     height:40px;
@@ -310,8 +309,8 @@ header{
   }
   /* Hide scrollbar for IE, Edge and Firefox */
   .searchfield,.stateDeaths, .usDataComplete {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 /*results from search*/
 .stateData{
@@ -395,3 +394,44 @@ footer>span:first-of-type{
   left:0;
   font-size: .1px;
 }
+@media only screen and (max-width: 600px) {
+  .deadTitle{
+    font-size: 60%;
+    padding-left:10px;
+  }
+  .heroContainer{
+    padding:0;
+    margin-top:75px;
+    width:auto;
+    max-width: 800px;
+  }
+}
+@media only screen and (max-width: 1075px) {
+  .homePage{
+    display:flex;
+    flex-wrap:none;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+  }
+  .heroContainer{
+    padding:0;
+    margin-top:200px;
+    width:auto;
+    max-width: 800px;
+  }
+  main .peopleCard{
+    margin:0;
+    position: static;
+    z-index: 0;
+    max-width: 800px;
+  }
+  .main img{
+    margin:0;
+    position:static;
+    min-width: 300px;
+  }
+  .infoCard{
+    margin:0 2em;
+  }
+  }
