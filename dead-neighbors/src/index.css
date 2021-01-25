@@ -233,10 +233,20 @@ header{
   .slider{
     transition:1s;
     background-color: var(--darkBlue);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: none;
+    justify-content: space-around;
+    width: 250px;
+    height: 45px;
+    border-radius: 50px;
   }
   .slider h4{
     color:var(--lightgrey);
     font-weight:600;
+    margin:0; 
+    align-self: center;
   }
   .slider h4:hover{
     cursor: pointer;
@@ -424,6 +434,10 @@ footer>span:first-of-type{
   .dataPage{
     margin-top:100px;
   }
+  .slider {
+    font-size:130%;
+  }
+
 }
 @media only screen and (max-width: 1075px) and (min-width:600px){
   .heroContainer{
