@@ -247,7 +247,9 @@ class App extends Component {
             )}
 
           <Header screenWidth={this.state.screenWidth} />
+
           <Switch>
+            <div className = 'switch'>
             <Route
               path="/"
               exact
@@ -280,6 +282,7 @@ class App extends Component {
             />
             <Route path="/resources" component={Resources} />
             <Route path="/about" component={About} />
+          </div>
           </Switch>
           <Footer/>
         </div>

@@ -33,7 +33,7 @@ class DataPage extends React.Component{
         })
      
         return(
-            <main className = 'dataPage' style={{marginTop:'200px'}}>
+            <main className = 'dataPage'>
             <Slider
               boolean = {this.slideHandler.bind(this)} usStateBoolean = {slider}/>
           <div className = "infoSection">
