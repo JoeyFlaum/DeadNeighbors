@@ -239,13 +239,28 @@ header{
     width: 250px;
     height: 45px;
     background-color: var(--darkBlue);
+<<<<<<< HEAD
+=======
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: none;
+    justify-content: space-around;
+    width: 250px;
+    height: 45px;
+>>>>>>> main
     border-radius: 50px;
   }
   .slider h4{
     color:var(--lightgrey);
     font-weight:600;
+<<<<<<< HEAD
     margin: 0;
     align-self:center;
+=======
+    margin:0; 
+    align-self: center;
+>>>>>>> main
   }
   .slider h4:hover{
     cursor: pointer;
@@ -436,6 +451,7 @@ footer>span:first-of-type{
   .dataPage{
     margin-top:100px;
   }
+<<<<<<< HEAD
   /*slider/slide size is 75% of larger width*/
   .slider{
     width: 187.5px;
@@ -468,6 +484,12 @@ footer>span:first-of-type{
     width: 260px;
     margin-top: 33px;
   }
+=======
+  .slider {
+    font-size:130%;
+  }
+
+>>>>>>> main
 }
 @media only screen and (max-width: 1075px) and (min-width:600px){
   .heroContainer{
