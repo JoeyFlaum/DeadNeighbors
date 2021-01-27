@@ -2,9 +2,18 @@ import React from "react";
 
 const Slider = ({ boolean, usStateBoolean }) => {
 
-  const slideStyleUS = { height: "33px", width: "103px" };
-  const slideStyleState = { height: "33px", width: "125px" };
   return (
+<<<<<<< HEAD
+    <div
+      className="slider"
+      onClick={boolean}
+    >
+      <div
+        className={usStateBoolean?"slide slide-us":"slide slide-state"}
+      ></div>
+      <h4 >US Info</h4>
+      <h4 >State Info</h4>
+=======
     <div className="slider" onClick={boolean}>
       <div
         className={usStateBoolean ? "slide" : "slide slideState"}
@@ -12,6 +21,7 @@ const Slider = ({ boolean, usStateBoolean }) => {
       ></div>
       <h4>US Info</h4>
       <h4>State Info</h4>
+>>>>>>> main
     </div>
   );
 };
