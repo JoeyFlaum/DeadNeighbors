@@ -230,27 +230,41 @@ header{
   flex-wrap:wrap;
   justify-content: center; 
 }
-  .slider{
-    transition:1s;
+.slider{
+    display: flex;
+    flex-wrap: none;
+    flex-direction: row;
+    justify-content: space-around;
+    position:relative;
+    width: 250px;
+    height: 45px;
     background-color: var(--darkBlue);
+    border-radius: 50px;
   }
   .slider h4{
     color:var(--lightgrey);
     font-weight:600;
+    margin: 0;
+    align-self:center;
   }
   .slider h4:hover{
     cursor: pointer;
   }
   .slide{
-    transition:cubic-bezier(0.075, 0.82, 0.165, 1) .75s;
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1) .5s;
     position: absolute;
     top:4px;
-    left:3px;
+    height:33px; 
     border:2px solid var(--grey);
     border-radius: 28px;
     /* box-shadow: inset 0 2px 15px var(--darkBlue); */
   }
-  .slideState{
+  .slide-us{
+    width: 103px;
+    left:3px;
+  }
+  .slide-state{
+    width: 125px; 
     left:117px;
   }
   .infoSection{
@@ -331,9 +345,7 @@ header{
   flex-wrap: none;
 
 }
-.usStats{
-  transform:
-}
+
 .stateDeaths, .usDataComplete{
   padding-top:5px;
   justify-content: auto;
@@ -409,7 +421,7 @@ footer>span:first-of-type{
     font-size: 60%;
     padding-left:10px;
   }
-  .switch{
+  .routes{
     font-size: 75%;
   }
   .heroContainer{
@@ -423,6 +435,38 @@ footer>span:first-of-type{
   }
   .dataPage{
     margin-top:100px;
+  }
+  /*slider/slide size is 75% of larger width*/
+  .slider{
+    width: 187.5px;
+    height: 34.75px;
+  }
+  .slide{
+    top:3px;
+    height:24.75px; 
+  }
+  .slide-us{
+    width: 77.5px;
+    left:3px;
+  }
+  .slide-state{
+    width: 93.75px; 
+    left:87px;
+  }
+  .searchWrapper input{
+    width:275px;
+    height:30px;
+    font-size: .75em;
+    border:1px solid var(--grey);
+    border-radius: 30px;
+    outline:none;
+    padding-left: 20px;
+  }
+
+  .searchfield{
+    max-height: 255px;
+    width: 260px;
+    margin-top: 33px;
   }
 }
 @media only screen and (max-width: 1075px) and (min-width:600px){
