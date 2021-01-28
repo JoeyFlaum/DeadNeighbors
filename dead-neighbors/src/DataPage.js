@@ -17,11 +17,11 @@ class DataPage extends React.Component{
   /*handle enter key and button click for state search*/
   searchHandler= (event)=>{
     console.log('app event',event.target)
-    if(event.key === 'Enter'|| event.type==='click'){
+    if(event.key === 'Enter'|| event.type ==='click'){
       this.setState({searchField: event.target.value})
     }
   }       
-  slideHandler=(prevState)=>{
+  slideHandler=()=>{
     this.setState({slider:!this.state.slider})
   }
     render(){
@@ -30,6 +30,10 @@ class DataPage extends React.Component{
         let filteredStates = [];
         filteredStates = CovStateData.filter((stateData)=>{
         return (stateData.stateFullName.toLowerCase().includes(searchField.toLowerCase()));
+        })
+        let unfilteredStates = []
+        unfilteredStates = CovStateData.slice(0,56).filter((stateData)=>{
+          return (stateData.stateFullName.toLowerCase().includes(searchField.toLowerCase()));
         })
      
         return(
@@ -46,7 +50,7 @@ class DataPage extends React.Component{
             <div className = 'stateStats'>
               <CovidStateData
                   key = {searchField}
-                  data = {(searchField === "")?[]:filteredStates}/>
+                  data = {(searchField === "")?unfilteredStates:filteredStates}/>
             </div>
             </>
             ):(

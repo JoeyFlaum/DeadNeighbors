@@ -115,7 +115,7 @@ class SearchFeature extends React.Component {
                           onBlur={this.suggestionFocusHandler}
                           value={filteredStates[i].stateFullName}
                         >
-                          {filteredStates[i].stateFullName}
+                          {filteredStates[i].stateFullName + ", " + filteredStates[i].stateAbbreviation   }
                         </button>
                       </li>
                     );

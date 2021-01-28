@@ -349,7 +349,7 @@ header{
 .stateDeaths, .usDataComplete{
   padding-top:5px;
   justify-content: auto;
-  height:650px;
+  height:1100px;
   margin:75px 5%;
   overflow-y:scroll;
   display:flex;
@@ -430,10 +430,10 @@ footer>span:first-of-type{
     width:auto;
     max-width: 800px;
   }
-  .blog, .about, .resources{
+  .resources{
     margin-top:75px
   }
-  .dataPage{
+  .dataPage, .blog, .about{
     margin-top:100px;
   }
   /*slider/slide size is 75% of larger width*/

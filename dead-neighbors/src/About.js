@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className = "about" style={{ marginTop: "200px" }}>
+    <div className = "about">
       <div className="content" style={{flexDirection:"column"}}>
         <h2>About--Placeholder</h2>
         <p>

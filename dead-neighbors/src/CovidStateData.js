@@ -11,7 +11,7 @@ const CovidStateData = ({ data }) => {
           let day = new Date(data[i].dateChecked);
           return (
             <CovidStateDataCard
-              key={data[i].date}
+              key={i}
               date={day}
               stateid={data[i].stateFullName}
               death={data[i].death}

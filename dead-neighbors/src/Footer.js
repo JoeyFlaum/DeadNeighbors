@@ -25,6 +25,8 @@ const Footer = () => {
       </div>
       <span><a target="_blank" rel="nofollow noopener noreferrer" href='/'>Suggestions / Issues / Contact</a></span>
       <div className = "footer-credit"><div className = 'title'>Credits:&nbsp;</div> 
+      <div className = 'credits'>
+      <div>Data Source - The COVID Tracking Project at The Atlantic</div>
       <span >
         Hero Photo by{" "}
         <a target="_blank" rel="nofollow noopener noreferrer" href="https://unsplash.com/@aimlesscode?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">
@@ -35,6 +37,7 @@ const Footer = () => {
           Unsplash
         </a>
       </span>
+      </div>
       </div>
     </footer>
   );
