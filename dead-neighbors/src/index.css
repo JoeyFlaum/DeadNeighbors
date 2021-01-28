@@ -209,7 +209,8 @@ header{
   .blog, .about{
     display: flex;
     flex-direction: column;
-    width:100%;
+    margin-left:15%;
+    margin-right:15%;
   }
   .content{
     margin:0 10px 50px 10px;
@@ -434,6 +435,10 @@ footer>span:first-of-type{
   .dataPage, .blog, .about{
     margin-top:100px;
   }
+  .blog, .about{
+    margin-left:5%;
+    margin-right:5%;
+  }
   /*slider/slide size is 75% of larger width*/
   .slider{
     width: 187.5px;
@@ -465,6 +470,10 @@ footer>span:first-of-type{
 @media only screen and (max-width: 1075px) and (min-width:600px){
   .heroContainer{
     margin-top:200px;
+  }
+  .blog, .about{
+    margin-left:7%;
+    margin-right:7%;
   }
   }
 @media only screen and (max-width: 1075px){
