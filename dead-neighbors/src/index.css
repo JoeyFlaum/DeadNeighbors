@@ -167,7 +167,7 @@ main .peopleCardInfo {
   margin: 0;
 }
 
-.homePage button {
+.homePage button,.resources button {
   cursor: pointer;
   font-size: 1.2rem;
   margin: 1rem 0;
@@ -203,15 +203,29 @@ main .infoCardContainer {
   max-width: 500px;
   width: 100%;
   box-shadow: var(--shadow);
-  transition:.5s;
-}
-.infoCard:hover{
-  transform: scale(1.1);
-  cursor: pointer;
 }
 .infoCard img{
 width:100%;
 height:100%;
+}
+.resources .infoCard{
+  padding:20px;
+  padding-bottom: 100px;
+  border:1.4px dotted var(--grey);
+}
+.resources button{
+  margin-top:20px;
+
+}
+.who{
+  position:relative;
+}
+.copywright{
+position:absolute;
+top:78%;
+left:25px;
+color:var(--lightgrey);
+font-size: xx-small;
 }
 .blog,
 .about {
@@ -335,15 +349,12 @@ height:100%;
   margin-left: 18px;
 }
 /* hide scroll on search */
-.searchfield::-webkit-scrollbar,
-.stateDeaths::-webkit-scrollbar,
-.usDataComplete::-webkit-scrollbar {
+.searchfield::-webkit-scrollbar
+ {
   display: none;
 }
 /* Hide scrollbar for IE, Edge and Firefox */
-.searchfield,
-.stateDeaths,
-.usDataComplete {
+.searchfield{
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
