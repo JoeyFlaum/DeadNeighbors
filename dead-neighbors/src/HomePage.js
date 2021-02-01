@@ -67,7 +67,7 @@ class HomePage extends Component {
             <img src={Typewriter} alt="Typewriter with #Covid-19 on paper" />
             <Link to="/about">
               <button>
-                <div className="click-me">About Dead Neighbors</div>
+                <div className="click-me">Dead Neighbors Blog</div>
               </button>
             </Link>
           </div>

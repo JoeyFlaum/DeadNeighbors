@@ -433,7 +433,6 @@ footer > span:first-of-type {
 .credits{
   display:flex;
   flex-direction: column;
-  
 }
 
 .timer {
