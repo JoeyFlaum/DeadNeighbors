@@ -25,12 +25,10 @@ class News extends React.Component {
 
   render() {
     let covidNews = this.state.covidNews;
-    console.log("news", covidNews.articles.length!==0?covidNews.articles[0].multimedia[0].url:'blah');
+    console.log("news", covidNews.articles.length!==0?covidNews.articles:'blah');
     return (
       <div className="news-wrapper">
-        <div className="content">
-        <Articles/>
-        </div>
+        {covidNews.articles.length!==0?<Articles data = {covidNews.articles} />:"Loading News..."}
       </div>
     );
   }

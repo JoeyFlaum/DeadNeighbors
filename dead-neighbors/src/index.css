@@ -167,7 +167,7 @@ main .peopleCardInfo {
   margin: 0;
 }
 
-.homePage button,.resources button {
+.homePage button,.resources button, .infoCard button {
   cursor: pointer;
   font-size: 1.2rem;
   margin: 1rem 0;
@@ -227,12 +227,22 @@ left:25px;
 color:var(--lightgrey);
 font-size: xx-small;
 }
-.blog,
+.single-article-wrapper{
+  display:flex;
+  margin:30px 0px;
+}
+.reverse{
+  flex-direction: row-reverse;
+}
+.news-wrapper,
 .about {
   display: flex;
   flex-direction: column;
   margin-left: 15%;
   margin-right: 15%;
+}
+.news-wrapper h1{
+  font-family: "Engravers' Old English";
 }
 .content {
   margin: 0 10px 50px 10px;
@@ -245,7 +255,7 @@ font-size: xx-small;
 }
 .dataPage,
 .resources,
-.blog,
+.news-wrapper,
 .about {
   margin-top: 200px;
 }
@@ -464,11 +474,11 @@ footer > span:first-of-type {
     margin-top: 75px;
   }
   .dataPage,
-  .blog,
+  .news-wrapper,
   .about {
     margin-top: 100px;
   }
-  .blog,
+  .news-wrapper,
   .about {
     margin-left: 5%;
     margin-right: 5%;
@@ -505,7 +515,7 @@ footer > span:first-of-type {
   .heroContainer {
     margin-top: 200px;
   }
-  .blog,
+  .news-wrapper,
   .about {
     margin-left: 7%;
     margin-right: 7%;
