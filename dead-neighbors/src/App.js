@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Blog from "./Blog";
+import News from "./News";
 import HomePage from "./HomePage";
 import Header from "./Header";
 import DataPage from "./DataPage";
@@ -268,7 +268,7 @@ class App extends Component {
                 )
               }
             />
-            <Route path="/blog" component={Blog} />
+            <Route path="/news" component={News} />
             <Route
               path="/info"
               exact

@@ -65,9 +65,9 @@ class HomePage extends Component {
           </div>
           <div className="infoCard blog-deadneighbors">
             <img src={Typewriter} alt="Typewriter with #Covid-19 on paper" />
-            <Link to="/about">
+            <Link to="/news">
               <button>
-                <div className="click-me">Dead Neighbors Blog</div>
+                <div className="click-me">Dead Neighbors News</div>
               </button>
             </Link>
           </div>

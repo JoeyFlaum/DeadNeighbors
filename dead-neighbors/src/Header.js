@@ -67,8 +67,8 @@ class Header extends React.Component {
               <Link to="/" style={linkStyleMobile} onClick={hamburgerClick}>
                 <li>Home</li>
               </Link>
-              <Link to="/blog" style={linkStyleMobile} onClick={hamburgerClick}>
-                <li>Blog</li>
+              <Link to="/news" style={linkStyleMobile} onClick={hamburgerClick}>
+                <li>News</li>
               </Link>
               <Link
                 to="/resources"
@@ -95,8 +95,8 @@ class Header extends React.Component {
               <Link to="/" style={linkStyle}>
                 <li>Home</li>
               </Link>
-              <Link to="/blog" style={linkStyle}>
-                <li>Blog</li>
+              <Link to="/news" style={linkStyle}>
+                <li>News</li>
               </Link>
               <Link to="/resources" style={linkStyle}>
                 <li>Resources</li>
