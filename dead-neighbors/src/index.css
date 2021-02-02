@@ -227,14 +227,26 @@ left:25px;
 color:var(--lightgrey);
 font-size: xx-small;
 }
+.news-wrapper{
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+}
 .single-article-wrapper{
   display:flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   margin:30px 0px;
 }
 .reverse{
   flex-direction: row-reverse;
 }
-.news-wrapper,
+.article-title{
+  max-width: 640px;
+  min-width: 300px;
+  width:100%;
+}
 .about {
   display: flex;
   flex-direction: column;
@@ -242,7 +254,7 @@ font-size: xx-small;
   margin-right: 15%;
 }
 .news-wrapper h1{
-  font-family: "Engravers' Old English";
+  font-family: 'Bodoni Moda', serif,'Old English';
 }
 .content {
   margin: 0 10px 50px 10px;
