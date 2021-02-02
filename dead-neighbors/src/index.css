@@ -252,6 +252,7 @@ font-size: xx-small;
   flex-direction: column;
   margin-left: 15%;
   margin-right: 15%;
+  background: linear-gradient(to right, var(--lightgrey),rgba(255, 255, 255, 0.356));
 }
 .news-wrapper h1{
   font-family: 'Bodoni Moda', serif,'Old English';
