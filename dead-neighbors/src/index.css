@@ -14,7 +14,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-html {
+:root{
   /*used coolors.co palette*/
   --darkBlue: #1d3557;
   --lightBlue: #457b9d;
@@ -252,6 +252,7 @@ font-size: xx-small;
   flex-direction: column;
   margin-left: 15%;
   margin-right: 15%;
+  padding-top:45px;
   background: linear-gradient(to right, var(--lightgrey),rgba(255, 255, 255, 0.356));
 }
 .news-wrapper h1{
@@ -260,11 +261,16 @@ font-size: xx-small;
 .content {
   margin: 0 10px 50px 10px;
   padding: 1em;
+  padding-left: 15%;
   align-self: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  box-shadow: var(--shadow);
+  box-shadow: 30px 0 30px #c5b9b9;
+}
+.content h3{
+  align-self: center;
+  text-decoration: underline;
 }
 .dataPage,
 .resources,
@@ -491,10 +497,14 @@ footer > span:first-of-type {
   .about {
     margin-top: 100px;
   }
+
   .news-wrapper,
   .about {
     margin-left: 5%;
     margin-right: 5%;
+  }
+  .content {
+    padding-left: 10%;
   }
   /*slider/slide size is 75% of larger width*/
   .slider {

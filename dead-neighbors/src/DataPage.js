@@ -11,7 +11,10 @@ class DataPage extends React.Component{
                 CovStateData: props.covStateData,
                 CovUsData:props.covUsData,
                 searchField: '',
-                slider:true
+                slider:true,
+                originalView:true,
+                sortWorst:false,
+                filterMostRecent:false,
             }
       }
   /*handle enter key and button click for state search*/
@@ -24,6 +27,10 @@ class DataPage extends React.Component{
   slideHandler=()=>{
     this.setState({slider:!this.state.slider})
   }
+  /*filter and sort state/us data*/
+  viewHandler=(data)=>{
+    data.sort()
+  }
     render(){
       console.log(this.state.slider)
         const {CovStateData,searchField,CovUsData,slider} = this.state;
@@ -35,7 +42,6 @@ class DataPage extends React.Component{
         unfilteredStates = CovStateData.slice(0,56).filter((stateData)=>{
           return (stateData.stateFullName.toLowerCase().includes(searchField.toLowerCase()));
         })
-     
         return(
             <main className = 'dataPage'>
             <Slider
@@ -50,7 +56,7 @@ class DataPage extends React.Component{
             <div className = 'stateStats'>
               <CovidStateData
                   key = {searchField}
-                  data = {(searchField === "")?unfilteredStates:filteredStates}/>
+                  data = {(searchField === "")?/*this.viewHandler*/(unfilteredStates):filteredStates}/>
             </div>
             </>
             ):(
