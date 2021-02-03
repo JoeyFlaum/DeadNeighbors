@@ -253,7 +253,7 @@ font-size: xx-small;
   margin-left: 15%;
   margin-right: 15%;
   padding-top:45px;
-  background: linear-gradient(to right, var(--lightgrey),rgba(255, 255, 255, 0.356));
+  background: linear-gradient(to right, var(--lightgrey),rgba(255, 255, 255, 0.157));
 }
 .news-wrapper h1{
   font-family: 'Bodoni Moda', serif,'Old English';
@@ -319,6 +319,9 @@ font-size: xx-small;
 .slide-state {
   width: 125px;
   left: 117px;
+}
+.data-radios{
+  display:flex;
 }
 .infoSection {
   font-family: "Courier New", Courier, monospace;
