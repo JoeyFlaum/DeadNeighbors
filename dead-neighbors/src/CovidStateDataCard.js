@@ -10,21 +10,21 @@ const CovidStateDataCard = ({ stateid, date,
   return (
     <div className="stateDataCard">
       <h5>{stateid} Daily Info</h5>
-      <p>Date: {date.toDateString()}</p>
+      <p><strong>Date:</strong> {date.toDateString()}</p>
       <p>
-        Total {stateid} deaths: {death ? death.toLocaleString() : 0}
-        <br /> That's {deathIncrease ? deathIncrease.toLocaleString() : 0} more
+      <strong>Total {stateid} deaths:</strong> {death ? death.toLocaleString() : 0}
+        <br /> That's <strong>{deathIncrease ? deathIncrease.toLocaleString() : 0} </strong>more
         deaths than the previous day.
       </p>
       <p>
-        Positve: {positive ? positive.toLocaleString() : 0}
+      <strong>Positve: </strong>{positive ? positive.toLocaleString() : 0}
         <br />
-        Positive Increase:{" "}
+        <strong>Positive Increase:</strong>
         {positiveIncrease ? positiveIncrease.toLocaleString() : 0}
       </p>
       <p>
-        Negative: {negative ? negative.toLocaleString() : 0}
-        <br /> Negative Increase:{" "}
+      <strong>Negative: </strong>{negative ? negative.toLocaleString() : 0}
+        <br /> <strong>Negative Increase:</strong>
         {negativeIncrease ? negativeIncrease.toLocaleString() : 0}
       </p>
       <p></p>
