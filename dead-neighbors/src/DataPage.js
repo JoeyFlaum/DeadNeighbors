@@ -17,7 +17,6 @@ class DataPage extends React.Component {
   }
   /*handle enter key and button click for state search*/
   searchHandler = (event) => {
-    console.log("app event", event.target);
     if (event.key === "Enter" || event.type === "click") {
       this.setState({ searchField: event.target.value });
     }
@@ -32,7 +31,7 @@ class DataPage extends React.Component {
 
   /*filter and sort state/us data*/
   viewHandler = (data) => {
-    const { dataView, CovStateData, CovUsData } = this.state;
+    const { dataView, CovStateData} = this.state;
     if (dataView === "Death Increase Daily - High To Low") {
       data.sort((a, b) => b.deathIncrease - a.deathIncrease || b.date - a.date);
       return data;
@@ -50,25 +49,31 @@ class DataPage extends React.Component {
       );
       return data;
     } else if (dataView === "Date - Oldest To Recent") {
-      data.sort((a, b) => b.date - a.date);
-      return data;
-    } else if (dataView === "Date - Recent To Oldest") {
       data.sort((a, b) => a.date - b.date);
       return data;
-    } 
-    else if (dataView === "Worst Day - By State") {
+    } else if (dataView === "Date - Recent To Oldest") {
+      data.sort((a, b) => b.date - a.date);
+      return data;
+    } else if (dataView === "Worst Day - By State") {
       /*sort by state name and deaths*/
-        CovStateData.sort((a, b) => {
-        return(a.stateFullName.toLowerCase().localeCompare(b.stateFullName.toLowerCase())|| b.deathIncrease - a.deathIncrease)
-      })
-
-        console.log("viewHandler", CovStateData);
-       CovStateData.slice(0,100)
+      CovStateData.sort((a, b) => {
+        return (
+          a.stateFullName
+            .toLowerCase()
+            .localeCompare(b.stateFullName.toLowerCase()) ||
+          b.deathIncrease - a.deathIncrease
+        );
+      });
       
-      return CovStateData;
-      } 
-  
-    else {
+        let stateChecker = "";
+        let worstDaysByState = []
+        CovStateData.forEach((data,i) => {
+        if(i === 0){stateChecker = data.state; return worstDaysByState.push(data)}
+        else if (data.state !== stateChecker){ stateChecker = data.state; return worstDaysByState.push(data)};
+      });
+      console.log("viewHandler", worstDaysByState);
+      return worstDaysByState;
+    } else {
       return data;
     }
   };
@@ -151,7 +156,7 @@ class DataPage extends React.Component {
                   value="Worst Day - By State"
                 />
                 <label htmlFor="Worst Day - By State">
-                Worst Day - By State
+                  Worst Day - By State
                 </label>
               </>
             ) : null}

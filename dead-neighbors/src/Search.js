@@ -12,7 +12,6 @@ class SearchFeature extends React.Component {
   }
   /*handle button click to populate input field of search*/
   buttonHandler = (event) => {
-    console.log("button", event);
     this.setState({
       inputField: "",
       suggestions: false,
@@ -27,7 +26,6 @@ class SearchFeature extends React.Component {
     } else if (eType === "mouseleave") {
       this.setState({ mouseOverSuggestions: false });
     }
-    console.log("mouse event", event);
   };
   /*handles events from input/button/li to show or hide suggestions*/
   suggestionFocusHandler = (event) => {
@@ -35,28 +33,22 @@ class SearchFeature extends React.Component {
     switch (event.type) {
       case "focus":
         this.setState({ suggestions: true });
-        console.log("focus", event);
         break;
       case "change":
         this.setState({ suggestions: true });
-        console.log("change", event);
         break;
       case "click":
         this.setState({ suggestions: true });
-        console.log("click", event);
         break;
       case "blur":
         if (mouseOverSuggestions) {
           this.setState({ suggestions: true });
-          console.log("Show, MousoverTrue");
           break;
         } else {
           this.setState({ suggestions: false });
-          console.log("blur, MouseoverFalse");
           break;
         }
       default:
-        console.log("Switch default");
         break;
     }
   };
