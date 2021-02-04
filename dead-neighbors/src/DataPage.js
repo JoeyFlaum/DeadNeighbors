@@ -5,15 +5,14 @@ import CovidUsDataComplete from "./CovidUsDataComplete";
 import Slider from "./Slider";
 
 class DataPage extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      CovStateData: props.covStateData,
-      CovUsData: props.covUsData,
       searchField: "",
       slider: true,
       dataView: "",
     };
+    this.slideHandler = this.slideHandler.bind(this);
   }
   /*handle enter key and button click for state search*/
   searchHandler = (event) => {
@@ -24,14 +23,15 @@ class DataPage extends React.Component {
   slideHandler = () => {
     this.setState({ slider: !this.state.slider });
   };
-  /*set state of radio button choice*/
+  /*set state of radio input choice*/
   filterSortView = (event) => {
     this.setState({ dataView: event.target.value });
   };
 
   /*filter and sort state/us data*/
   viewHandler = (data) => {
-    const { dataView, CovStateData} = this.state;
+    const { dataView } = this.state;
+    const CovStateData = this.props.covStateData
     if (dataView === "Death Increase Daily - High To Low") {
       data.sort((a, b) => b.deathIncrease - a.deathIncrease || b.date - a.date);
       return data;
@@ -55,7 +55,7 @@ class DataPage extends React.Component {
       data.sort((a, b) => b.date - a.date);
       return data;
     } else if (dataView === "Worst Day - By State") {
-      /*sort by state name and deaths*/
+      /*sort objects alphabetical order by state and then by deaths*/
       CovStateData.sort((a, b) => {
         return (
           a.stateFullName
@@ -79,7 +79,9 @@ class DataPage extends React.Component {
   };
 
   render() {
-    const { CovStateData, searchField, CovUsData, slider } = this.state;
+    const {searchField,slider } = this.state;
+    const CovStateData = this.props.covStateData;
+    const CovUsData = this.props.covUsData;
     let filteredStates = [];
     filteredStates = CovStateData.filter((stateData) => {
       return stateData.stateFullName
@@ -95,7 +97,7 @@ class DataPage extends React.Component {
     return (
       <main className="dataPage">
         <Slider
-          boolean={this.slideHandler.bind(this)}
+          boolean={this.slideHandler}
           usStateBoolean={slider}
         />
         <div className="infoSection">

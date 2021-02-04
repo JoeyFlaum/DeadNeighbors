@@ -12,7 +12,7 @@ const CovidUsDataCard = ({
   return (
     <div className="usDataCard">
       <h5>US Daily Info</h5>
-      <p>Date: {date.toDateString()}</p>
+      <p><strong></strong>Date: {date.toDateString()}</p>
       <p>
         Total US deaths: {death ? death.toLocaleString() : 0}
         <br /> That's {deathIncrease ? deathIncrease.toLocaleString() : 0} more
