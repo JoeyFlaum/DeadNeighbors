@@ -22,15 +22,14 @@ class HomePage extends Component {
     }
   }
   render() {
-    const { CovUSdata, deadPerson } = this.state;
+    const {deadPerson } = this.state;
     console.log("deadHomePage", deadPerson);
-    console.log("deadHomePage", CovUSdata);
     return (
       <main className="homePage">
         <div className="heroContainer">
           <div className="peopleCard">
             <div className="peopleCardInfo">
-              <CovidUsData data={CovUSdata} />
+              <CovidUsData date={this.props.date} deaths = {this.props.totalDeaths} />
               <Link to="/info">
                 <button>More Info</button>
               </Link>

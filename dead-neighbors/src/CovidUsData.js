@@ -1,11 +1,11 @@
 import React from 'react';
 
-const CovidUsData = ({data}) => {
-        let date = new Date(data[0].dateChecked);
+const CovidUsData = ({date, deaths}) => {
+        let dateChecked = new Date(date);
         const usPopulation2020 = 331002651;
-        const fractionUsDead = Math.round(usPopulation2020/(data[0].death));
+        const fractionUsDead = Math.round(usPopulation2020/(deaths));
         let weekday = ''
-            switch(date.getDay()){
+            switch(dateChecked.getDay()){
                 case(0): weekday = 'Sunday';break;
                 case(1): weekday = 'Monday';break;
                 case(2): weekday = 'Tuesday';break;
@@ -17,7 +17,7 @@ const CovidUsData = ({data}) => {
             }
     return( 
          <div>  
-            {`On ${weekday}, ${date.toDateString().slice(3)}, the US death toll reached ${data[0].death.toLocaleString()} deaths. `}
+            {`On ${weekday}, ${dateChecked.toDateString().slice(3)}, the US death toll reached ${deaths.toLocaleString()} deaths. `}
             {`That's 1 in ${fractionUsDead.toLocaleString()} dead from Covid-19.`}
         </div>
      )
