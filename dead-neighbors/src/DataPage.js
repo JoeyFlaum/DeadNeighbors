@@ -94,64 +94,33 @@ class DataPage extends React.Component {
         .toLowerCase()
         .includes(searchField.toLowerCase());
     });
+    let radioFilters = ["Death Increase Daily - High To Low","Death Increase Daily - Low To High",
+    "Positive Increase - High To Low","Positive Increase - Low To High", "Date - Oldest To Recent","Date - Recent To Oldest"]
     return (
       <main className="dataPage">
+        <div className = "slider-filters">
         <Slider
           boolean={this.slideHandler}
           usStateBoolean={slider}
         />
         <div className="infoSection">
           <div className="data-radios" onChange={this.filterSortView}>
+          {radioFilters.map((filter)=>{
+            return(
+              <div className = 'radios'>
             <input
               type="radio"
               name="sort-filter"
-              value="Death Increase Daily - High To Low"
+              value={filter}
             />
-            <label htmlFor="Death Increase Daily - High To Low">
-              Death Increase Daily - High To Low
+            <label htmlFor={filter}>
+              {filter}
             </label>
-            <input
-              type="radio"
-              name="sort-filter"
-              value="Death Increase Daily - Low To High"
-            />
-            <label htmlFor="Death Increase Daily - Low To High">
-              Death Increase Daily - Low To High
-            </label>
-            <input
-              type="radio"
-              name="sort-filter"
-              value="Positive Increase - High To Low"
-            />
-            <label htmlFor="Positive Increase - High To Low">
-              Positive Increase - High To Low
-            </label>
-            <input
-              type="radio"
-              name="sort-filter"
-              value="Positive Increase - Low To High"
-            />
-            <label htmlFor="Positive Increase - Low To High">
-              Positive Increase - Low To High
-            </label>
-            <input
-              type="radio"
-              name="sort-filter"
-              value="Date - Oldest To Recent"
-            />
-            <label htmlFor="Date - Oldest To Recent">
-              Date - Oldest To Recent
-            </label>
-            <input
-              type="radio"
-              name="sort-filter"
-              value="Date - Recent To Oldest"
-            />
-            <label htmlFor="Date - Recent To Oldest">
-              Date - Recent To Oldest
-            </label>
+            </div>
+            )
+          })}
             {!slider ? (
-              <>
+              <div className = 'radios'>
                 <input
                   type="radio"
                   name="sort-filter"
@@ -160,8 +129,9 @@ class DataPage extends React.Component {
                 <label htmlFor="Worst Day - By State">
                   Worst Day - By State
                 </label>
-              </>
+              </div>
             ) : null}
+          </div>
           </div>
           {!slider ? (
             <>

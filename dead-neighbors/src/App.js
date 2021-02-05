@@ -31,10 +31,7 @@ class App extends Component {
     fetch("https://api.covidtracking.com/v1/us/daily.json")
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ CovUSdata: data });
-        this.setState({ CovidDeathsToday: data[0].deathIncrease });
-        this.setState({CovidDeathsTotal: data[0].death});
-        this.setState({CovidDeathsTotalDate: data[0].dateChecked});
+        this.setState({ CovUSdata: data,CovidDeathsToday: data[0].deathIncrease,CovidDeathsTotal: data[0].death,CovidDeathsTotalDate: data[0].dateChecked });
       })
       .catch((err) => console.log(err));
     fetch("https://api.covidtracking.com/v1/states/daily.json")

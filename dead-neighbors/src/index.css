@@ -283,6 +283,20 @@ font-size: xx-small;
   flex-wrap: wrap;
   justify-content: center;
 }
+.data-radios{
+  display:flex;
+  flex-direction: column;
+  width:max-content;
+  margin:10px;
+}
+.radios{
+  display:flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+.radios label{
+  margin:0 5px;
+}
 .slider {
   display: flex;
   flex-wrap: none;
