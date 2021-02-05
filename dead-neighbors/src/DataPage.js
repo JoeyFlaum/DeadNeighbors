@@ -11,6 +11,7 @@ class DataPage extends React.Component {
       searchField: "",
       slider: true,
       dataView: "",
+      showFilter:false,
     };
     this.slideHandler = this.slideHandler.bind(this);
   }
@@ -23,6 +24,7 @@ class DataPage extends React.Component {
   slideHandler = () => {
     this.setState({ slider: !this.state.slider });
   };
+  filterView =()=>{this.setState({showFilter:!this.state.showFilter});console.log(this.state.showFilter)}
   /*set state of radio input choice*/
   filterSortView = (event) => {
     this.setState({ dataView: event.target.value });
@@ -31,32 +33,34 @@ class DataPage extends React.Component {
   /*filter and sort state/us data*/
   viewHandler = (data) => {
     const { dataView } = this.state;
-    const CovStateData = this.props.covStateData
+    const CovStateData = this.props.covStateData;
+    const CovidStateData = [...CovStateData]
+    const dataArray =[...data];
     if (dataView === "Death Increase Daily - High To Low") {
-      data.sort((a, b) => b.deathIncrease - a.deathIncrease || b.date - a.date);
-      return data;
+      dataArray.sort((a, b) => b.deathIncrease - a.deathIncrease || b.date - a.date);
+      return dataArray;
     } else if (dataView === "Death Increase Daily - Low To High") {
-      data.sort((a, b) => a.deathIncrease - b.deathIncrease || a.date - b.date);
-      return data;
+      dataArray.sort((a, b) => a.deathIncrease - b.deathIncrease || a.date - b.date);
+      return dataArray;
     } else if (dataView === "Positive Increase - High To Low") {
-      data.sort(
+      dataArray.sort(
         (a, b) => b.positiveIncrease - a.positiveIncrease || b.date - a.date
       );
-      return data;
+      return dataArray;
     } else if (dataView === "Positive Increase - Low To High") {
-      data.sort(
+      dataArray.sort(
         (a, b) => a.positiveIncrease - b.positiveIncrease || a.date - b.date
       );
-      return data;
+      return dataArray;
     } else if (dataView === "Date - Oldest To Recent") {
-      data.sort((a, b) => a.date - b.date);
-      return data;
+      dataArray.sort((a, b) => a.date - b.date);
+      return dataArray;
     } else if (dataView === "Date - Recent To Oldest") {
-      data.sort((a, b) => b.date - a.date);
-      return data;
+      dataArray.sort((a, b) => b.date - a.date);
+      return dataArray;
     } else if (dataView === "Worst Day - By State") {
       /*sort objects alphabetical order by state and then by deaths*/
-      CovStateData.sort((a, b) => {
+      CovidStateData.sort((a, b) => {
         return (
           a.stateFullName
             .toLowerCase()
@@ -64,22 +68,28 @@ class DataPage extends React.Component {
           b.deathIncrease - a.deathIncrease
         );
       });
-      
-        let stateChecker = "";
-        let worstDaysByState = []
-        CovStateData.forEach((data,i) => {
-        if(i === 0){stateChecker = data.state; return worstDaysByState.push(data)}
-        else if (data.state !== stateChecker){ stateChecker = data.state; return worstDaysByState.push(data)};
+
+      let stateChecker = "";
+      let worstDaysByState = [];
+      CovidStateData.forEach((data, i) => {
+        if (i === 0) {
+          stateChecker = data.state;
+          return worstDaysByState.push(data);
+        } else if (data.state !== stateChecker) {
+          stateChecker = data.state;
+          return worstDaysByState.push(data);
+        }
       });
+      worstDaysByState.sort((a,b)=>b.deathIncrease-a.deathIncrease)
       console.log("viewHandler", worstDaysByState);
       return worstDaysByState;
     } else {
-      return data;
+      return dataArray;
     }
   };
 
   render() {
-    const {searchField,slider } = this.state;
+    const { searchField, slider } = this.state;
     const CovStateData = this.props.covStateData;
     const CovUsData = this.props.covUsData;
     let filteredStates = [];
@@ -94,45 +104,51 @@ class DataPage extends React.Component {
         .toLowerCase()
         .includes(searchField.toLowerCase());
     });
-    let radioFilters = ["Death Increase Daily - High To Low","Death Increase Daily - Low To High",
-    "Positive Increase - High To Low","Positive Increase - Low To High", "Date - Oldest To Recent","Date - Recent To Oldest"]
+    let radioFilters = [
+      "Death Increase Daily - High To Low",
+      "Death Increase Daily - Low To High",
+      "Positive Increase - High To Low",
+      "Positive Increase - Low To High",
+      "Date - Oldest To Recent",
+      "Date - Recent To Oldest",
+    ];
+    let filterArrow = <svg className= {!this.state.showFilter?"arrow-up":"arrow-down"} viewBox = '10 45 100 120' height='20px' width = '35px'><polyline points="0 60 60 145 120 60"
+    stroke="#5a5959" fill="transparent" stroke-width="7" /></svg>;
     return (
       <main className="dataPage">
-        <div className = "slider-filters">
-        <Slider
-          boolean={this.slideHandler}
-          usStateBoolean={slider}
-        />
-        <div className="infoSection">
-          <div className="data-radios" onChange={this.filterSortView}>
-          {radioFilters.map((filter)=>{
-            return(
-              <div className = 'radios'>
-            <input
-              type="radio"
-              name="sort-filter"
-              value={filter}
-            />
-            <label htmlFor={filter}>
-              {filter}
-            </label>
+        <div className="slider-filters">
+          <div className = 'slider-filter-wrapper'>
+          <Slider boolean={this.slideHandler} usStateBoolean={slider} />
+          <div className = 'filter-sort' onClick={this.filterView}>
+          <div>Filter / Sort</div>
+          <div className = "arrow">{filterArrow}</div>
+          </div>
+          </div>  
+            <div className={!this.state.showFilter?"data-radios up":"data-radios down"}onChange={this.filterSortView}>
+              {radioFilters.map((filter) => {
+                return (
+                  <div className="radios">
+                    <input type="radio" name="sort-filter" value={filter} />
+                    <label htmlFor={filter}>{filter}</label>
+                  </div>
+                );
+              })}
+              {!slider ? (
+                <div className="radios">
+                  <input
+                    type="radio"
+                    name="sort-filter"
+                    value="Worst Day - By State"
+                  />
+                  <label htmlFor="Worst Day - By State">
+                    Worst Day - By State
+                  </label>
+                </div>
+              ) : null}
             </div>
-            )
-          })}
-            {!slider ? (
-              <div className = 'radios'>
-                <input
-                  type="radio"
-                  name="sort-filter"
-                  value="Worst Day - By State"
-                />
-                <label htmlFor="Worst Day - By State">
-                  Worst Day - By State
-                </label>
-              </div>
-            ) : null}
+            
           </div>
-          </div>
+          <div className="infoSection">
           {!slider ? (
             <>
               <SearchFeature
