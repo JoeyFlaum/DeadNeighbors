@@ -11,25 +11,28 @@ const CovidUsDataCard = ({
 }) => {
   return (
     <div className="usDataCard">
-      <h5>US Daily Info</h5>
-      <p><strong></strong>Date: {date.toDateString()}</p>
+      <h5>US Daily Covid Info</h5>
+      <p><strong>Date:</strong>{" "} {date.toDateString()}</p>
       <p>
-        Total US deaths: {death ? death.toLocaleString() : 0}
-        <br /> That's {deathIncrease ? deathIncrease.toLocaleString() : 0} more
-        deaths than the previous day.
+        <strong>Total US deaths:</strong> {" "} {death ? death.toLocaleString() : 0}
+      </p>
+      <p>  
+      <strong>Death Increase:</strong>{" "} {deathIncrease ? deathIncrease.toLocaleString() : 0}
       </p>
       <p>
-        Positve: {positive ? positive.toLocaleString() : 0}
-        <br />
-        Positive Increase:{" "}
+        <strong>Positve:</strong>{" "} {positive ? positive.toLocaleString() : 0}
+      </p>
+      <p>
+        <strong>Positive Increase:</strong>{" "}
         {positiveIncrease ? positiveIncrease.toLocaleString() : 0}
       </p>
       <p>
-        Negative: {negative ? negative.toLocaleString() : 0}
-        <br /> Negative Increase:{" "}
+        <strong>Negative:</strong>{" "} {negative ? negative.toLocaleString() : 0}
+      </p>
+      <p>
+      <strong>Negative Increase: </strong>{" "}
         {negativeIncrease ? negativeIncrease.toLocaleString() : 0}
       </p>
-      <p></p>
     </div>
   );
 };

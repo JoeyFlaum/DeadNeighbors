@@ -9,7 +9,7 @@ const CovidUsDataComplete=({data})=>{
     return(
 
         <CovidUsDataCard
-            key = {data[i].date}
+            key = {i}
             date = {date}
             death = {data[i].death}
             deathIncrease = {data[i].deathIncrease}

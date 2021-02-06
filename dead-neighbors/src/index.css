@@ -284,6 +284,7 @@ font-size: xx-small;
   justify-content: center;
 }
 .data-radios{
+  z-index:100;
   display:flex;
   flex-direction: column;
   width:max-content;
@@ -294,18 +295,17 @@ font-size: xx-small;
 }
 .data-radios.up{  transform: translatey(-200%);}
 .data-radios.down{
-  background:var(--darkBlue);color:var(--lightgrey); 
-   overflow: hidden;
-  /* hide the menu right of the screen by default */
-
-  /* transition adds a little animation when sliding in and out the menu */
+  background:var(--darkBlue);
+  color:var(--lightgrey); 
+  overflow: hidden;
 }
 .data-radios input:hover{
   cursor: pointer;
 }
 .slider-filter-wrapper{
   display:flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .filter-sort:hover{
   cursor:pointer;
@@ -313,15 +313,19 @@ font-size: xx-small;
 .filter-sort{
   display:flex;
   align-items: center;
+  font-size: 1rem;
   transition:.5s;
+  border-radius: 30px;
+  border: 1px solid var(--darkBlue)
 }
-.arrow{margin:5px 0 0 10px; }
-.arrow-up{transform:rotate(180deg);transition:.5s;}
+.arrow{margin:5px 0 0 0; }
+.arrow.one .arrow-up{transform:rotate(-180deg);transition:.5s;}
+.arrow.two .arrow-up{transform:rotate(180deg);transition:.5s;}
 .arrow-down{transition:.5s;}
 .filter-sort{
   width: max-content;
   padding:5px;
-  margin-left:10px;
+  margin-top: 5px;
 }
 .radios{
   display:flex;
@@ -371,9 +375,6 @@ font-size: xx-small;
 }
 .data-radios{
   display:flex;
-}
-.infoSection {
-  font-family: "Courier New", Courier, monospace;
 }
 .searchWrapper {
   z-index: 3;
@@ -455,12 +456,9 @@ font-size: xx-small;
 .usDataComplete {
   padding-top: 5px;
   justify-content: auto;
-  height: 1100px;
   margin: 75px 5%;
-  overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid var(--grey);
   justify-content: center;
 }
 .stateDataCard,
@@ -471,6 +469,8 @@ font-size: xx-small;
   background-color: var(--lightgrey);
   margin: 1em;
   border: 5px double rgb(41, 41, 41);
+  font-size: .8em;
+  color:var(--darkGrey);
 }
 footer {
   font-size: small;
@@ -535,6 +535,10 @@ footer > span:first-of-type {
   .routes {
     font-size: 75%;
   }
+  .stateDataCard,
+.usDataCard {
+  font-size: 17.92px;
+}
   .heroContainer {
     padding: 0;
     margin-top: 75px;
@@ -574,6 +578,10 @@ footer > span:first-of-type {
   .slide-state {
     width: 93.75px;
     left: 87px;
+  }
+  .filter-sort{
+    font-size: .75rem;
+    height:15px;
   }
   .searchWrapper input {
     width: 275px;
