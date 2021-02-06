@@ -12,6 +12,7 @@ class DataPage extends React.Component {
       slider: true,
       dataView: "",
       showFilter: false,
+      showMenu:false,
     };
     this.slideHandler = this.slideHandler.bind(this);
   }
@@ -26,11 +27,14 @@ class DataPage extends React.Component {
   };
   filterView = () => {
     this.setState({ showFilter: !this.state.showFilter });
-    console.log(this.state.showFilter);
   };
+  menuView = () =>{
+    this.setState({ showMenu: !this.state.showMenu });
+    
+  }
   /*set state of radio input choice*/
   filterSortView = (event) => {
-    this.setState({ dataView: event.target.value });
+    this.setState({ dataView: event.target.value,showMenu:false });
   };
 
   /*filter and sort state/us data*/
@@ -121,29 +125,30 @@ class DataPage extends React.Component {
     ];
     let filterArrow = (
       <svg
-        className={!this.state.showFilter ? "arrow-up" : "arrow-down"}
+        
         viewBox="10 45 100 120"
         height="20px"
         width="35px"
       >
         <polyline
           points="0 60 60 145 120 60"
-          stroke="#5a5959"
-          fill="transparent"
-          strokeWidth="7"
         />
       </svg>
     );
     return (
       <main className="dataPage">
-        <div className="slider-filters">
+          <div className = {!this.state.showMenu?"data-menu up":"data-menu down"} onClick= {this.menuView}>
+          <div className={!this.state.showMenu? "arrow up one" : "arrow down one"} id = "menu">{filterArrow}</div>
+           <div>Menu</div> 
+           <div className={!this.state.showMenu ? "arrow up two" : "arrow down two"} id = "menu">{filterArrow}</div>
+           </div>
+        <div className={!this.state.showMenu? "slider-filters up":"slider-filters down"}>
           <div className="slider-filter-wrapper">
-           <div>Choose: US or State View</div> 
             <Slider boolean={this.slideHandler} usStateBoolean={slider} />
-            <div className="filter-sort" onClick={this.filterView}>
-              <div className="arrow one">{filterArrow}</div>
-              <div>{!this.state.showFilter?"Click For Sorting Options":"Hide Sorting Options"}</div>
-              <div className="arrow two">{filterArrow}</div>
+            <div className={!this.state.showFilter?"filter-sort up":"filter-sort down"} onClick={this.filterView}>
+            <div className={!this.state.showFilter ? "arrow up one" : "arrow down one"} id = "sort">{filterArrow}</div>
+              <div>Sorting Options</div>
+              <div className={!this.state.showFilter ? "arrow up two" : "arrow down two"} id = "sort">{filterArrow}</div>
             </div>
           </div>
           <div
@@ -155,7 +160,7 @@ class DataPage extends React.Component {
             {radioFilters.map((filter) => {
               return (
                 <div className="radios">
-                  <input type="radio" name="sort-filter" value={filter} />
+                  <input type="radio" name="sort-filter" value={filter}/>
                   <label htmlFor={filter} >{filter}</label>
                 </div>
               );
