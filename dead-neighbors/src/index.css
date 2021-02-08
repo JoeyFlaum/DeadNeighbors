@@ -303,6 +303,7 @@ font-size: xx-small;
   color:var(--lightgrey);
 }
 .menu-wrapper{
+  z-index: 4;
   position: sticky;
   top:150px;
 }
@@ -496,6 +497,7 @@ margin-left:5px;
   align-items: center;
   justify-content: center;
   flex-wrap: none;
+  margin-top: -105px;
 }
 
 .stateDeaths,
@@ -616,6 +618,7 @@ footer > span:first-of-type {
     height:15px;
   } */
   .menu-wrapper{
+    margin-top:110px;
     top:90px;
   }
   .data-menu, .slider, .filter-sort, .data-radios{

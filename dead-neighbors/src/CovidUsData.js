@@ -17,6 +17,7 @@ const CovidUsData = ({date, deaths}) => {
             }
     return( 
          <div>  
+            <h5>The Numbers Are Astonishing!</h5>
             {`On ${weekday}, ${dateChecked.toDateString().slice(3)}, the US death toll reached ${deaths.toLocaleString()} deaths. `}
             {`That's 1 in ${fractionUsDead.toLocaleString()} dead from Covid-19.`}
         </div>
