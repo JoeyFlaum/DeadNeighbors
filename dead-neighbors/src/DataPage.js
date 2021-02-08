@@ -34,7 +34,8 @@ class DataPage extends React.Component {
   }
   /*set state of radio input choice*/
   filterSortView = (event) => {
-    this.setState({ dataView: event.target.value,showMenu:false });
+    this.setState({ dataView: event.target.value});
+    this.menuView();
   };
 
   /*filter and sort state/us data*/
@@ -137,6 +138,7 @@ class DataPage extends React.Component {
     );
     return (
       <main className="dataPage">
+      <div className="menu-wrapper">
           <div className = {!this.state.showMenu?"data-menu up":"data-menu down"} onClick= {this.menuView}>
           <div className={!this.state.showMenu? "arrow up one" : "arrow down one"} id = "menu">{filterArrow}</div>
            <div>Menu</div> 
@@ -155,29 +157,32 @@ class DataPage extends React.Component {
             className={
               !this.state.showFilter ? "data-radios up" : "data-radios down"
             }
-            onChange={this.filterSortView}
+            onChange={this.filterSortView} onClick={(e)=>console.log(e)}
           >
             {radioFilters.map((filter) => {
               return (
                 <div className="radios">
+                <label>
                   <input type="radio" name="sort-filter" value={filter}/>
-                  <label htmlFor={filter} >{filter}</label>
+                  <span>{filter}</span>
+                </label>
                 </div>
               );
             })}
             {!slider ? (
               <div className="radios">
+              <label>
                 <input
                   type="radio"
                   name="sort-filter"
                   value="Worst Day - By State"
                 />
-                <label htmlFor="Worst Day - By State">
                   Worst Day - By State
                 </label>
               </div>
             ) : null}
           </div>
+        </div>
         </div>
         <div className="infoSection">
           {!slider ? (

@@ -7,6 +7,7 @@ import DeadNeighborsPage from "./DeadNeighborsPage";
 import Resources from "./Resources";
 import About from "./About";
 import Footer from "./Footer";
+import {ScrollToTop} from './ScrollToTop';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -16,8 +17,8 @@ class App extends Component {
       CovStateData: [],
       CovUSdata: [],
       CovidDeathsToday: 0,
-      CovidDeathsTotal:0,
-      CovidDeathsTotalDate:"",
+      CovidDeathsTotal: 0,
+      CovidDeathsTotalDate: "",
       deadPerson: 0,
     };
   }
@@ -31,7 +32,12 @@ class App extends Component {
     fetch("https://api.covidtracking.com/v1/us/daily.json")
       .then((response) => response.json())
       .then((data) => {
-        this.setState({ CovUSdata: data,CovidDeathsToday: data[0].deathIncrease,CovidDeathsTotal: data[0].death,CovidDeathsTotalDate: data[0].dateChecked });
+        this.setState({
+          CovUSdata: data,
+          CovidDeathsToday: data[0].deathIncrease,
+          CovidDeathsTotal: data[0].death,
+          CovidDeathsTotalDate: data[0].dateChecked,
+        });
       })
       .catch((err) => console.log(err));
     fetch("https://api.covidtracking.com/v1/states/daily.json")
@@ -214,7 +220,6 @@ class App extends Component {
         })
       )
       .then((data) => this.setState({ CovStateData: data }));
-
   }
   render() {
     const {
@@ -223,7 +228,7 @@ class App extends Component {
       CovidDeathsToday,
       deadPerson,
       CovidDeathsTotal,
-      CovidDeathsTotalDate
+      CovidDeathsTotalDate,
     } = this.state;
     return (
       <Router>
@@ -237,58 +242,61 @@ class App extends Component {
               top: "0",
               fontSize: "1px",
             }}
-          >
-          </div>
-            {CovidDeathsToday !== 0 ? (
-              <DeadNeighborsPage
-                usData={CovidDeathsToday}
-                usDataAll={CovUSdata}
-                dead={this.deadTrue.bind(this)}
-              />
-            ) : (
-              <div>Loading...</div>
-            )}
+          ></div>
+          {CovidDeathsToday !== 0 ? (
+            <DeadNeighborsPage
+              usData={CovidDeathsToday}
+              usDataAll={CovUSdata}
+              dead={this.deadTrue.bind(this)}
+            />
+          ) : (
+            <div>Loading...</div>
+          )}
 
           <Header screenWidth={this.state.screenWidth} />
 
-            <div className = 'routes'>
-          <Switch>
-            <Route
-              path="/"
-              exact
-              render={(routeProps) =>
-                CovUSdata.length !== 0 ? (
-                  <HomePage
-                    totalDeaths={CovidDeathsTotal}
-                    date = {CovidDeathsTotalDate}
-                    deadPersonCount={deadPerson}
-                    key={
-                      deadPerson
-                    } /*key change forces render(updated props are sent)*/
-                    {...routeProps}
-                  />
-                ) : (
-                  <div className="blank"></div>
-                )
-              }
-            />
-            <Route path="/news" component={News} />
-            <Route
-              path="/info"
-              exact
-              render={(routeProps) =>
-                CovStateData.length !== 0 ? (
-                  <DataPage covStateData={CovStateData} covUsData ={CovUSdata} {...routeProps} />
-                ) : (
-                  <div className="blank"></div>
-                )
-              }
-            />
-            <Route path="/resources" component={Resources} />
-            <Route path="/about" component={About} />
-          </Switch>
+          <div className="routes">
+            <Switch>
+              <Route
+                path="/"
+                exact
+                render={(routeProps) =>
+                  CovUSdata.length !== 0 ? (
+                    <HomePage
+                      totalDeaths={CovidDeathsTotal}
+                      date={CovidDeathsTotalDate}
+                      deadPersonCount={deadPerson}
+                      key={
+                        deadPerson
+                      } /*key change forces render(updated props are sent)*/
+                      {...routeProps}
+                    />
+                  ) : (
+                    <div className="blank"></div>
+                  )
+                }
+              />
+              <Route path="/news" component={News} />
+              <Route
+                path="/info"
+                exact
+                render={(routeProps) =>
+                  CovStateData.length !== 0 ? (
+                    <DataPage
+                      covStateData={CovStateData}
+                      covUsData={CovUSdata}
+                      {...routeProps}
+                    />
+                  ) : (
+                    <div className="blank"></div>
+                  )
+                }
+              />
+              <Route path="/resources" component={Resources} />
+              <Route path="/about" component={About} />
+            </Switch>
           </div>
-          <Footer/>
+          <Footer />
         </div>
       </Router>
     );
