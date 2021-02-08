@@ -8,9 +8,10 @@ class Header extends React.Component {
       mobileNav: false,
       showMobileList: false,
     };
+    this.resize = this.resize.bind(this);
   }
   componentDidMount() {
-    window.addEventListener("resize", this.resize.bind(this));
+    window.addEventListener("resize", this.resize);/*listen for window resizing */
     this.resize();
   }
   resize() {

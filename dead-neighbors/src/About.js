@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <div className="about">
-      <div className="content" style={{ flexDirection: "column" }}>
+      <div className="content">
         <h3>About Dead Neighbors</h3>
         <p>
           The mission of Dead Neighbors is to help show you that the numbers you

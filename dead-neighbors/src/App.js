@@ -22,6 +22,7 @@ class App extends Component {
       deadPerson: 0,
     };
   }
+  /*Receives True When Timer(CountDown) hits zero. From DeadNeighborsPage component*/
   deadTrue(boolean) {
     if (boolean) {
       this.setState({ deadPerson: this.state.deadPerson + 1 });
@@ -232,18 +233,8 @@ class App extends Component {
     } = this.state;
     return (
       <Router>
-      <ScrollToTop/>
+      <ScrollToTop/>{/*scrolls to the top of the page when routes change*/}
         <div className="pageContent">
-          <div
-            style={{
-              position: "relative",
-              zIndex: "0",
-              width: "0px",
-              height: "0px",
-              top: "0",
-              fontSize: "1px",
-            }}
-          ></div>
           {CovidDeathsToday !== 0 ? (
             <DeadNeighborsPage
               usData={CovidDeathsToday}
