@@ -7,7 +7,7 @@ import DeadNeighborsPage from "./DeadNeighborsPage";
 import Resources from "./Resources";
 import About from "./About";
 import Footer from "./Footer";
-import {ScrollToTop} from './ScrollToTop';
+import ScrollToTop from './ScrollToTop';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
@@ -232,6 +232,7 @@ class App extends Component {
     } = this.state;
     return (
       <Router>
+      <ScrollToTop/>
         <div className="pageContent">
           <div
             style={{
