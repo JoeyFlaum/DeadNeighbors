@@ -5,9 +5,7 @@ class DeadNeighborsPage extends React.Component{
     constructor(props) {
         super(props) 
             this.state = {
-                CovUSdata: props.usDataAll,
-                CovidDeathsToday:props.usData,
-                deadPerson: 0,
+                deadPerson: 0
             }
             this.deadTrue = this.deadTrue.bind(this);
       }
@@ -19,12 +17,10 @@ class DeadNeighborsPage extends React.Component{
       }
 
     render(){
-        const {CovidDeathsToday,CovUSdata} = this.state;
         return(
             <CountDown 
-            usData ={CovidDeathsToday} 
-            usDataAll = {CovUSdata}
-            dead = {this.deadTrue}/*Sends true to App component*/
+            usData ={this.props.usData}
+            dead = {this.deadTrue}/*Sends true to when timer hits 0 to deatTrue function*/
             />
         )
     }

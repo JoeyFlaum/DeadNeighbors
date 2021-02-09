@@ -7,7 +7,8 @@ class DeadNeighbor extends React.Component{
     }
 
 componentDidMount(){
-this.myInterval = setTimeout(()=>{this.props.deadNeighbor(false)},8000)}/*send state to Timer component through props*/
+this.myTimeout = setTimeout(()=>{this.props.deadNeighbor(false)},8000)}/*send state to Timer component through props, renders for 8 seconds when timer hits 0*/
+
 
 render(){
     return(

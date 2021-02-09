@@ -238,7 +238,6 @@ class App extends Component {
           {CovidDeathsToday !== 0 ? (
             <DeadNeighborsPage
               usData={CovidDeathsToday}
-              usDataAll={CovUSdata}
               dead={this.deadTrue.bind(this)}
             />
           ) : (

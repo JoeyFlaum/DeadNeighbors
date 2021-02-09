@@ -5,7 +5,6 @@ class CountDown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      usData: this.props.usData,
       deathCounter24Hour: 0,
       counterAt0: true,
       deadNeighb: false,
@@ -14,20 +13,19 @@ class CountDown extends React.Component {
   /*Take in API data, Create 24 hour period divided by total deaths for the most recent day*/
   componentDidMount() {
     this.myInterval = setInterval(() => {
+      /*runs every 100 milliseconds*/
       if (
         this.state.deathCounter24Hour === 0 &&
         this.state.counterAt0 === true
       ) {
-        this.setState({ counterAt0: false });
-        const usDeathsToday = this.state.usData;
-        const endDate = new Date(this.props.usDataAll[0].dateChecked).getTime();
-        const beginDate = new Date(endDate).getTime() - 1000 * 60 * 60 * 24;
-        const day24Hour = endDate - beginDate;
         this.setState({
-          deathCounter24Hour: Math.floor(day24Hour / usDeathsToday),
+          counterAt0: false /*set to false to go to else if statement*/,
+          deathCounter24Hour: Math.floor(
+            /*24 hr*/ (1000 * 60 * 60 * 24) / this.props.usData /*deaths today*/
+          ) /*time between deaths for the day*/,
         });
       } else if (
-      /*reset timer when it hits 0*/
+        /*reset timer when it hits 0*/
         this.state.deathCounter24Hour <= 0 &&
         this.state.counterAt0 === false
       ) {
@@ -37,9 +35,10 @@ class CountDown extends React.Component {
         }); /* if statement becomes true */
         this.deadNeighbor(true); /*Sends true to DeadNeighborPage component*/
       } else {
-      /*timer countdown interval*/
+        /*timer countdown interval*/
         this.setState((prevState) => ({
-          deathCounter24Hour: prevState.deathCounter24Hour - 110,
+          deathCounter24Hour:
+            prevState.deathCounter24Hour - 110 /* shows deciseconds*/,
         }));
       }
     }, 100);
@@ -64,19 +63,26 @@ class CountDown extends React.Component {
     const mins = Math.floor(
       (deathCounter24Hour % (1000 * 60 * 60)) / (1000 * 60)
     );
-    const secs = Math.floor((deathCounter24Hour % (1000 * 60)) / 1000);
-    const centi = Math.floor((deathCounter24Hour / 10) % 100);
+    const secs = Math.floor((
+      deathCounter24Hour % (1000 * 60)) / 1000
+      );
+    const deci = Math.floor(
+      (deathCounter24Hour / 10) % 100);
     return (
       <div className="timer">
         {this.state.deadNeighb === true ? (
-          <DeadNeighbor deadNeighbor={this.deadNeighbor} />
+          <DeadNeighbor
+            deadNeighbor={this.deadNeighbor}
+          /> /*renders for 8 seconds when timer hits 0*/
         ) : (
           <h2>Your Neighbor Will Die In</h2>
         )}
         <h2>
-          {`${("0" + hours).slice(-2)} :
-                    ${("0" + mins).slice(-2)} :
-                    ${("0" + secs).slice(-2)}.${("0" + centi).slice(-1)}`}
+          {/*display timer*/
+            `${("0" + hours).slice(-2)} :
+             ${("0" + mins).slice(-2)} :
+             ${("0" + secs).slice(-2)}.${("0" + deci).slice(-1)}`
+          }
         </h2>
       </div>
     );
