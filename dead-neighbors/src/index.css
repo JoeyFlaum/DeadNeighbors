@@ -80,10 +80,17 @@ header {
   flex-wrap: wrap;
   justify-content: center;
 }
-.headerNav li {
-  margin: 0em 1.9em;
+.links{
   list-style: none;
+  text-decoration: none;
+}
+.links.desktop {
+  margin: 0em 1.9em;
   display: inline-flex;
+  color: black;
+}
+.links.mobile{
+  color: white;
 }
 .headerNav li:hover,
 button:hover {
@@ -103,6 +110,13 @@ button:hover {
   /* show the menu image */
   background-size: 100%;
 }
+.hamburger.menu{
+  background-image:url("https://ljc-dev.github.io/testing0/ham.svg");
+}
+.hamburger.x{
+  background-image:url("https://ljc-dev.github.io/testing0/ham-close.svg");
+}
+
 .navbar {
   position: absolute;
   display: flex;
@@ -118,9 +132,17 @@ button:hover {
   margin-top: 0;
   overflow: hidden;
   /* hide the menu right of the screen by default */
-  transform: translateX(100%);
+  
   /* transition adds a little animation when sliding in and out the menu */
+  
+}
+.navbar.show{
+  transform: translateX(0);
+  color: white;
   transition: cubic-bezier(1, 0, 0, 1) 0.4s;
+}
+.navbar.hide{
+  transform: translateX(100%);
 }
 /*main*/
 .homePage {
@@ -634,6 +656,11 @@ footer > span:first-of-type {
     width: 260px;
     margin-top: 33px;
   }
+}
+@media only screen and (max-width:350px){
+  .data-menu, .slider, .filter-sort, .data-radios{
+    width:225px;
+    }
 }
 @media only screen and (max-width: 1075px) and (min-width: 600px) {
   .heroContainer {

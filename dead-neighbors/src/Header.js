@@ -9,44 +9,39 @@ class Header extends React.Component {
       showMobileList: false,
     };
     this.resize = this.resize.bind(this);
+    this.hamburgerHandler = this.hamburgerHandler.bind(this);
   }
   componentDidMount() {
-    window.addEventListener("resize", this.resize);/*listen for window resizing */
+    window.addEventListener(
+      "resize",
+      this.resize
+    ); /*listen for window resizing */
     this.resize();
   }
   resize() {
-    let currentmobileNav = window.innerWidth <= 1315;
+    let currentmobileNav =
+      window.innerWidth <= 1315; /*checks width of window, returns boolean */
     if (currentmobileNav !== this.state.mobileNav) {
-      this.setState({ mobileNav: currentmobileNav, showMobileList: false });
+      this.setState({
+        mobileNav: currentmobileNav,
+        showMobileList: false,
+      }); /*sets mobile or desktop view and closes menu if transitioning to desktop view */
     }
   }
   componentWillUnmount() {
-    window.removeEventListener("resize", this.resize.bind(this));
+    window.removeEventListener("resize", this.resize); /*prevent memory leaks */
   }
   hamburgerHandler() {
-    this.state.showMobileList
+    this.state.showMobileList /*closes nav menu on link click */
       ? this.setState({ showMobileList: false })
       : this.setState({ showMobileList: true });
   }
 
   render() {
-    console.log("show", this.state.showMobileList);
     const { mobileNav, showMobileList } = this.state;
-    const linkStyle = { textDecoration: "none", color: "black" };
-    const linkStyleMobile = {
-      listStyle: "none",
-      textDecoration: "none",
-      color: "white",
-    };
-    const hamButtonStyleX = {
-      backgroundImage:
-        'url("https://ljc-dev.github.io/testing0/ham-close.svg")',
-    };
-    const hamButtonStyle = {
-      backgroundImage: 'url("https://ljc-dev.github.io/testing0/ham.svg")',
-    };
-    const showMenu = { transform: "translateX(0)", color: "white"};
-    const hamburgerClick = this.hamburgerHandler.bind(this);
+    const hamburgerHandler = this.hamburgerHandler;
+    const linkText = ["Home", "News", "Resources", "About", "US Covid Info"];
+    const links = ["/", "/news", "/resources", "/about", "/info"];
     return (
       <header>
         <div className="deadTitle">
@@ -60,54 +55,29 @@ class Header extends React.Component {
         {mobileNav ? (
           <nav className="hamburgerNav">
             <button
-              className="hamburger"
-              style={showMobileList ? hamButtonStyleX : hamButtonStyle}
-              onClick={hamburgerClick}
+              className={showMobileList ? "hamburger x" : "hamburger menu"}/*shows x or hamburger */
+              onClick={hamburgerHandler}
             ></button>
-            <ul className="navbar" style={showMobileList ? showMenu : null}>
-              <Link to="/" style={linkStyleMobile} onClick={hamburgerClick}>
-                <li>Home</li>
-              </Link>
-              <Link to="/news" style={linkStyleMobile} onClick={hamburgerClick}>
-                <li>News</li>
-              </Link>
-              <Link
-                to="/resources"
-                style={linkStyleMobile}
-                onClick={hamburgerClick}
-              >
-                <li>Resources</li>
-              </Link>
-              <Link
-                to="/about"
-                style={linkStyleMobile}
-                onClick={hamburgerClick}
-              >
-                <li>About</li>
-              </Link>
-              <Link to="/info" style={linkStyleMobile} onClick={hamburgerClick}>
-                <li>US Covid Info</li>
-              </Link>
+            <ul className={showMobileList ? "navbar show" : "navbar hide"}> {/*show/hide navigation menu*/}
+            {linkText.map((text, i) => {/*map links for movbile view */
+                return (
+                  <Link to={links[i]} className = "links mobile">
+                    <li  onClick={hamburgerHandler}>{text}</li>
+                  </Link>
+                );
+              })}          
             </ul>
           </nav>
         ) : (
-          <nav className="headerNav">
+          <nav className="headerNav"> 
             <ul>
-              <Link to="/" style={linkStyle}>
-                <li>Home</li>
-              </Link>
-              <Link to="/news" style={linkStyle}>
-                <li>News</li>
-              </Link>
-              <Link to="/resources" style={linkStyle}>
-                <li>Resources</li>
-              </Link>
-              <Link to="/about" style={linkStyle}>
-                <li>About</li>
-              </Link>
-              <Link to="/info" style={linkStyle}>
-                <li>US Covid Info</li>
-              </Link>
+              {linkText.map((text, i) => {/*map links for desktop*/
+                return (
+                  <Link to={links[i]} className = "links desktop">
+                    <li >{text}</li>
+                  </Link>
+                );
+              })}
             </ul>
           </nav>
         )}
