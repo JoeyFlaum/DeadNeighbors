@@ -2,10 +2,10 @@ import React from 'react';
 
 const CovidUsData = ({date, deaths}) => {
         let dateChecked = new Date(date);
-        const usPopulation2020 = 331002651;
+        const usPopulation2020 = 331002651;/*pulled from internet search*/
         const fractionUsDead = Math.round(usPopulation2020/(deaths));
-        let weekday = ''
-            switch(dateChecked.getDay()){
+        let weekday = '';
+            switch(dateChecked.getDay()){/*convert day number to text string*/
                 case(0): weekday = 'Sunday';break;
                 case(1): weekday = 'Monday';break;
                 case(2): weekday = 'Tuesday';break;
@@ -15,10 +15,10 @@ const CovidUsData = ({date, deaths}) => {
                 case(6): weekday = 'Saturday';break;
                 default:break;
             }
-    return( 
+    return( /*Home page info card, toLocaleString to add commas*/
          <div>  
             <h5>The Numbers Are Astonishing!</h5>
-            {`On ${weekday}, ${dateChecked.toDateString().slice(3)}, the US death toll reached ${deaths.toLocaleString()} deaths. `}
+            {`On ${weekday}, ${dateChecked.toDateString().slice(3)/*cut off day*/}, the US death toll reached ${deaths.toLocaleString()} deaths. `}
             {`That's 1 in ${fractionUsDead.toLocaleString()} dead from Covid-19.`}
         </div>
      )

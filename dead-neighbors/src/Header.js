@@ -61,7 +61,7 @@ class Header extends React.Component {
             <ul className={showMobileList ? "navbar show" : "navbar hide"}> {/*show/hide navigation menu*/}
             {linkText.map((text, i) => {/*map links for movbile view */
                 return (
-                  <Link to={links[i]} className = "links mobile">
+                  <Link to={links[i]} className = "links mobile" key = {i}>
                     <li  onClick={hamburgerHandler}>{text}</li>
                   </Link>
                 );
@@ -73,7 +73,7 @@ class Header extends React.Component {
             <ul>
               {linkText.map((text, i) => {/*map links for desktop*/
                 return (
-                  <Link to={links[i]} className = "links desktop">
+                  <Link to={links[i]} className = "links desktop"  key = {i}>
                     <li >{text}</li>
                   </Link>
                 );

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import News from "./News";
-import HomePage from "./HomePage";
+import HomePage from "./HomePage/HomePage";
 import Header from "./Header";
 import DataPage from "./DataPage";
 import DeadNeighborsPage from "./DeadNeighborsPage";
