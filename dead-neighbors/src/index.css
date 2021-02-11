@@ -44,7 +44,7 @@ header {
   flex-wrap: wrap;
   top: 0;
   right: 0;
-  left: 0;
+  left: 10px;
   width: 100%;
   z-index: 99999;
   background-color: #fff;
@@ -58,7 +58,7 @@ header {
 .headerTitle {
   flex: none;
   align-self: flex-start;
-  margin-right: 4em;
+  margin-right: 1.5em;
 }
 .headerTitle h1 {
   margin-left: -2em;
@@ -143,6 +143,37 @@ button:hover {
 }
 .navbar.hide{
   transform: translateX(100%);
+}
+.routes{
+  position:relative;
+}
+.dead-card{
+  position:sticky;
+  top:130px;
+  left:0;
+  display:flex;
+  font-size:.75em;
+  align-items: baseline;
+  justify-content: flex-start;
+  background: var(--lightgrey);
+  width:100%;
+}
+:not(.peopleCard) .people, .people{
+  display:flex;
+  flex-wrap: wrap;
+  width: max-content;
+}
+:not(.peopleCard) p, .dead-card p{
+  margin: 5px 10px;
+  
+}
+.dead-card div{
+  width:10px;
+  height:10px;
+}
+.homePage .person{
+  width:25px;
+  height:30px;
 }
 /*main*/
 .homePage {
@@ -660,6 +691,9 @@ footer > span:first-of-type {
 @media only screen and (max-width:350px){
   .data-menu, .slider, .filter-sort, .data-radios{
     width:225px;
+    }
+    header {
+      font-size: 75%;
     }
 }
 @media only screen and (max-width: 1075px) and (min-width: 600px) {

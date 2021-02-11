@@ -62,7 +62,6 @@ class HomePage extends Component {
               </Link>
             </div>
             <div className="sinceVisit">
-              <p>{this.state.deadPerson} Dead Since Your Visit</p>
               <DeadPeople
                 deadPersonCount={deadPerson}
                 key={

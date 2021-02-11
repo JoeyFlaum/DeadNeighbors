@@ -1,5 +1,6 @@
 import React from "react";
-import Articles from './Articles';
+import Articles from "./Articles";
+import DeadPeople from "./HomePage/DeadPeople";
 
 class News extends React.Component {
   constructor() {
@@ -25,11 +26,24 @@ class News extends React.Component {
 
   render() {
     let covidNews = this.state.covidNews;
-    console.log("news", covidNews.articles.length!==0?covidNews.articles:'blah');
     return (
-      <div className="news-wrapper">
-        {covidNews.articles.length!==0?<Articles data = {covidNews.articles} />:"Loading News..."}
-      </div>
+      <>
+        <div className="dead-card">
+          <DeadPeople
+            deadPersonCount={this.props.deadPerson}
+            key={
+              this.props.deadPerson
+            } /*key change forces render(updated props are sent)*/
+          />
+        </div>
+        <div className="news-wrapper">
+          {covidNews.articles.length !== 0 ? (
+            <Articles data={covidNews.articles} />
+          ) : (
+            "Loading News..."
+          )}
+        </div>
+      </>
     );
   }
 }

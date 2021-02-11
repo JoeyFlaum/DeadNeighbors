@@ -267,7 +267,7 @@ class App extends Component {
                   )
                 }
               />
-              <Route path="/news" component={News} />
+              <Route path="/news" exact render={(routeProps)=> <News deadPerson={deadPerson} {...routeProps}/> } />
               <Route
                 path="/info"
                 exact
@@ -276,6 +276,7 @@ class App extends Component {
                     <DataPage
                       covStateData={CovStateData}
                       covUsData={CovUSdata}
+                      deadPerson={deadPerson} 
                       {...routeProps}
                     />
                   ) : (
@@ -283,8 +284,8 @@ class App extends Component {
                   )
                 }
               />
-              <Route path="/resources" component={Resources} />
-              <Route path="/about" component={About} />
+              <Route path="/resources" exact render={(routeProps)=> <Resources deadPerson={deadPerson} {...routeProps}/> } />
+              <Route path="/about" exact render={(routeProps)=> <About deadPerson={deadPerson} {...routeProps}/> } />
             </Switch>
           </div>
           <Footer />

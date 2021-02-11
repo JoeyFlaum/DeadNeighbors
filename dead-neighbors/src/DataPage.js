@@ -3,6 +3,7 @@ import CovidStateData from "./CovidStateData";
 import SearchFeature from "./Search";
 import CovidUsDataComplete from "./CovidUsDataComplete";
 import Slider from "./Slider";
+import DeadPeople from "./HomePage/DeadPeople";
 
 class DataPage extends React.Component {
   constructor() {
@@ -136,7 +137,14 @@ class DataPage extends React.Component {
         />
       </svg>
     );
-    return (
+    return (<>
+          <div className = "dead-card">
+      <DeadPeople 
+                deadPersonCount={this.props.deadPerson}
+                key={
+                  this.props.deadPerson
+                } /*key change forces render(updated props are sent)*//>
+               </div>
       <main className="dataPage">
       <div className="menu-wrapper">
           <div className = {!this.state.showMenu?"data-menu up":"data-menu down"} onClick= {this.menuView}>
@@ -209,6 +217,8 @@ class DataPage extends React.Component {
           )}
         </div>
       </main>
+
+                </>
     );
   }
 }

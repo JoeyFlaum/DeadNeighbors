@@ -1,9 +1,18 @@
 import React from "react";
 import WHO from "./Images/WHO.jpg";
 import NIH from "./Images/NIH.jpg";
+import DeadPeople from "./HomePage/DeadPeople";
 
-const Resources = () => {
+const Resources = ({deadPerson}) => {
   return (
+    <>
+        <div className = "dead-card">
+      <DeadPeople 
+                deadPersonCount={deadPerson}
+                key={
+                  deadPerson
+                } /*key change forces render(updated props are sent)*//>
+               </div>
     <div className="resources">
       <div className="infoCard cdc">
           <img
@@ -40,6 +49,8 @@ const Resources = () => {
         </a>
       </div>
     </div>
+
+                </>
   );
 };
 export default Resources;

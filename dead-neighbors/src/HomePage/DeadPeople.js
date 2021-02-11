@@ -34,11 +34,14 @@ class DeadPeople extends React.Component {
   };
   render() {
     return (
+      <>
+      <p>{this.props.deadPersonCount} Dead Since Your Visit</p>
       <div className="people">
         {this.state.deadPersons.map((people) => {/*Map 32 SVG images with correct coloring*/
           return people;
         })}
       </div>
+      </>
     );
   }
 }
