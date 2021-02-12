@@ -22,6 +22,7 @@ code {
   --cream: #f4faf2;
   --red: #e63946;
   --shadow: 0 2px 15px #c5b9b9;
+  --smallShadow:1px 0 5px #c5b9b9;
   --grey: #c3c3c3;
   --darkGrey: #5a5959;
   --lightgrey: #e9e9e9;
@@ -45,7 +46,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 1001;
   background-color: #fff;
   justify-content: center;
   align-items: baseline;
@@ -133,7 +134,6 @@ button:hover {
   height: 100vh;
   margin-top: 0;
   overflow: hidden;
-  z-index: 10000;
 
   /* hide the menu right of the screen by default */
   
@@ -161,14 +161,14 @@ button:hover {
   font-size:.75em;
   align-items: baseline;
   justify-content: flex-start;
-  width:200px;
+  width:210px;
   background:var(--lightgrey);
   color:var(--darkBlue);
   border:1px solid var(--grey) ;
   border-radius: 0 0 15px 0 ;
   transition:  all .5s ease-in-out;
   z-index: 1000;
-  box-shadow: var(--shadow);
+  box-shadow: var(--smallShadow);
 }
 .about .dead-card:hover,.news-wrapper .dead-card:hover,.resources .dead-card:hover, .dataPage .dead-card:hover{
 cursor: pointer;
@@ -355,24 +355,54 @@ font-size: xx-small;
   flex-direction: column;
   align-items: flex-start;
 }
-.data-menu, .slider, .filter-sort{
+.slider, .filter-sort{
   display:flex;
   align-items: center;
   justify-content: center;
-  transition:.5s;
+  transition:  all .5s ease-in-out;
   border-radius: 10px;
   width:500px;
   padding:.25em 1em;
   background:var(--darkBlue);
   color:var(--lightgrey);
 }
+.filter-sort{z-index: 99;}
+.slider{
+  z-index: 100;
+  margin-top:-30px;
+}
+.data-menu{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-size:.75em;
+    width:210px;
+    border:1px solid var(--grey) ;
+    border-radius: 0 0 15px 0 ;
+    transition:  all .5s ease-in-out;
+    z-index: 1000;
+    box-shadow: var(--smallShadow);
+    color:var(--darkBlue);
+    background: var(--lightgrey);
+    margin-right: 0;
+}
+.data-menu:hover, .filter-sort:hover,.radios:hover, .radios label:hover{
+  cursor:pointer;
+  background:var(--lightgrey);
+  color:var(--darkBlue); 
+}
+
 .menu-wrapper{
-  z-index: 4;
-  position: sticky;
-  top:150px;
+  position:fixed;
+  display:flex;
+  flex-direction: column;
+  top:148px;
+  left:20px;
+  z-index:1000;
+  
 }
 .slider-filters{
-  transition: cubic-bezier(1, 0, 0, 1) 0.4s;
+  transition:  all .5s ease-in-out;
 }
 .slider {
   display: flex;
@@ -395,7 +425,6 @@ font-size: xx-small;
   margin:0 10px;
 }
 .slide {
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
   top: 1px;
   height: 5px;
   width: 5px;
@@ -414,46 +443,48 @@ font-size: xx-small;
   left: 28px;
 }
 .filter-sort{
-  transition:.5s;
-  background:var(--darkBlue);
+   background:var(--darkBlue);
   color:var(--lightgrey);
   border-radius: 0 0 10px 10px;
 }
 .filter-sort.down{
   border-radius:0 0 0 0;
 }
-.data-menu.down{
-  border-radius: 10px 10px 0 0;
-}
-.data-menu:hover, .filter-sort:hover,.radios:hover, .radios label:hover{
-  cursor:pointer;
-  background:var(--lightgrey);
-  color:var(--darkBlue); 
-}
+
+
 #menu.one, #sort.one{margin-right:30px;}
 #menu.two,#sort.two{margin-left:30px;}
 .data-radios{
-  z-index:100;
+  z-index:5;
   display:flex;
   flex-direction: column;
   width:500px;
   position:absolute;
   padding:1em;
   border-radius:0 0 10px 10px;
-  transition: cubic-bezier(1, 0, 0, 1) 0.4s;
+  transition:  all .5s ease-in-out;
 }
 .dataPage polyline{
   stroke:var(--lightgrey);
   fill:transparent;
   stroke-width:7;
 }
+.data-menu polyline{
+  stroke:var(--darkBlue);
+}
 .data-menu:hover polyline, .filter-sort:hover polyline{
   stroke:var(--darkBlue)
 }
-.data-radios.up, .slider-filters.up{  transform: translatey(-500%);}
+.data-radios.up {  
+  transform: translatey(-200%);
+ }
+ .slider-filters.up{
+  transform: translatey(-400%)
+ }
 .data-radios.down{
   background:var(--darkBlue);
   color:var(--lightgrey); 
+  overflow: hidden;
 }
 .data-radios input:hover{
   cursor: pointer;
@@ -461,7 +492,7 @@ font-size: xx-small;
 .filter-sort:hover{
   cursor:pointer;
 }
-.data-menu{display:flex;}
+
 .arrow{height:max-content;width:max-content; }
 #menu.arrow.up.one, #sort.arrow.up.one {
   transform:rotate(-180deg);
