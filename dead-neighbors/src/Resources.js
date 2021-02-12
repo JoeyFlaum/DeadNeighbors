@@ -5,15 +5,12 @@ import DeadPeople from "./HomePage/DeadPeople";
 
 const Resources = ({deadPerson}) => {
   return (
-    <>
-        <div className = "dead-card">
-      <DeadPeople 
+    <div className="resources">
+    <DeadPeople 
                 deadPersonCount={deadPerson}
                 key={
                   deadPerson
                 } /*key change forces render(updated props are sent)*//>
-               </div>
-    <div className="resources">
       <div className="infoCard cdc">
           <img
             src="http://www.cdc.gov/coronavirus/2019-ncov/images/Coronavirus-badge-300.png"
@@ -49,8 +46,6 @@ const Resources = ({deadPerson}) => {
         </a>
       </div>
     </div>
-
-                </>
   );
 };
 export default Resources;

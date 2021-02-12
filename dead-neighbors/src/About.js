@@ -3,14 +3,11 @@ import DeadPeople from "./HomePage/DeadPeople";
 
 const About = ({ deadPerson }) => {
   return (
-    <>
-      <div className="dead-card">
-        <DeadPeople
+      <div className="about">
+              <DeadPeople
           deadPersonCount={deadPerson}
           key={deadPerson} /*key change forces render(updated props are sent)*/
         />
-      </div>
-      <div className="about">
         <div className="content">
           <h3>About Dead Neighbors</h3>
           <p>
@@ -30,7 +27,6 @@ const About = ({ deadPerson }) => {
           </p>
         </div>
       </div>
-    </>
   );
 };
 export default About;

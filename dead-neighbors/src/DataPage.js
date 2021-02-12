@@ -137,15 +137,14 @@ class DataPage extends React.Component {
         />
       </svg>
     );
-    return (<>
-          <div className = "dead-card">
+    return (
+      <main className="dataPage">
       <DeadPeople 
                 deadPersonCount={this.props.deadPerson}
                 key={
                   this.props.deadPerson
                 } /*key change forces render(updated props are sent)*//>
-               </div>
-      <main className="dataPage">
+     
       <div className="menu-wrapper">
           <div className = {!this.state.showMenu?"data-menu up":"data-menu down"} onClick= {this.menuView}>
           <div className={!this.state.showMenu? "arrow up one" : "arrow down one"} id = "menu">{filterArrow}</div>
@@ -217,8 +216,6 @@ class DataPage extends React.Component {
           )}
         </div>
       </main>
-
-                </>
     );
   }
 }

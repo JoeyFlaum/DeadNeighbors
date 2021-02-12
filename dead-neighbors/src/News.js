@@ -27,23 +27,19 @@ class News extends React.Component {
   render() {
     let covidNews = this.state.covidNews;
     return (
-      <>
-        <div className="dead-card">
+        <div className="news-wrapper">
           <DeadPeople
             deadPersonCount={this.props.deadPerson}
             key={
               this.props.deadPerson
             } /*key change forces render(updated props are sent)*/
           />
-        </div>
-        <div className="news-wrapper">
           {covidNews.articles.length !== 0 ? (
             <Articles data={covidNews.articles} />
           ) : (
             "Loading News..."
           )}
         </div>
-      </>
     );
   }
 }

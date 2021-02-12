@@ -9,7 +9,10 @@ class DeadNeighbor extends React.Component{
 componentDidMount(){
 this.myTimeout = setTimeout(()=>{this.props.deadNeighbor(false)},8000)}/*send state to Timer component through props, renders for 8 seconds when timer hits 0*/
 
+componentWillUnmount(){
+    clearTimeout(this.myTimeout)
 
+}
 render(){
     return(
         

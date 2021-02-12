@@ -46,7 +46,7 @@ header {
   right: 0;
   left: 10px;
   width: 100%;
-  z-index: 99999;
+  z-index: 999;
   background-color: #fff;
   justify-content: center;
   align-items: baseline;
@@ -55,6 +55,9 @@ header {
 .deadTitle {
   padding-left: 4rem;
 }
+.deadTitle em, .deadTitle h1{
+  z-index: 2000;
+} 
 .headerTitle {
   flex: none;
   align-self: flex-start;
@@ -99,7 +102,7 @@ button:hover {
 .hamburger {
   position: absolute;
   /* always keep ham on top of everything */
-  z-index: 1000;
+  z-index:10001;
   top: 40px;
   right: 20px;
   width: 36px;
@@ -131,6 +134,7 @@ button:hover {
   height: 100vh;
   margin-top: 0;
   overflow: hidden;
+  z-index: 10000;
   /* hide the menu right of the screen by default */
   
   /* transition adds a little animation when sliding in and out the menu */
@@ -147,31 +151,40 @@ button:hover {
 .routes{
   position:relative;
 }
-.dead-card{
-  position:sticky;
-  top:130px;
-  left:0;
+
+.about .dead-card,.news-wrapper .dead-card,.resources .dead-card, .dataPage .dead-card{
+  position:fixed;
+  top:150px;
+  right:20px;
   display:flex;
+  flex-direction: column;
   font-size:.75em;
   align-items: baseline;
   justify-content: flex-start;
-  background: var(--lightgrey);
-  width:100%;
+  width:200px;
+  background:var(--lightgrey);
+  color:var(--darkBlue);
+  border:3px solid var(--darkGrey) ;
+  border-radius: 15px 15px 15px 0 ;
+  transition:  all 2s ease-in-out 2s;
+
 }
-:not(.peopleCard) .people, .people{
+.about .dead-card.hidden,.news-wrapper .dead-card.hidden,.resources .dead-card.hidden, .dataPage .dead-card.hidden{
+  right:-300px;
+}
+.about .dead-card.fly-by,.news-wrapper .dead-card.fly-by,.resources .dead-card.fly-by, .dataPage .dead-card.fly-by{
+  right:20px;
+}
+.people{
   display:flex;
   flex-wrap: wrap;
-  width: max-content;
+  width: fit-content;
 }
-:not(.peopleCard) p, .dead-card p{
+.dead-card p{
   margin: 5px 10px;
   
 }
-.dead-card div{
-  width:10px;
-  height:10px;
-}
-.homePage .person{
+.dead-card .person{
   width:25px;
   height:30px;
 }
@@ -234,11 +247,6 @@ main .peopleCardInfo {
 button:hover {
   color: var(--darkBlue);
   background-color: var(--lightgrey);
-}
-main .people {
-  display: flex;
-  flex-wrap: wrap;
-  width: fit-content;
 }
 main .sinceVisit {
   border-top: 1px solid var(--grey);
@@ -625,6 +633,14 @@ footer > span:first-of-type {
   left: 0;
   font-size: 0.1px;
 }
+@media only screen and (max-width:350px){
+  .data-menu, .slider, .filter-sort, .data-radios{
+    width:225px;
+    }
+    header {
+      font-size: 75%;
+    }
+}
 @media only screen and (max-width: 600px) {
   body {
     margin: 30px 20px;
@@ -687,14 +703,6 @@ footer > span:first-of-type {
     width: 260px;
     margin-top: 33px;
   }
-}
-@media only screen and (max-width:350px){
-  .data-menu, .slider, .filter-sort, .data-radios{
-    width:225px;
-    }
-    header {
-      font-size: 75%;
-    }
 }
 @media only screen and (max-width: 1075px) and (min-width: 600px) {
   .heroContainer {

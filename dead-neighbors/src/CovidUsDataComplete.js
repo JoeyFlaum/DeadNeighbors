@@ -1,7 +1,6 @@
 import React from 'react';
 import CovidUsDataCard from './CovidUsDataCard'
 const CovidUsDataComplete=({data})=>{
-    console.log('us',data)
     return(
     <div className = 'usDataComplete'>
     {data.map((info,i)=>{
