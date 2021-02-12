@@ -5,24 +5,19 @@ class DeadPeople extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      flyBy: false,
+      cardVisible: false,
     };
+    this.hideShowCard = this.hideShowCard.bind(this)
   }
-  componentDidMount(){
-    this.setState({ flyBy: true });
-    this.myTimeout = setTimeout(() => {
-      this.setState({ flyBy: false });
-    }, 1);
-  }
-  componentWillUnmount() {
-    clearInterval(this.myTimeout);
-    console.log("unmount");
+  hideShowCard=()=>{
+    this.setState({ cardVisible: !this.state.cardVisible });
   }
   render() {
+    console.log(this.state.cardVisible)
     console.log("render");
     return (
       <div
-        className={this.state.flyBy ? "dead-card fly-by" : "dead-card hidden"}
+        className={this.state.cardVisible ? "dead-card visible" : "dead-card hidden"} onClick={this.hideShowCard}
       >
         <p>
           {this.props.deadPersonCount} Dead <span> Since Your Visit</span>

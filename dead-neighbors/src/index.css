@@ -43,8 +43,7 @@ header {
   position: fixed;
   flex-wrap: wrap;
   top: 0;
-  right: 0;
-  left: 10px;
+  left: 0;
   width: 100%;
   z-index: 999;
   background-color: #fff;
@@ -135,6 +134,7 @@ button:hover {
   margin-top: 0;
   overflow: hidden;
   z-index: 10000;
+
   /* hide the menu right of the screen by default */
   
   /* transition adds a little animation when sliding in and out the menu */
@@ -154,26 +154,29 @@ button:hover {
 
 .about .dead-card,.news-wrapper .dead-card,.resources .dead-card, .dataPage .dead-card{
   position:fixed;
-  top:150px;
+  top:20px;
   right:20px;
   display:flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   font-size:.75em;
   align-items: baseline;
   justify-content: flex-start;
   width:200px;
   background:var(--lightgrey);
   color:var(--darkBlue);
-  border:3px solid var(--darkGrey) ;
-  border-radius: 15px 15px 15px 0 ;
-  transition:  all 2s ease-in-out 2s;
-
+  border:1px solid var(--grey) ;
+  border-radius: 0 0 15px 0 ;
+  transition:  all .5s ease-in-out;
+  z-index: 100000;
+  box-shadow: var(--shadow);
 }
-.about .dead-card.hidden,.news-wrapper .dead-card.hidden,.resources .dead-card.hidden, .dataPage .dead-card.hidden{
-  right:-300px;
+.about .dead-card:hover,.news-wrapper .dead-card:hover,.resources .dead-card:hover, .dataPage .dead-card:hover{
+cursor: pointer;
 }
-.about .dead-card.fly-by,.news-wrapper .dead-card.fly-by,.resources .dead-card.fly-by, .dataPage .dead-card.fly-by{
-  right:20px;
+/* .about .dead-card.hidden, .news-wrapper .dead-card.hidden, .resources .dead-card.hidden, .dataPage .dead-card.hidden{
+} */
+.about .dead-card.visible, .news-wrapper .dead-card.visible, .resources .dead-card.visible, .dataPage .dead-card.visible{
+top:145px
 }
 .people{
   display:flex;
@@ -651,6 +654,20 @@ footer > span:first-of-type {
   }
   .routes {
     font-size: 75%;
+  }
+  .about .dead-card,.news-wrapper .dead-card,.resources .dead-card, .dataPage .dead-card{
+    top:unset;
+    bottom:-185px;
+    flex-direction: column;
+    border-radius: 15px 0 0  0;
+    width:155px
+  }
+  .about .dead-card.visible, .news-wrapper .dead-card.visible, .resources .dead-card.visible, .dataPage .dead-card.visible{
+    top:unset;
+    bottom:-2px;
+  }
+  .dead-card p{
+    margin: 0px 5px 5px 15px ;
   }
   .stateDataCard,
 .usDataCard {
