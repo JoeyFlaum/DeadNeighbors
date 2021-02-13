@@ -373,7 +373,7 @@ font-size: xx-small;
 }
 .data-menu{
     display:flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: center;
     font-size:.75em;
     width:210px;
@@ -385,6 +385,7 @@ font-size: xx-small;
     color:var(--darkBlue);
     background: var(--lightgrey);
     margin-right: 0;
+    padding-bottom: 2px;
 }
 .data-menu:hover, .filter-sort:hover,.radios:hover, .radios label:hover{
   cursor:pointer;
@@ -479,7 +480,7 @@ font-size: xx-small;
   transform: translatey(-200%);
  }
  .slider-filters.up{
-  transform: translatey(-400%)
+  transform: translatey(-450px)
  }
 .data-radios.down{
   background:var(--darkBlue);
@@ -668,7 +669,7 @@ footer > span:first-of-type {
   font-size: 0.1px;
 }
 @media only screen and (max-width:350px){
-  .data-menu, .slider, .filter-sort, .data-radios{
+    .slider, .filter-sort, .data-radios{
     width:225px;
     }
     header {
@@ -698,7 +699,7 @@ footer > span:first-of-type {
     bottom:-2px;
   }
   .dead-card p{
-    margin: 0px 5px 5px 15px ;
+    margin: 0px 0px 5px 7px ;
   }
   .stateDataCard,
 .usDataCard {
@@ -734,11 +735,52 @@ footer > span:first-of-type {
     font-size: .75rem;
     height:15px;
   } */
+  .slider-filter-wrapper{
+  flex-direction: column-reverse;
+}
+.slider{
+  margin-top:-1px;
+}
+.filter-sort.up{
+  border-radius: 10px 10px 0 0 ;
+}
+.filter-sort.down{
+  border-radius: unset;
+}
+.slider-filters.up{
+ transform: translatey(-85px)
+}
+.slider-filters.down{
+  transform: translateY(300px);
+}
+.data-radios.up {  
+  transform: translatey(-343px);
+  background:var(--darkBlue);
+  color:var(--lightgrey); 
+  overflow: hidden;
+  border-radius:10px 10px 0 0;
+ }
+ .data-radios.down{
+   transform:translateY(0px)
+ }
+.data-radios{
+  flex-direction: column-reverse;
+}
   .menu-wrapper{
-    margin-top:110px;
-    top:90px;
+    top:unset;
+    bottom:-85px;
+    z-index:1000;
   }
-  .data-menu, .slider, .filter-sort, .data-radios{
+  .data-menu{
+    border-radius: 15px 0 0  0;
+    width:155px;
+    padding-bottom: 2px;
+}
+.menu-wrapper svg{
+  width:15px;
+  height:10px;
+}
+.slider, .filter-sort, .data-radios{
   width:300px;
   }
   .searchWrapper input {
