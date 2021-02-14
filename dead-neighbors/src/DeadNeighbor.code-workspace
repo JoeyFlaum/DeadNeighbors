@@ -1,16 +1,7 @@
 {
-	"folders": [
-		{
-			"path": "..\\..\\..\\..\\Kosta Site"
-		},
-		{
-			"path": "."
-		},
-		{
-			"path": ".."
-		}
-	],
-	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "Kosta Site"
-	}
+    "folders": [
+        {
+            "path": ".."
+        }
+    ]
 }

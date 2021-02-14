@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import News from "./NewsPage/News";
-import HomePage from "./HomePage/HomePage";
+import News from "../NewsPage/News";
+import HomePage from "../HomePage/HomePage";
 import Header from "./Header";
-import DataPage from "./DataPage";
+import DataPage from "../USCovidInfo/DataPage";
 import DeadNeighborsPage from "./DeadNeighborsPage";
-import Resources from "./ResourcesPage/Resources";
-import About from "./AboutPage/About";
+import Resources from "../ResourcesPage/Resources";
+import About from "../AboutPage/About";
 import Footer from "./Footer";
 import ScrollToTop from './ScrollToTop';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -235,7 +235,7 @@ class App extends Component {
       <Router>
       <ScrollToTop/>{/*scrolls to the top of the page when routes change*/}
         <div className="pageContent">
-          {CovidDeathsToday !== 0 ? (
+          {CovidDeathsToday !== 0 ? (/* waits for fetch */
             <DeadNeighborsPage
               usData={CovidDeathsToday}
               dead={this.deadTrue.bind(this)}
@@ -252,7 +252,7 @@ class App extends Component {
                 path="/"
                 exact
                 render={(routeProps) =>
-                  CovUSdata.length !== 0 ? (
+                  CovUSdata.length !== 0 ? (/* waits for fetch */
                     <HomePage
                       totalDeaths={CovidDeathsTotal}
                       date={CovidDeathsTotalDate}
@@ -272,7 +272,7 @@ class App extends Component {
                 path="/info"
                 exact
                 render={(routeProps) =>
-                  CovStateData.length !== 0 ? (
+                  CovStateData.length !== 0 ? (/* waits for fetch */
                     <DataPage
                       covStateData={CovStateData}
                       covUsData={CovUSdata}

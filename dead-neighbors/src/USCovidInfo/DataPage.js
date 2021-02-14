@@ -3,7 +3,7 @@ import CovidStateData from "./CovidStateData";
 import SearchFeature from "./Search";
 import CovidUsDataComplete from "./CovidUsDataComplete";
 import Slider from "./Slider";
-import DeadPeople from "./HomePage/DeadPeople";
+import DeadPeople from "../HomePage/DeadPeople";
 
 class DataPage extends React.Component {
   constructor() {
