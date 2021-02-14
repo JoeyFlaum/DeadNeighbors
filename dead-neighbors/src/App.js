@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import News from "./News";
+import News from "./NewsPage/News";
 import HomePage from "./HomePage/HomePage";
 import Header from "./Header";
 import DataPage from "./DataPage";

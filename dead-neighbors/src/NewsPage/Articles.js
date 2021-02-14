@@ -5,14 +5,14 @@ import ArticlePhotoLinkCard from "./ArticlePhotoLinkCard";
 const Articles = ({ data }) => {
   return (
     <>
-      {data.map((info, i) => {
-        console.log("info", info.multimedia[0].url);
+      {data.map((info, i) => {/* map each article card  */
         const flexClass = "single-article-wrapper";
         const flexClassReverse = "single-article-wrapper reverse";
         return (
-          <div key={i} className={i % 2 === 0 ? flexClass : flexClassReverse}>
+          <div key={i} className={i % 2 === 0 ? flexClass : flexClassReverse}/* every other result is displayed flipped horizontally */>
+            
             <div className="article-info">
-              <ArticleTitleCard
+              <ArticleTitleCard /* display article snippet*/
                 key={info.keywords[0].value}
                 source={info.source}
                 headlineMain={info.headline.main}
@@ -20,7 +20,7 @@ const Articles = ({ data }) => {
               />
             </div>
             <div className="infoCard">
-              <ArticlePhotoLinkCard
+              <ArticlePhotoLinkCard /* display photo from article */
                 key={info.keywords[1].value}
                 photo_url={info.multimedia[0].url}
               />
@@ -29,7 +29,9 @@ const Articles = ({ data }) => {
                 rel="nofollow noopener noreferrer"
                 href={info.web_url}
               >
-                <button><div className = "click-me">Full Article</div></button>
+                <button>
+                  <div className="click-me">Full Article</div> {/* link to article */}
+                </button>
               </a>
             </div>
           </div>
