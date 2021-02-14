@@ -1,10 +1,10 @@
 import React from "react";
-import DeadPeople from "./HomePage/DeadPeople";
+import DeadPeople from "../HomePage/DeadPeople";
 
 const About = ({ deadPerson }) => {
   return (
       <div className="about">
-              <DeadPeople
+              <DeadPeople /* display dead person count */
           deadPersonCount={deadPerson}
           key={deadPerson} /*key change forces render(updated props are sent)*/
         />

@@ -5,7 +5,7 @@ import Header from "./Header";
 import DataPage from "./DataPage";
 import DeadNeighborsPage from "./DeadNeighborsPage";
 import Resources from "./Resources";
-import About from "./About";
+import About from "./AboutPage/About";
 import Footer from "./Footer";
 import ScrollToTop from './ScrollToTop';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
