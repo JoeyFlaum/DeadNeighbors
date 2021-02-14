@@ -15,7 +15,6 @@ class DataPage extends React.Component {
       showFilter: false,
       showMenu:false,
     };
-    this.slideHandler = this.slideHandler.bind(this);
   }
   /*handle enter key and button click for state search*/
   searchHandler = (event) => {
@@ -94,7 +93,6 @@ class DataPage extends React.Component {
         }
       });
       worstDaysByState.sort((a, b) => b.deathIncrease - a.deathIncrease);
-      console.log("viewHandler", worstDaysByState);
       return worstDaysByState;
     } else {
       return dataArray;
@@ -139,36 +137,36 @@ class DataPage extends React.Component {
     );
     return (
       <main className="dataPage">
-      <DeadPeople 
+      <DeadPeople /* dead person count display */
                 deadPersonCount={this.props.deadPerson}
                 key={
                   this.props.deadPerson
                 } /*key change forces render(updated props are sent)*//>
      
       <div className="menu-wrapper">
-          <div className = {!this.state.showMenu?"data-menu up":"data-menu down"} onClick= {this.menuView}>
-          <div className={!this.state.showMenu? "arrow up one" : "arrow down one"} id = "menu">{filterArrow}</div>
-           <div>Menu</div> 
-           <div className={!this.state.showMenu ? "arrow up two" : "arrow down two"} id = "menu">{filterArrow}</div>
-           </div>
-        <div className={!this.state.showMenu? "slider-filters up":"slider-filters down"}>
+          <div className = {!this.state.showMenu?"data-menu up":"data-menu down"} onClick= {this.menuView}> {/* show/ hide menu tab */}
+            <div className={!this.state.showMenu? "arrow up one" : "arrow down one"} id = "menu">{filterArrow}</div> {/*arrow up /down*/ }
+            <div>Menu</div> 
+            <div className={!this.state.showMenu ? "arrow up two" : "arrow down two"} id = "menu">{filterArrow}</div> {/*arrow up /down*/ }
+          </div>
+        <div className={!this.state.showMenu? "slider-filters up":"slider-filters down"}> {/* slider/sorting options menu */}
           <div className="slider-filter-wrapper">
-            <Slider boolean={this.slideHandler} usStateBoolean={slider} />
-            <div className={!this.state.showFilter?"filter-sort up":"filter-sort down"} onClick={this.filterView}>
-            <div className={!this.state.showFilter ? "arrow up one" : "arrow down one"} id = "sort">{filterArrow}</div>
+            <Slider boolean={this.slideHandler} usStateBoolean={slider} />{/* slider to choose US/State Info display */}
+            <div className={!this.state.showFilter?"filter-sort up":"filter-sort down"} onClick={this.filterView}>{/* show/hide sorting tab */}
+              <div className={!this.state.showFilter ? "arrow up one" : "arrow down one"} id = "sort">{filterArrow}</div>{/*arrow up /down*/ }
               <div>Sorting Options</div>
-              <div className={!this.state.showFilter ? "arrow up two" : "arrow down two"} id = "sort">{filterArrow}</div>
+              <div className={!this.state.showFilter ? "arrow up two" : "arrow down two"} id = "sort">{filterArrow}</div>{/*arrow up /down*/ }
             </div>
           </div>
           <div
-            className={
+            className={/*filters */
               !this.state.showFilter ? "data-radios up" : "data-radios down"
             }
-            onChange={this.filterSortView} onClick={(e)=>console.log(e)}
+            onChange={this.filterSortView} /* chooses filter and closes menu */
           >
-            {radioFilters.map((filter) => {
+            {radioFilters.map((filter, i) => {/* map filters to menu */
               return (
-                <div className="radios">
+                <div className="radios" key = {i}>
                 <label>
                   <input type="radio" name="sort-filter" value={filter}/>
                   <span>{filter}</span>
@@ -176,7 +174,7 @@ class DataPage extends React.Component {
                 </div>
               );
             })}
-            {!slider ? (
+            {!slider ? (/* no map due to state view only */
               <div className="radios">
               <label>
                 <input
@@ -192,9 +190,9 @@ class DataPage extends React.Component {
         </div>
         </div>
         <div className="infoSection">
-          {!slider ? (
+          {!slider ? (/* state/us view */
             <>
-              <SearchFeature
+              <SearchFeature /* search for individual state on state data view */
                 className="searchfeature"
                 onEnter={this.searchHandler}
               />
