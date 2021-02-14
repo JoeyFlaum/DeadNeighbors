@@ -4,7 +4,7 @@ import HomePage from "./HomePage/HomePage";
 import Header from "./Header";
 import DataPage from "./DataPage";
 import DeadNeighborsPage from "./DeadNeighborsPage";
-import Resources from "./Resources";
+import Resources from "./ResourcesPage/Resources";
 import About from "./AboutPage/About";
 import Footer from "./Footer";
 import ScrollToTop from './ScrollToTop';
