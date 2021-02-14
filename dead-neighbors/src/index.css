@@ -493,12 +493,20 @@ font-size: xx-small;
 }
 
 .arrow{height:max-content;width:max-content; }
-#menu.arrow.up.one, #sort.arrow.up.one {
+#menu.arrow.down.one, #sort.arrow.down.one {
   transform:rotate(-180deg);
   transition:.5s;
 }
-#menu.arrow.up.two, #sort.arrow.up.two {
+#menu.arrow.down.two, #sort.arrow.down.two {
   transform:rotate(180deg);
+  transition:.5s;
+}
+#menu.arrow.up.one, #sort.arrow.up.one {
+  transform:rotate(0deg);
+  transition:.5s;
+}
+#menu.arrow.up.two, #sort.arrow.up.two {
+  transform:rotate(0deg);
   transition:.5s;
 }
 .arrow.down{
@@ -777,16 +785,16 @@ footer > span:first-of-type {
   height:10px;
 }
 #menu.arrow.down.one, #sort.arrow.down.one {
-  transform:rotate(-180deg);
+  transform:rotate(0deg);
 }
 #menu.arrow.down.two, #sort.arrow.down.two {
-  transform:rotate(180deg);
+  transform:rotate(0deg);
 }
 #menu.arrow.up.one, #sort.arrow.up.one {
-  transform:rotate(0deg);
+  transform:rotate(-180deg);
 }
 #menu.arrow.up.two, #sort.arrow.up.two {
-  transform:rotate(0deg);
+  transform:rotate(180deg);
 }
 .slider, .filter-sort, .data-radios{
   width:300px;
