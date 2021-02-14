@@ -37,7 +37,6 @@ class DeadPerson extends React.Component{
             </div>
         )}
         }
-        console.log("person render")
     return(
     <>
         {people.map((person)=>{

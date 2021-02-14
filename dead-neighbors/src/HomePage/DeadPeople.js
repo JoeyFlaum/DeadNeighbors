@@ -9,22 +9,19 @@ class DeadPeople extends React.Component {
     };
     this.hideShowCard = this.hideShowCard.bind(this)
   }
-  hideShowCard=(event)=>{
-    console.log(event);
+  hideShowCard=()=>{/* makes dead people visible/hidden */
     this.setState({ cardVisible: !this.state.cardVisible });
   }
   render() {
-    console.log(this.state.cardVisible)
-    console.log("render");
     return (
       <div
         className={this.state.cardVisible ? "dead-card visible" : "dead-card hidden"} onClick={this.hideShowCard} 
       >
         <p>
-          {this.props.deadPersonCount} Dead <span> Since Your Visit</span>
+          {this.props.deadPersonCount} Dead <span> Since Your Visit</span> {/* display count */}
         </p>
         <div className="people">
-          <DeadPerson deadPersonCount={this.props.deadPersonCount} flyBy = {this.flyByTimeout} />
+          <DeadPerson deadPersonCount={this.props.deadPersonCount} />{/* sends count to deadPerson */}
         </div>
       </div>
     );

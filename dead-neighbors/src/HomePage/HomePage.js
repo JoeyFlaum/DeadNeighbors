@@ -21,52 +21,48 @@ class HomePage extends Component {
   render() {
     const deadPerson = this.props.deadPersonCount;
     const infoCards = [
+      /* array for infoCards */
       {
         className: "infoCard about-deadneighbors",
         image:
           "https://ggsc.s3.amazonaws.com/images/uploads/masks_in_crowd.jpg",
         alt: "Masks In Crowd",
-        link:"/about",
+        link: "/about",
         buttonText: "About Dead Neighbors",
       },
       {
         className: "infoCard news-deadneighbors",
-        image:
-        Typewriter,
+        image: Typewriter,
         alt: "Typewriter with #Covid-19 on paper",
-        link:"/news",
+        link: "/news",
         buttonText: "News Articles",
       },
       {
         className: "infoCard resources-deadneighbors",
-        image:
-        Resources,
+        image: Resources,
         alt: "Person in PPE spraying the words: STOP THE SPREAD",
-        link:"/resources",
+        link: "/resources",
         buttonText: "Covid Resources",
-      } 
+      },
     ];
     return (
       <main className="homePage">
         <div className="heroContainer">
           <div className="peopleCard">
             <div className="peopleCardInfo">
-              <CovidUsData
+              <CovidUsData /* Snippet about the most current conditions */
                 date={this.props.date}
-                /*most recent recorded date*/ deaths={
-                  this.props.totalDeaths
-                } /*most recent date death count*/
+                /*most recent recorded date*/
+                deaths={this.props.totalDeaths} /*most recent date death count*/
               />
-              <Link to="/info">
+              <Link to="/info"> {/* link to US Covid Info page */}
                 <button>More Info</button>
               </Link>
             </div>
             <div className="sinceVisit">
-              <DeadPeople
+              <DeadPeople /* dead person count display */
                 deadPersonCount={deadPerson}
-                key={
-                  deadPerson
-                } /*key change forces render(updated props are sent)*/
+                key={deadPerson} /*key change forces render(updated props are sent)*/
               />
             </div>
           </div>
@@ -76,24 +72,19 @@ class HomePage extends Component {
             alt="Hero Doctor, PHOTOGRAPH BY EMIN BAYCAN on Unsplash"
           />
         </div>
-        <div className="infoCardContainer">
-          {infoCards.map((info, i)=>{
-            return(
-              <div className={info.className} key = {i}>
-            <img
-              src={info.image}
-              alt={info.alt}
-            />
-            <Link to={info.link}>
-              <button>
-                <div>{info.buttonText}</div>
-              </button>
-            </Link>
-          </div>
-            )
-          }
-          )
-          }
+        <div className="infoCardContainer"> {/* info cards below hero  */}
+          {infoCards.map((info, i) => {/*map each info card */
+            return (
+              <div className={info.className} key={i}>
+                <img src={info.image} alt={info.alt} />
+                <Link to={info.link}>
+                  <button>
+                    <div>{info.buttonText}</div>
+                  </button>
+                </Link>
+              </div>
+            );
+          })}
         </div>
       </main>
     );
