@@ -22,28 +22,29 @@ class DataPage extends React.Component {
       this.setState({ searchField: event.target.value });
     }
   };
-  slideHandler = () => {
+  slideHandler = () => {/* sets true/false US or State display */
     this.setState({ slider: !this.state.slider });
   };
-  filterView = () => {
+  filterView = () => {/* sets true/false for filters visible */
     this.setState({ showFilter: !this.state.showFilter });
   };
-  menuView = () =>{
+  menuView = () =>{  /* sets true/false for menu open/close */
     this.setState({ showMenu: !this.state.showMenu });
     
   }
   /*set state of radio input choice*/
   filterSortView = (event) => {
-    this.setState({ dataView: event.target.value});
-    this.menuView();
+    this.setState({ dataView: event.target.value});/*click event value from sorting options */
+    this.menuView();/*closes menu*/
   };
 
   /*filter and sort state/us data*/
   viewHandler = (data) => {
     const { dataView } = this.state;
     const CovStateData = this.props.covStateData;
-    const CovidStateData = [...CovStateData];
-    const dataArray = [...data];
+    const CovidStateData = [...CovStateData];/*spread operator to copy props to new array */
+    const dataArray = [...data];/*spread operator to copy props to new array */
+    /*sorting matches if / else if statements strings */
     if (dataView === "Death Increase Daily - High To Low") {
       dataArray.sort(
         (a, b) => b.deathIncrease - a.deathIncrease || b.date - a.date
@@ -70,7 +71,7 @@ class DataPage extends React.Component {
     } else if (dataView === "Date - Recent To Oldest") {
       dataArray.sort((a, b) => b.date - a.date);
       return dataArray;
-    } else if (dataView === "Worst Day - By State") {
+    } else if (dataView === "Worst Day - By State") {/*does not take in data parameter, uses the spread operater arrays*/
       /*sort objects alphabetical order by state and then by deaths*/
       CovidStateData.sort((a, b) => {
         return (
@@ -80,21 +81,20 @@ class DataPage extends React.Component {
           b.deathIncrease - a.deathIncrease
         );
       });
-
-      let stateChecker = "";
-      let worstDaysByState = [];
+      let stateChecker = "";/*used to see if next object has the same state as the current object */
+      let worstDaysByState = [];/* 1st result of each state is pushed to worstDaysByState array */
       CovidStateData.forEach((data, i) => {
-        if (i === 0) {
+        if (i === 0) {/*first state result is the first worst day after sorting operations and pushed to worstDaysByState variable */
           stateChecker = data.state;
           return worstDaysByState.push(data);
-        } else if (data.state !== stateChecker) {
+        } else if (data.state !== stateChecker) {/* if object state is different, object is pushed to worstDaysByState variable */
           stateChecker = data.state;
           return worstDaysByState.push(data);
         }
       });
-      worstDaysByState.sort((a, b) => b.deathIncrease - a.deathIncrease);
+      worstDaysByState.sort((a, b) => b.deathIncrease - a.deathIncrease);/*sorts worst days once forEach Loop is complete */
       return worstDaysByState;
-    } else {
+    } else {/* if no match returns original data */
       return dataArray;
     }
   };
@@ -103,19 +103,19 @@ class DataPage extends React.Component {
     const { searchField, slider } = this.state;
     const CovStateData = this.props.covStateData;
     const CovUsData = this.props.covUsData;
-    let filteredStates = [];
+    let filteredStates = [];/* searchfield value filters the data, comes from SearchFeature */
     filteredStates = CovStateData.filter((stateData) => {
       return stateData.stateFullName
         .toLowerCase()
         .includes(searchField.toLowerCase());
     });
-    let unfilteredStates = [];
+    let unfilteredStates = [];/* searchField is blank and the most recent state data for each state is returned */
     unfilteredStates = CovStateData.slice(0, 56).filter((stateData) => {
       return stateData.stateFullName
         .toLowerCase()
         .includes(searchField.toLowerCase());
     });
-    let radioFilters = [
+    let radioFilters = [ /* set value of radio button filters */
       "Death Increase Daily - High To Low",
       "Death Increase Daily - Low To High",
       "Positive Increase - High To Low",
@@ -123,9 +123,8 @@ class DataPage extends React.Component {
       "Date - Oldest To Recent",
       "Date - Recent To Oldest",
     ];
-    let filterArrow = (
+    let filterArrow = (/* create arrows for menu up/down visualization*/
       <svg
-        
         viewBox="10 45 100 120"
         height="20px"
         width="35px"
@@ -151,7 +150,7 @@ class DataPage extends React.Component {
           </div>
         <div className={!this.state.showMenu? "slider-filters up":"slider-filters down"}> {/* slider/sorting options menu */}
           <div className="slider-filter-wrapper">
-            <Slider boolean={this.slideHandler} usStateBoolean={slider} />{/* slider to choose US/State Info display */}
+            <Slider boolean={this.slideHandler} usStateBoolean={slider} />{/* slider to choose US or State Info display */}
             <div className={!this.state.showFilter?"filter-sort up":"filter-sort down"} onClick={this.filterView}>{/* show/hide sorting tab */}
               <div className={!this.state.showFilter ? "arrow up one" : "arrow down one"} id = "sort">{filterArrow}</div>{/*arrow up /down*/ }
               <div>Sorting Options</div>
@@ -164,7 +163,7 @@ class DataPage extends React.Component {
             }
             onChange={this.filterSortView} /* chooses filter and closes menu */
           >
-            {radioFilters.map((filter, i) => {/* map filters to menu */
+            {radioFilters.map((filter, i) => {/* map filters to sorting optionsmenu */
               return (
                 <div className="radios" key = {i}>
                 <label>
@@ -197,7 +196,7 @@ class DataPage extends React.Component {
                 onEnter={this.searchHandler}
               />
               <div className="stateStats">
-                <CovidStateData
+                <CovidStateData /*renders filtered or unfiltered state data. Filtered by searchfield value and sorts with viewHandler*/
                   key={searchField}
                   data={
                     searchField === ""
@@ -209,7 +208,7 @@ class DataPage extends React.Component {
             </>
           ) : (
             <div className="usStats">
-              <CovidUsDataComplete data={this.viewHandler(CovUsData)} />
+              <CovidUsDataComplete data={this.viewHandler(CovUsData)} /* renders usData and sorts with viewHandler */ />
             </div>
           )}
         </div>

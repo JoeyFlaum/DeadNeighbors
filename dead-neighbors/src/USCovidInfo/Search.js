@@ -10,7 +10,7 @@ class SearchFeature extends React.Component {
       mouseOverSuggestions: false,
     };
   }
-  /*handle button click to populate input field of search*/
+  /*handle button click to populate input field of search, suggestions false*/
   buttonHandler = (event) => {
     this.setState({
       inputField: "",
@@ -52,13 +52,13 @@ class SearchFeature extends React.Component {
         break;
     }
   };
-  onSearchChange = (event) => {
+  onSearchChange = (event) => {/* changes as values are entered into search input*/
     this.setState({ inputField: event.target.value });
   };
 
   render() {
     const { inputField } = this.state;
-    const filteredStates = stateList.filter((stateData) => {
+    const filteredStates = stateList.filter((stateData) => {/* stateList has state full name and abbreviation, returns match to either*/
       return (
         stateData.stateFullName
           .toLowerCase()
@@ -74,16 +74,16 @@ class SearchFeature extends React.Component {
         <h2>Search By State</h2>
         <form className="searchWrapper" onSubmit={(e) => e.preventDefault()}>
           {" "}
-          <input
+          <input/* search input for state search*/
             placeholder="Enter State or Abbreviation"
-            onKeyPress={this.props.onEnter}
+            onKeyPress={this.props.onEnter}/* sends value to searchHandler on DataPage */
             onChange={(e) => {
-              this.onSearchChange(e);
-              this.suggestionFocusHandler(e);
+              this.onSearchChange(e);/*show */
+              this.suggestionFocusHandler(e);/* suggestions shown is true */
             }}
-            value={this.state.inputField}
-            onClick={this.suggestionFocusHandler}
-            onBlur={this.suggestionFocusHandler}
+            value={this.state.inputField} /* sets value of search input */
+            onClick={this.suggestionFocusHandler} /* suggestions shown is true */
+            onBlur={this.suggestionFocusHandler} /* suggestions shown is true */
           />
           <div className="searchfield">
             <ul className="navigation">
@@ -92,22 +92,21 @@ class SearchFeature extends React.Component {
                     return (
                       <li
                         key={i}
-                        onMouseOver={this.mouseOverSuggestions}
-                        onMouseLeave={this.mouseOverSuggestions}
-                        onBlur={this.suggestionFocusHandler}
+                        onMouseOver={this.mouseOverSuggestions}/* true*/
+                        onMouseLeave={this.mouseOverSuggestions}/* false*/
+                        onBlur={this.suggestionFocusHandler}/* suggestions shown is true or false depending on mouse over suggestions */
                       >
                         <button
                           key={i}
-                          ref={(r) => (this.myButton = r)}
                           className="suggestion"
                           onClick={(e) => {
-                            this.buttonHandler(e);
-                            this.props.onEnter(e);
+                            this.buttonHandler(e);/* suggestions becomes false*/
+                            this.props.onEnter(e);/* send value of button to dataPage function */
                           }}
-                          onBlur={this.suggestionFocusHandler}
-                          value={filteredStates[i].stateFullName}
+                          onBlur={this.suggestionFocusHandler}/* set blur to true/false */
+                          value={filteredStates[i].stateFullName} /*state results changes as search changes */
                         >
-                          {filteredStates[i].stateFullName + ", " + filteredStates[i].stateAbbreviation   }
+                          {filteredStates[i].stateFullName + ", " + filteredStates[i].stateAbbreviation   /* display state name and abbreviation on button */}
                         </button>
                       </li>
                     );

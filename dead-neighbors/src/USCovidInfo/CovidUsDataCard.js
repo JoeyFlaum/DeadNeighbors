@@ -9,7 +9,7 @@ const CovidUsDataCard = ({
   negative,
   negativeIncrease,
 }) => {
-  return (
+  return (/*layout of individual US data card using props sent */
     <div className="usDataCard">
       <h5>US Daily Covid Info</h5>
       <p><strong>Date:</strong>{" "} {date.toDateString()}</p>

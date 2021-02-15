@@ -9,7 +9,7 @@ const CovidStateData = ({ data }) => {
       <div className="stateDeaths">
         {data.map((stateObj, i) => {
           let day = new Date(data[i].dateChecked);
-          return (
+          return (/*mapped filtered or unfiltered and sorted or unsorted props to datacard */
             <CovidStateDataCard
               key={i}
               date={day}

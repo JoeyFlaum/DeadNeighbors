@@ -7,7 +7,7 @@ const CovidStateDataCard = ({ stateid, date,
     positiveIncrease,
     negative,
     negativeIncrease,}) => {
-  return (
+  return (/*layout of individual state data card using props sent */
     <div className="stateDataCard">
       <h5>{stateid} Daily Covid Info</h5>
       <p><strong>Date:</strong> {date.toDateString()}</p>

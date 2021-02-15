@@ -3,7 +3,7 @@ import CovidUsDataCard from './CovidUsDataCard'
 const CovidUsDataComplete=({data})=>{
     return(
     <div className = 'usDataComplete'>
-    {data.map((info,i)=>{
+    {data.map((info,i)=>{/*mapped filtered or unfiltered and sorted or unsorted props to datacard */
         let date = new Date(data[i].dateChecked);
     return(
 
