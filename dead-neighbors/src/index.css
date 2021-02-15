@@ -27,16 +27,6 @@ code {
   --darkGrey: #5a5959;
   --lightgrey: #e9e9e9;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, san-serif;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Montserrat", "Helvetica Neue", Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
 }
 
 header {
