@@ -16,7 +16,9 @@ class DataPage extends React.Component {
       showMenu:false,
     };
   }
+  scrollToTop =() =>window.scrollTo(0,0);
   /*handle enter key and button click for state search*/
+
   searchHandler = (event) => {
     if (event.key === "Enter" || event.type === "click") {
       this.setState({ searchField: event.target.value });
@@ -24,22 +26,25 @@ class DataPage extends React.Component {
   };
   slideHandler = () => {/* sets true/false US or State display */
     this.setState({ slider: !this.state.slider });
+    /*scroll to top on slide change */
   };
   filterView = () => {/* sets true/false for filters visible */
     this.setState({ showFilter: !this.state.showFilter });
+    this.scrollToTop();
   };
   menuView = () =>{  /* sets true/false for menu open/close */
     this.setState({ showMenu: !this.state.showMenu });
-    
   }
   /*set state of radio input choice*/
   filterSortView = (event) => {
     this.setState({ dataView: event.target.value});/*click event value from sorting options */
     this.menuView();/*closes menu*/
+    
   };
 
   /*filter and sort state/us data*/
   viewHandler = (data) => {
+    this.scrollToTop();
     const { dataView } = this.state;
     const CovStateData = this.props.covStateData;
     const CovidStateData = [...CovStateData];/*spread operator to copy props to new array */
@@ -150,7 +155,7 @@ class DataPage extends React.Component {
           </div>
         <div className={!this.state.showMenu? "slider-filters up":"slider-filters down"}> {/* slider/sorting options menu */}
           <div className="slider-filter-wrapper">
-            <Slider boolean={this.slideHandler} usStateBoolean={slider} />{/* slider to choose US or State Info display */}
+            <Slider boolean={this.slideHandler} usStateBoolean={slider} sliderChange = {this.menuView} />{/* slider to choose US or State Info display */}
             <div className={!this.state.showFilter?"filter-sort up":"filter-sort down"} onClick={this.filterView}>{/* show/hide sorting tab */}
               <div className={!this.state.showFilter ? "arrow up one" : "arrow down one"} id = "sort">{filterArrow}</div>{/*arrow up /down*/ }
               <div>Sorting Options</div>

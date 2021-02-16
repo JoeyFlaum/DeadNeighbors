@@ -13,7 +13,7 @@ const Resources = ({ deadPerson }) => {
       {/* display each info card with links */}
       <div className="infoCard cdc">
         <img
-          src="http://www.cdc.gov/coronavirus/2019-ncov/images/Coronavirus-badge-300.png"
+          src="https://www.cdc.gov/coronavirus/2019-ncov/images/Coronavirus-badge-300.png"
           alt="Coronavirus Disease 2019 (COVID-19)"
         />
         <a
