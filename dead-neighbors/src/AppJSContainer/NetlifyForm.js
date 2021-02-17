@@ -28,7 +28,6 @@ class NetlifyForm extends React.Component {
 
   render() {
     const { name, email, message, reason } = this.state;
-    console.log(name, email, message, this.state.reason)
     return (
       <div className="netlify-form-wrapper">
         <form name="contact" onSubmit={this.handleSubmit}>
