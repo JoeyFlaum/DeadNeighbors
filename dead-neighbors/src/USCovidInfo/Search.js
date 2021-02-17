@@ -72,7 +72,7 @@ class SearchFeature extends React.Component {
       <div className ='stateSearch'>
        
         <h2>Search By State</h2>
-        <form className="searchWrapper" onSubmit={(e) => e.preventDefault()}>
+        <form className="searchWrapper" onSubmit={(e) => e.preventDefault()} onClick = {this.props.menuClose/*closes menu on data page */}>
           {" "}
           <input/* search input for state search*/
             placeholder="Enter State or Abbreviation"

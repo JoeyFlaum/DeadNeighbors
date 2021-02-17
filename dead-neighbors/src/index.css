@@ -25,6 +25,7 @@ code {
   --smallShadow:1px 0 5px #c5b9b9;
   --grey: #c3c3c3;
   --darkGrey: #5a5959;
+  --darkGreyTransluscent: #5a5959e8;
   --lightgrey: #e9e9e9;
   box-sizing: border-box;
 }
@@ -172,7 +173,7 @@ top:145px
   width: fit-content;
 }
 .dead-card p{
-  margin: 5px 10px 2px 20px;
+  margin: 5px 10px 2px 14px;
   
 }
 .dead-card .person{
@@ -450,6 +451,8 @@ font-size: xx-small;
   padding:1em;
   border-radius:0 0 10px 10px;
   transition:  all .5s ease-in-out;
+  background:var(--darkBlue);
+  color:var(--lightgrey); 
 }
 .dataPage polyline{
   stroke:var(--lightgrey);
@@ -469,8 +472,6 @@ font-size: xx-small;
   transform: translatey(-500px)
  }
 .data-radios.down{
-  background:var(--darkBlue);
-  color:var(--lightgrey); 
   overflow: hidden;
 }
 .data-radios input:hover{
@@ -619,6 +620,80 @@ margin-left:5px;
 footer {
   font-size: small;
 }
+
+.contact div{
+  width:max-content;
+  height: auto;
+  text-decoration: underline;
+}
+
+.contact div:hover{
+  cursor: pointer;
+  color:blueviolet;
+}
+.netlify-form-fullpage{
+  position:fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top:0;
+  left:0;
+  z-index: 100000;
+  width:100vw;
+  height: 100vh;
+  background:var(--darkGreyTransluscent);
+}
+.netlify-form-wrapper{
+  justify-content: center;
+  align-items: center;
+  max-width:500px;
+  width:90vw;
+  height:auto;
+  font-size: 20px;
+  position:relative;
+}
+.netlify-form-wrapper form{
+  height:auto;
+  padding:20px 50px;
+  background:var(--lightgrey);
+  color:var(--darkBlue);
+}
+.netlify-form-wrapper input{
+  width:90%;
+}
+.netlify-form-wrapper button{
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    background-color: var(--darkBlue);
+    color: var(--lightgrey);
+    height: 30px;
+    width:100px;
+    text-align: center;
+    border-radius: 10px;
+    outline: none;
+}
+
+.netlify-form-wrapper p{
+  display:flex;
+  flex-direction: column;
+}
+
+.netlify-form-wrapper textarea{
+  max-width:400px;
+  width:100%;
+  font-size: 15px;
+}
+.netlify-form-wrapper option{
+  font-size: 15px;
+}
+.netlify-form-wrapper 
+.form-cancel{
+  position:absolute;
+  bottom: 40px;
+  left:175px;
+}
+
 .footer-main {
   display: flex;
   flex-wrap: wrap;
@@ -691,7 +766,7 @@ footer > span:first-of-type {
     bottom:-2px;
   }
   .dead-card p{
-    margin: 5px 0px 7px 15px ;
+    margin: 5px 0px 7px 12px ;
   }
   .stateDataCard,
 .usDataCard {
@@ -729,8 +804,9 @@ footer > span:first-of-type {
 .slider{
   margin-top:-1px;
   align-items:flex-start;
-  height: 60px;
+  height: 90px;
   padding-top: 20px;
+  
 }
 .slider h4{
   margin-top: 0;
@@ -742,15 +818,14 @@ footer > span:first-of-type {
   border-radius: 10px 10px 0 0 
 }
 .slider-filters.down{
-  transform: translatey(-110px)
+  transform: translatey(-140px)
 }
 .slider-filters.up{
-  transform: translateY(300px);
+  transform: translateY(340px);
 }
 .data-radios.down {  
-  transform: translatey(-396px);
-  background:var(--darkBlue);
-  color:var(--lightgrey); 
+  transform: translatey(-426px);
+
   overflow: hidden;
   border-radius:10px 10px 0 0;
   height: 266px;
@@ -766,7 +841,7 @@ footer > span:first-of-type {
 }
 .menu-wrapper{
   top:unset;
-  bottom:-116px;
+  bottom:-146px;
   z-index:999;
 }
 .data-menu{
@@ -810,6 +885,28 @@ footer > span:first-of-type {
     max-height: 255px;
     width: 260px;
     margin-top: 33px;
+  }
+  .netlify-form-wrapper form {
+    height:500px;
+    font-size: 75%;
+    padding: 20px 20px;
+    background: var(--lightgrey);
+    color: var(--darkBlue);
+}
+.netlify-form-wrapper button{
+  margin:0;
+}
+.netlify-form-wrapper .form-cancel{
+  bottom: 22px;
+} 
+}
+@media only screen and (max-width:332px){
+  .netlify-form-wrapper .form-cancel{
+    bottom: 45px;
+    left:130px;
+  }
+  .netlify-form-wrapper h2{
+    font-size: 90%;
   }
 }
 @media only screen and (max-width: 1075px) and (min-width: 600px) {

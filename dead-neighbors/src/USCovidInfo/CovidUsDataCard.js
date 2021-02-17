@@ -30,7 +30,7 @@ const CovidUsDataCard = ({
         <strong>Negative:</strong>{" "} {negative ? negative.toLocaleString() : 0}
       </p>
       <p>
-      <strong>Negative Increase: </strong>{" "}
+      <strong>Negative Increase:</strong>{" "}
         {negativeIncrease ? negativeIncrease.toLocaleString() : 0}
       </p>
     </div>

@@ -16,7 +16,7 @@ class DataPage extends React.Component {
       showMenu:false,
     };
   }
-  scrollToTop =() =>window.scrollTo(0,0);
+  scrollToTop =() =>{window.scrollTo(0,0);}
   /*handle enter key and button click for state search*/
 
   searchHandler = (event) => {
@@ -26,7 +26,7 @@ class DataPage extends React.Component {
   };
   slideHandler = () => {/* sets true/false US or State display */
     this.setState({ slider: !this.state.slider });
-    /*scroll to top on slide change */
+
   };
   filterView = () => {/* sets true/false for filters visible */
     this.setState({ showFilter: !this.state.showFilter });
@@ -105,7 +105,7 @@ class DataPage extends React.Component {
   };
 
   render() {
-    const { searchField, slider } = this.state;
+    const { searchField, slider, showFilter,showMenu } = this.state;
     const CovStateData = this.props.covStateData;
     const CovUsData = this.props.covUsData;
     let filteredStates = [];/* searchfield value filters the data, comes from SearchFeature */
@@ -155,16 +155,16 @@ class DataPage extends React.Component {
           </div>
         <div className={!this.state.showMenu? "slider-filters up":"slider-filters down"}> {/* slider/sorting options menu */}
           <div className="slider-filter-wrapper">
-            <Slider boolean={this.slideHandler} usStateBoolean={slider} sliderChange = {this.menuView} />{/* slider to choose US or State Info display */}
-            <div className={!this.state.showFilter?"filter-sort up":"filter-sort down"} onClick={this.filterView}>{/* show/hide sorting tab */}
-              <div className={!this.state.showFilter ? "arrow up one" : "arrow down one"} id = "sort">{filterArrow}</div>{/*arrow up /down*/ }
+            <Slider boolean={this.slideHandler} usStateBoolean={slider} />{/* slider to choose US or State Info display */}
+            <div className={!showFilter?"filter-sort up":"filter-sort down"} onClick={this.filterView}>{/* show/hide sorting tab */}
+              <div className={!showFilter ? "arrow up one" : "arrow down one"} id = "sort">{filterArrow}</div>{/*arrow up /down*/ }
               <div>Sorting Options</div>
-              <div className={!this.state.showFilter ? "arrow up two" : "arrow down two"} id = "sort">{filterArrow}</div>{/*arrow up /down*/ }
+              <div className={!showFilter ? "arrow up two" : "arrow down two"} id = "sort">{filterArrow}</div>{/*arrow up /down*/ }
             </div>
           </div>
           <div
             className={/*filters */
-              !this.state.showFilter ? "data-radios up" : "data-radios down"
+              !showFilter ? "data-radios up" : "data-radios down"
             }
             onChange={this.filterSortView} /* chooses filter and closes menu */
           >
@@ -196,10 +196,12 @@ class DataPage extends React.Component {
         <div className="infoSection">
           {!slider ? (/* state/us view */
             <>
-              <SearchFeature /* search for individual state on state data view */
+             {this.state.dataView !== "Worst Day - By State" ? <SearchFeature /* search for individual state on state data view */
                 className="searchfeature"
                 onEnter={this.searchHandler}
-              />
+                menuClose = {showMenu!==false?this.menuView:null}
+              />:<div></div>
+             }
               <div className="stateStats">
                 <CovidStateData /*renders filtered or unfiltered state data. Filtered by searchfield value and sorts with viewHandler*/
                   key={searchField}

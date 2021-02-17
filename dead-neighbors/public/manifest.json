@@ -10,12 +10,7 @@
     {
       "src": "apple-touch-icon.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "apple-touch-icon.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "120x120"
     }
   ],
   "start_url": ".",
