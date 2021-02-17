@@ -1,5 +1,7 @@
 import React from "react";
 
+/*constructed using netlify docs https://www.netlify.com/blog/2017/07/20/how-to-integrate-netlifys-form-handling-in-a-react-app/*/
+
 const encode = (data) => {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -60,16 +62,10 @@ class NetlifyForm extends React.Component {
           <p>
             Reason For Submission:
             <label>
-              <select name="reason" value ={reason} onChange={this.handleChange}>
-                <option value="Suggestion">
-                  Suggestion
-                </option>
-                <option value="Issue">
-                  Issue
-                </option>
-                <option value="Contact/General">
-                  Contact / General
-                </option>
+              <select name="reason" value={reason} onChange={this.handleChange}>
+                <option value="Suggestion">Suggestion</option>
+                <option value="Issue">Issue</option>
+                <option value="Contact/General">Contact / General</option>
               </select>
             </label>
           </p>
