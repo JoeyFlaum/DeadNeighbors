@@ -2,6 +2,7 @@ const NetlifyForm=({closeForm})=>{
 return(
 <div className = "netlify-form-wrapper">
 <form name="contact" method="POST" data-netlify="true">
+<input type="hidden" name="form-name" value="contact" />
   <h2>Contact Dead Neighbors</h2>
   <p>Your Name: 
     <label><input type="text" name="name" required /></label>   
