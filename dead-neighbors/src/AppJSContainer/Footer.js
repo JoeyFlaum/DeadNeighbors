@@ -20,7 +20,6 @@ class Footer extends React.Component {
   };
 
   render() {
-    console.log(this.state.formVisible);
     return (
       <footer>
         {this.state.formVisible?<div className="netlify-form-fullpage">
