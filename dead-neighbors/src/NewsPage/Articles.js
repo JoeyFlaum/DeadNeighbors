@@ -21,7 +21,7 @@ const Articles = ({ data }) => {
             </div>
             <div className="infoCard">
               <ArticlePhotoLinkCard /* display photo from article */
-                key={info.keywords[1].value}
+                key={info.keywords[0].value}
                 photo_url={info.multimedia[0].url}
               />
               <a
