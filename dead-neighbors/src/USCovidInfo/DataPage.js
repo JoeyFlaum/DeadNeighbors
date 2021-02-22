@@ -279,7 +279,7 @@ class DataPage extends React.Component {
                       name="sort-filter"
                       value="Worst Day - By State"
                     />
-                    Worst Day - By State
+                    {" "}Worst Day - Death Increase
                   </label>
                 </div>
               ) : null}
