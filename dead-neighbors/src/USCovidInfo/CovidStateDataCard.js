@@ -18,7 +18,7 @@ const CovidStateDataCard = ({ stateid, date,
       <strong>Death Increase:</strong>{" "} {deathIncrease ? deathIncrease.toLocaleString() : 0} 
       </p>
       <p>
-      <strong>Positve: </strong>{" "}{positive ? positive.toLocaleString() : 0}
+      <strong>Positive: </strong>{" "}{positive ? positive.toLocaleString() : 0}
       </p>
       <p>
         <strong>Positive Increase:</strong>{" "}
