@@ -27,6 +27,7 @@ class News extends React.Component {
 
   render() {
     let covidNews = this.state.covidNews;
+    console.log(covidNews)
     return (
       <div className="news-wrapper">
         <DeadPeople /* show dead people count since visit */
