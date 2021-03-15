@@ -306,7 +306,6 @@ font-size: xx-small;
   margin-left: 15%;
   margin-right: 15%;
   padding-top:45px;
-  background: linear-gradient(to right, var(--lightgrey),rgba(255, 255, 255, 0.157));
 }
 .news-wrapper h1{
   font-family: 'Bodoni Moda', serif,'Old English';
@@ -319,11 +318,9 @@ font-size: xx-small;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  box-shadow: 30px 0 30px #c5b9b9;
 }
 .content h3{
   align-self: center;
-  text-decoration: underline;
 }
 .resources,
 .news-wrapper,
