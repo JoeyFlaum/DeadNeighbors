@@ -1,6 +1,7 @@
 import React from "react";
 import ArticleTitleCard from "./ArticleTitleCard";
 import ArticlePhotoLinkCard from "./ArticlePhotoLinkCard";
+import noImage from '../Images/NO_IMAGE.jpg'
 
 const Articles = ({ data }) => {
   return (
@@ -22,7 +23,7 @@ const Articles = ({ data }) => {
             <div className="infoCard">
               <ArticlePhotoLinkCard /* display photo from article */
                 key={info.keywords[0].value}
-                photo_url={info.multimedia[0] !== undefined?info.multimedia[0].url:"Sorry, No Image To Display"}
+                photo_url={info.multimedia[0] !== undefined?info.multimedia[0].url:noImage}
               />
               <a
                 target="_blank"
