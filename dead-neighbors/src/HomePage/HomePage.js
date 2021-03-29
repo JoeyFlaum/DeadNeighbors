@@ -12,12 +12,9 @@ class HomePage extends Component {
     super(props);
     this.state = {
       searchField: "",
-      deadPerson: 0,
     };
   }
-  componentDidMount() {
-    this.setState({ deadPerson: this.props.deadPersonCount });
-  }
+
   render() {
     const deadPerson = this.props.deadPersonCount;
     const infoCards = [

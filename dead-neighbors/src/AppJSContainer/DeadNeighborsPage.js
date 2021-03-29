@@ -20,7 +20,7 @@ class DeadNeighborsPage extends React.Component{
         return(
             <CountDown 
             usData ={this.props.usData}
-            dead = {this.deadTrue}/*Sends true to when timer hits 0 to deatTrue function*/
+            dead = {this.deadTrue}/*Sends true APP.JS to when timer hits 0 to deatTrue function*/
             />
         )
     }

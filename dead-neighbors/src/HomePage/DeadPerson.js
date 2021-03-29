@@ -10,7 +10,7 @@ class DeadPerson extends React.Component{
       }
       render(){
         const{aliveSVGFillStroke,deadSVGFillStroke}=this.state;
-        const deadPersonCount = this.props.deadPersonCount;
+        const deadPersonCount = this.props.deadPersonCount;/*count of dead while visiting the site*/
         let deadSinceVisit = (deadPersonCount % 33);/*Resets the color of the DeadPerson SVGs when value is 0*/
         let people = [];
         for (let i = 1; i <= 32; i++) {/*create 32 SVG "people"*/

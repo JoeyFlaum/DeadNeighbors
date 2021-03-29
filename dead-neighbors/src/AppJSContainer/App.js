@@ -215,12 +215,12 @@ class App extends Component {
               objectData[i].stateFullName = "Virgin Islands";
               break;
             default:
-              console.log("StateCaseNotCaught", objectData[i]);
+              console.log("State Case Not Caught", objectData[i]);
           }
           return objectData[i];
         })
       )
-      .then((data) => this.setState({ CovStateData: data }));
+      .then((data) =>this.setState({ CovStateData: data }));
   }
   render() {
     const {

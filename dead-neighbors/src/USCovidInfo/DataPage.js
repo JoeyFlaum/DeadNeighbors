@@ -122,9 +122,7 @@ class DataPage extends React.Component {
       /*sort objects alphabetical order by state and then by deaths*/
       CovidStateData.sort((a, b) => {
         return (
-          a.stateFullName
-            .toLowerCase()
-            .localeCompare(b.stateFullName.toLowerCase()) ||
+          a.stateFullName.toLowerCase().localeCompare(b.stateFullName.toLowerCase()) ||
           b.deathIncrease - a.deathIncrease
         );
       });
@@ -261,7 +259,7 @@ class DataPage extends React.Component {
               } /* chooses filter and closes menu */
             >
               {radioFilters.map((filter, i) => {
-                /* map filters to sorting optionsmenu */
+                /* map filters to sorting options menu */
                 return (
                   <div className="radios" key={i}>
                     <label>
