@@ -30,7 +30,7 @@ class App extends Component {
   }
   /*pull data from API, add state full names with switch statement*/
   componentDidMount() {
-    fetch("https://api.covidtracking.com/v1/us/daily.json")
+    fetch("https://pure-plains-46644.herokuapp.com/https://api.covidtracking.com/v1/us/daily.json")
       .then((response) => response.json())
       .then((data) => {
         this.setState({
@@ -38,10 +38,11 @@ class App extends Component {
           CovidDeathsToday: data[0].deathIncrease,
           CovidDeathsTotal: data[0].death,
           CovidDeathsTotalDate: data[0].dateChecked,
-        });
+        })
       })
-      .catch((err) => console.log(err));
-    fetch("https://api.covidtracking.com/v1/states/daily.json")
+      .catch((err) => console.log(err,"errorrrrrrrr"))
+
+    fetch("https://pure-plains-46644.herokuapp.com/https://api.covidtracking.com/v1/states/daily.json")
       .then((response) => response.json())
       .then((objectData) =>
         objectData.map((data, i) => {
@@ -220,7 +221,8 @@ class App extends Component {
           return objectData[i];
         })
       )
-      .then((data) =>this.setState({ CovStateData: data }));
+      .then((data) =>this.setState({ CovStateData: data }))
+      .catch((err) => console.log(err,"errorrrrrrrr"))
   }
   render() {
     const {
