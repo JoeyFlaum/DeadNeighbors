@@ -265,7 +265,7 @@ class App extends Component {
                       {...routeProps}
                     />
                   ) : (
-                    <div className="blank"></div>
+                    <div className="home-page loading"> Welcome to dead neighbors. I will be with you shortly...</div>
                   )
                 }
               />
