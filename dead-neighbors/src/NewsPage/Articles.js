@@ -14,7 +14,7 @@ const Articles = ({ data }) => {
             
             <div className="article-info">
               <ArticleTitleCard /* display article snippet*/
-                key={info.keywords[0].value || i }
+                key={info?.keywords[0]?.value || i}
                 source={info.source}
                 headlineMain={info.headline.main}
                 leadParagraph={info.lead_paragraph}
@@ -22,7 +22,7 @@ const Articles = ({ data }) => {
             </div>
             <div className="infoCard">
               <ArticlePhotoLinkCard /* display photo from article */
-                key={info.keywords[0] || i + 20}
+                key={info?.keywords[0]?.value || i}
                 photo_url={info.multimedia[0] !== undefined?info.multimedia[0].url:noImage}
               />
               <a

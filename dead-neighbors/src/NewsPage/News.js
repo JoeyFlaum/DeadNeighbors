@@ -12,19 +12,18 @@ class News extends React.Component {
 
   componentDidMount() {
     //Fetch New York Times Articles related to covid, custom query
-    fetch(
-      'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=coronavirus&fq=section_name:("Health" "Science")&sort=newest&page=0&api-key=ZLmA1qfbE90PPDHY2VitTuzeLso1Mgb0'
+    fetch('https://api.nytimes.com/svc/search/v2/articlesearch.json?q=coronavirus&fq=section_name:("Health" "Science")&sort=newest&page=0&api-key=zZWXcKbMiKWNJRT5stHkvyK0QkDNfqvd'
     )
       .then((response) => response.json())
-      .then((data) =>
+      .then((data) =>{
+        console.log("data",data.response.docs)
         this.setState(() => ({
           covidNews: {
             articles: data.response.docs,
           },
         }))
-      );
+      });
   }
-
   render() {
     let covidNews = this.state.covidNews;
     return (
