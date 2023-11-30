@@ -30,7 +30,7 @@ class App extends Component {
   }
   /*pull data from API, add state full names with switch statement*/
   componentDidMount() {
-    fetch("https://pure-plains-46644.herokuapp.com/https://api.covidtracking.com/v1/us/daily.json")
+    fetch("https://crossorigin.me/https://api.covidtracking.com/v1/us/daily.json")
       .then((response) => response.json())
       .then((data) => {
         this.setState({
@@ -42,7 +42,7 @@ class App extends Component {
       })
       .catch((err) => console.log(err,"errorrrrrrrr"))
 
-    fetch("https://pure-plains-46644.herokuapp.com/https://api.covidtracking.com/v1/states/daily.json")
+    fetch("https://crossorigin.me/https://api.covidtracking.com/v1/states/daily.json")
       .then((response) => response.json())
       .then((objectData) =>
         objectData.map((data, i) => {
